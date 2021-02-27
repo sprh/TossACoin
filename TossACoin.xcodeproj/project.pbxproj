@@ -10,6 +10,13 @@
 		E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */; };
 		E3A47A3C25EA2C53002BDE69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */; };
 		E3A47A3F25EA2C53002BDE69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3D25EA2C53002BDE69 /* LaunchScreen.storyboard */; };
+		E3A47A5025EA2D8C002BDE69 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A4F25EA2D8C002BDE69 /* TabBarController.swift */; };
+		E3A47A5825EA2FCC002BDE69 /* StocksListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A5725EA2FCC002BDE69 /* StocksListProtocols.swift */; };
+		E3A47A5D25EA2FDE002BDE69 /* StocksListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A5C25EA2FDE002BDE69 /* StocksListRouter.swift */; };
+		E3A47A6025EA2FEA002BDE69 /* StocksListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A5F25EA2FEA002BDE69 /* StocksListInteractor.swift */; };
+		E3A47A6325EA2FF7002BDE69 /* StocksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A6225EA2FF7002BDE69 /* StocksListViewController.swift */; };
+		E3A47A6625EA3006002BDE69 /* StocksListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A6525EA3006002BDE69 /* StocksListContainer.swift */; };
+		E3A47A6925EA304F002BDE69 /* StocksListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A6825EA304F002BDE69 /* StocksListPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +25,13 @@
 		E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3A47A3E25EA2C53002BDE69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3A47A4025EA2C53002BDE69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3A47A4F25EA2D8C002BDE69 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E3A47A5725EA2FCC002BDE69 /* StocksListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListProtocols.swift; sourceTree = "<group>"; };
+		E3A47A5C25EA2FDE002BDE69 /* StocksListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListRouter.swift; sourceTree = "<group>"; };
+		E3A47A5F25EA2FEA002BDE69 /* StocksListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListInteractor.swift; sourceTree = "<group>"; };
+		E3A47A6225EA2FF7002BDE69 /* StocksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListViewController.swift; sourceTree = "<group>"; };
+		E3A47A6525EA3006002BDE69 /* StocksListContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListContainer.swift; sourceTree = "<group>"; };
+		E3A47A6825EA304F002BDE69 /* StocksListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +64,9 @@
 		E3A47A3125EA2C51002BDE69 /* TossACoin */ = {
 			isa = PBXGroup;
 			children = (
+				E3A47A4E25EA2D70002BDE69 /* TabBarController */,
+				E3A47A4D25EA2D5E002BDE69 /* Enviroment&Service */,
+				E3A47A4C25EA2D4B002BDE69 /* Modules */,
 				E3A47A4B25EA2C9C002BDE69 /* Resources&Entrance */,
 			);
 			path = TossACoin;
@@ -64,6 +81,42 @@
 				E3A47A4025EA2C53002BDE69 /* Info.plist */,
 			);
 			path = "Resources&Entrance";
+			sourceTree = "<group>";
+		};
+		E3A47A4C25EA2D4B002BDE69 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E3A47A5625EA2FB1002BDE69 /* StocksList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E3A47A4D25EA2D5E002BDE69 /* Enviroment&Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Enviroment&Service";
+			sourceTree = "<group>";
+		};
+		E3A47A4E25EA2D70002BDE69 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				E3A47A4F25EA2D8C002BDE69 /* TabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		E3A47A5625EA2FB1002BDE69 /* StocksList */ = {
+			isa = PBXGroup;
+			children = (
+				E3A47A5725EA2FCC002BDE69 /* StocksListProtocols.swift */,
+				E3A47A5C25EA2FDE002BDE69 /* StocksListRouter.swift */,
+				E3A47A5F25EA2FEA002BDE69 /* StocksListInteractor.swift */,
+				E3A47A6225EA2FF7002BDE69 /* StocksListViewController.swift */,
+				E3A47A6525EA3006002BDE69 /* StocksListContainer.swift */,
+				E3A47A6825EA304F002BDE69 /* StocksListPresenter.swift */,
+			);
+			path = StocksList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +189,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */,
+				E3A47A5D25EA2FDE002BDE69 /* StocksListRouter.swift in Sources */,
+				E3A47A6025EA2FEA002BDE69 /* StocksListInteractor.swift in Sources */,
+				E3A47A6325EA2FF7002BDE69 /* StocksListViewController.swift in Sources */,
+				E3A47A5825EA2FCC002BDE69 /* StocksListProtocols.swift in Sources */,
+				E3A47A6625EA3006002BDE69 /* StocksListContainer.swift in Sources */,
+				E3A47A5025EA2D8C002BDE69 /* TabBarController.swift in Sources */,
+				E3A47A6925EA304F002BDE69 /* StocksListPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +335,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TossACoin/Info.plist;
+				INFOPLIST_FILE = "TossACoin/Resources&Entrance/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,7 +353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TossACoin/Info.plist;
+				INFOPLIST_FILE = "TossACoin/Resources&Entrance/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

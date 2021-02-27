@@ -25,13 +25,23 @@ public final class TabBarController: UITabBarController {
     private func setup() {
         let stocksListContext = StocksListContext()
         let stocksListContainer = StocksListContainer.assemble(with: stocksListContext)
-        let stocksListNC = UINavigationController(rootViewController: stocksListContainer.viewController)
-        stocksListNC.tabBarItem.title = "Stocks"
-        stocksListNC.tabBarItem.image = UIImage(systemName: "star")
+        var stocksListNavigationController = UINavigationController(rootViewController: stocksListContainer.viewController)
+        stocksListNavigationController = setupNavigationController(title: "Stocks", unselectedImage: UIImage(systemName: "bitcoinsign.circle")!, selectedImage: UIImage(systemName: "bitcoinsign.circle.fill")!, navigationController: stocksListNavigationController)
+        
         stocksListContainer.viewController.loadViewIfNeeded()
         
-        viewControllers = [stocksListNC]
+        viewControllers = [stocksListNavigationController]
     }
     
+    private func setupNavigationController(title: String, unselectedImage: UIImage, selectedImage: UIImage, navigationController: UINavigationController) -> UINavigationController{
+        navigationController.tabBarItem.title = title
+        navigationController.navigationItem.title = title
+        navigationController.navigationBar.topItem?.title = title
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.tabBarItem.image = unselectedImage
+        navigationController.tabBarItem.selectedImage = selectedImage
+        navigationController.navigationBar.tintColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        return navigationController
+    }
     
 }

@@ -102,7 +102,6 @@ class CoinCollectionViewCell: UICollectionViewCell {
         [
             favouriteButton.topAnchor.constraint(equalTo: coinName.topAnchor),
             favouriteButton.bottomAnchor.constraint(equalTo: coinName.bottomAnchor),
-            // TODO рассчитать
             favouriteButton.leadingAnchor.constraint(equalTo: coinName.trailingAnchor, constant: 15),
             favouriteButton.trailingAnchor.constraint(equalTo: coinName.trailingAnchor, constant: 40)
         ].forEach({$0.isActive = true})

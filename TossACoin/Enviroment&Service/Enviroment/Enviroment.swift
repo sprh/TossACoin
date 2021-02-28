@@ -15,14 +15,14 @@ class Enviroment: EnviromentProtocol {
         dataStorage.removeValue(forKey: DataStorageKeys.favouriteCoins)
     }
     
-    var currency: String {
-        get {
-            return dataStorage.getValue(forKey: DataStorageKeys.currency)
-        }
-        set {
-            dataStorage.setValue(value: newValue, forKey: DataStorageKeys.currency)
-        }
-    }
+//    var currency: String {
+//        get {
+//            return dataStorage.getValue(forKey: DataStorageKeys.currency)
+//        }
+//        set {
+//            dataStorage.setValue(value: newValue, forKey: DataStorageKeys.currency)
+//        }
+//    }
     
     var favouriteCoins: [String: Float] {
         get {

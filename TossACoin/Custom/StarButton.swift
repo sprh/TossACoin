@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-// MARK: Star button, which allows the user to add a stock to his favourite stocks.
+// MARK: - Star button, which allows the user to add a stock to his favourite stocks.
 final class StarButton: UIButton {
     var image = UIImage(systemName: "star.fill")
     var status: Bool = false {

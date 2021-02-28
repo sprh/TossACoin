@@ -10,14 +10,12 @@ import Foundation
 class CoinsListViewModel {
     private let enviroment: Enviroment
     private let networkService: NetworkService
-    private var initialCurrency: String
     private var coins = [Coin]()
     private var page: Int = 0
     
     init(enviroment: Enviroment, networkService: NetworkService) {
         self.enviroment = enviroment
         self.networkService = networkService
-        self.initialCurrency = enviroment.currency
     }
     
     func getCoins(completion: @escaping () -> Void) {

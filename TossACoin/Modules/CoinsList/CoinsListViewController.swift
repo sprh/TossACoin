@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 
 class CoinsListViewController: UIViewController {
-    private let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
-    private let viewModel: CoinsListViewModel!
+    fileprivate let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
+    fileprivate let viewModel: CoinsListViewModel!
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
+    fileprivate let searchCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
     
     init(viewModel: CoinsListViewModel) {
         self.viewModel = viewModel
@@ -28,15 +30,25 @@ class CoinsListViewController: UIViewController {
         view.backgroundColor = .green
         self.view = view
         setupCollectionView()
+        setupSearchController()
         initCoinCollection()
     }
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
         collectionView.backgroundColor = .white
         self.view.addSubview(collectionView)
+    }
+    
+    private func setupSearchController() {
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        self.definesPresentationContext = true
+        searchController.searchBar.tintColor = .orange
+        definesPresentationContext = true
+        navigationItem.searchController = searchController
     }
     
     func initCoinCollection() {
@@ -57,5 +69,21 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
         viewModel.createCell(cell: cell, at: indexPath.item)
         cell.backgroundColor = indexPath.item % 2 == 0 ? #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1) : #colorLiteral(red: 0.9498714805, green: 1, blue: 0.7609667182, alpha: 1)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       // print(collectionView.cellForItem(at: indexPath))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.item >= viewModel.getCoinsCount() - 1){
+            initCoinCollection()
+        }
+    }
+}
+
+extension CoinsListViewController: UISearchBarDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
 }

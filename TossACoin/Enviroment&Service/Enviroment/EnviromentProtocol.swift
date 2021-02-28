@@ -8,7 +8,7 @@
 import Foundation
 
 protocol EnviromentProtocol {
-    var currency: String { get set }
+//    var currency: String { get set }
     var favouriteCoins: [String: Float] { get set }
     func reset()
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Coin: Codable {
+public struct Coin: Codable {
     let id: String
     let regularMarketChangePercent: Float
     let priceHint: Float
@@ -30,7 +30,7 @@ struct Coin: Codable {
         case price = "regularMarketPrice"
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         self.regularMarketChangePercent = try container.decode(Float.self, forKey: CodingKeys.regularMarketChangePercent)

@@ -8,6 +8,7 @@
 import UIKit
 
 public final class TabBarController: UITabBarController {
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -20,8 +21,10 @@ public final class TabBarController: UITabBarController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Set view controllers.
+    // MARK: - Set view controllers.
     private func setup() {
+        tabBar.tintColor = .orange
+        
         let enviroment = Enviroment()
         let networkService = NetworkService()
         
@@ -43,6 +46,7 @@ public final class TabBarController: UITabBarController {
         navigationController.tabBarItem.title = title
         navigationController.tabBarItem.image = unselectedImage
         navigationController.tabBarItem.selectedImage = selectedImage
+        navigationController.navigationBar.prefersLargeTitles = true
         return navigationController
     }
     

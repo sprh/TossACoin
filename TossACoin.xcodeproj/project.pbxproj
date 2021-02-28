@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0895169995C24CEDC3FAC0D9 /* Pods_TossACoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AB1A3BCC7CCC71086AF557 /* Pods_TossACoin.framework */; };
 		E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */; };
 		E3A47A3C25EA2C53002BDE69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */; };
 		E3A47A3F25EA2C53002BDE69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3D25EA2C53002BDE69 /* LaunchScreen.storyboard */; };
@@ -20,9 +21,23 @@
 		E3A47A6E25EA4D39002BDE69 /* StocksCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A6D25EA4D39002BDE69 /* StocksCollectionViewFlowLayout.swift */; };
 		E3A47A7225EA4E44002BDE69 /* StockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A7125EA4E44002BDE69 /* StockCollectionViewCell.swift */; };
 		E3A47A7625EA4F3A002BDE69 /* StarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A7525EA4F3A002BDE69 /* StarButton.swift */; };
+		E3A47A8425EA8B59002BDE69 /* EnviromentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A8325EA8B59002BDE69 /* EnviromentProtocol.swift */; };
+		E3A47A8925EA8C1C002BDE69 /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A8825EA8C1C002BDE69 /* Enviroment.swift */; };
+		E3A47A8D25EA8C3A002BDE69 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A8C25EA8C3A002BDE69 /* NetworkServiceProtocol.swift */; };
+		E3A47A9125EA8C7D002BDE69 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A9025EA8C7D002BDE69 /* NetworkService.swift */; };
+		E3A47A9525EA8CB2002BDE69 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A9425EA8CB2002BDE69 /* APIClient.swift */; };
+		E3A47A9825EA8D5F002BDE69 /* NetworkServiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A9725EA8D5F002BDE69 /* NetworkServiceResult.swift */; };
+		E3A47AA525EA92A8002BDE69 /* DataStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AA425EA92A8002BDE69 /* DataStorageProtocol.swift */; };
+		E3A47AA825EA93FC002BDE69 /* DataStorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AA725EA93FC002BDE69 /* DataStorageKey.swift */; };
+		E3A47AAB25EA9510002BDE69 /* DataStorageOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AAA25EA9510002BDE69 /* DataStorageOptions.swift */; };
+		E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AAE25EA9664002BDE69 /* DataStorageKeys.swift */; };
+		E3A47AB225EA97D2002BDE69 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AB125EA97D2002BDE69 /* DataStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17EE438177E51C42F59BADD3 /* Pods-TossACoin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TossACoin.debug.xcconfig"; path = "Target Support Files/Pods-TossACoin/Pods-TossACoin.debug.xcconfig"; sourceTree = "<group>"; };
+		49060EBB9C7DAA4D9F8644F7 /* Pods-TossACoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TossACoin.release.xcconfig"; path = "Target Support Files/Pods-TossACoin/Pods-TossACoin.release.xcconfig"; sourceTree = "<group>"; };
+		60AB1A3BCC7CCC71086AF557 /* Pods_TossACoin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TossACoin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A47A2F25EA2C51002BDE69 /* TossACoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TossACoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +53,17 @@
 		E3A47A6D25EA4D39002BDE69 /* StocksCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		E3A47A7125EA4E44002BDE69 /* StockCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3A47A7525EA4F3A002BDE69 /* StarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarButton.swift; sourceTree = "<group>"; };
+		E3A47A8325EA8B59002BDE69 /* EnviromentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnviromentProtocol.swift; sourceTree = "<group>"; };
+		E3A47A8825EA8C1C002BDE69 /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
+		E3A47A8C25EA8C3A002BDE69 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		E3A47A9025EA8C7D002BDE69 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E3A47A9425EA8CB2002BDE69 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E3A47A9725EA8D5F002BDE69 /* NetworkServiceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceResult.swift; sourceTree = "<group>"; };
+		E3A47AA425EA92A8002BDE69 /* DataStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageProtocol.swift; sourceTree = "<group>"; };
+		E3A47AA725EA93FC002BDE69 /* DataStorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageKey.swift; sourceTree = "<group>"; };
+		E3A47AAA25EA9510002BDE69 /* DataStorageOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageOptions.swift; sourceTree = "<group>"; };
+		E3A47AAE25EA9664002BDE69 /* DataStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageKeys.swift; sourceTree = "<group>"; };
+		E3A47AB125EA97D2002BDE69 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +71,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0895169995C24CEDC3FAC0D9 /* Pods_TossACoin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB08D74772B66A5E188B3EAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60AB1A3BCC7CCC71086AF557 /* Pods_TossACoin.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3A5EB10B25437892E29A310 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				17EE438177E51C42F59BADD3 /* Pods-TossACoin.debug.xcconfig */,
+				49060EBB9C7DAA4D9F8644F7 /* Pods-TossACoin.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E3A47A2625EA2C51002BDE69 = {
 			isa = PBXGroup;
 			children = (
 				E3A47A3125EA2C51002BDE69 /* TossACoin */,
 				E3A47A3025EA2C51002BDE69 /* Products */,
+				D3A5EB10B25437892E29A310 /* Pods */,
+				CB08D74772B66A5E188B3EAA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +147,10 @@
 		E3A47A4D25EA2D5E002BDE69 /* Enviroment&Service */ = {
 			isa = PBXGroup;
 			children = (
+				E3A47AA325EA9272002BDE69 /* DataStorage */,
+				E3A47A9325EA8C85002BDE69 /* API */,
+				E3A47A8B25EA8C20002BDE69 /* Network */,
+				E3A47A8625EA8B64002BDE69 /* Enviroment */,
 			);
 			path = "Enviroment&Service";
 			sourceTree = "<group>";
@@ -144,6 +194,45 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		E3A47A8625EA8B64002BDE69 /* Enviroment */ = {
+			isa = PBXGroup;
+			children = (
+				E3A47A8325EA8B59002BDE69 /* EnviromentProtocol.swift */,
+				E3A47A8825EA8C1C002BDE69 /* Enviroment.swift */,
+			);
+			path = Enviroment;
+			sourceTree = "<group>";
+		};
+		E3A47A8B25EA8C20002BDE69 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E3A47A8C25EA8C3A002BDE69 /* NetworkServiceProtocol.swift */,
+				E3A47A9025EA8C7D002BDE69 /* NetworkService.swift */,
+				E3A47A9725EA8D5F002BDE69 /* NetworkServiceResult.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E3A47A9325EA8C85002BDE69 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E3A47A9425EA8CB2002BDE69 /* APIClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		E3A47AA325EA9272002BDE69 /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				E3A47AA425EA92A8002BDE69 /* DataStorageProtocol.swift */,
+				E3A47AA725EA93FC002BDE69 /* DataStorageKey.swift */,
+				E3A47AAA25EA9510002BDE69 /* DataStorageOptions.swift */,
+				E3A47AAE25EA9664002BDE69 /* DataStorageKeys.swift */,
+				E3A47AB125EA97D2002BDE69 /* DataStorage.swift */,
+			);
+			path = DataStorage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,9 +240,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3A47A4325EA2C53002BDE69 /* Build configuration list for PBXNativeTarget "TossACoin" */;
 			buildPhases = (
+				8A65B05C19D224C18975CB74 /* [CP] Check Pods Manifest.lock */,
 				E3A47A2B25EA2C51002BDE69 /* Sources */,
 				E3A47A2C25EA2C51002BDE69 /* Frameworks */,
 				E3A47A2D25EA2C51002BDE69 /* Resources */,
+				30CB8D4C2CE59FDAC1922852 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,6 +299,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		30CB8D4C2CE59FDAC1922852 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TossACoin/Pods-TossACoin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TossACoin/Pods-TossACoin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TossACoin/Pods-TossACoin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A65B05C19D224C18975CB74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TossACoin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E3A47A2B25EA2C51002BDE69 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -215,15 +348,26 @@
 			files = (
 				E3A47A7225EA4E44002BDE69 /* StockCollectionViewCell.swift in Sources */,
 				E3A47A6E25EA4D39002BDE69 /* StocksCollectionViewFlowLayout.swift in Sources */,
+				E3A47AAB25EA9510002BDE69 /* DataStorageOptions.swift in Sources */,
+				E3A47A8425EA8B59002BDE69 /* EnviromentProtocol.swift in Sources */,
+				E3A47AA825EA93FC002BDE69 /* DataStorageKey.swift in Sources */,
+				E3A47A9525EA8CB2002BDE69 /* APIClient.swift in Sources */,
 				E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */,
 				E3A47A5D25EA2FDE002BDE69 /* StocksListRouter.swift in Sources */,
+				E3A47A9125EA8C7D002BDE69 /* NetworkService.swift in Sources */,
+				E3A47AA525EA92A8002BDE69 /* DataStorageProtocol.swift in Sources */,
 				E3A47A6025EA2FEA002BDE69 /* StocksListInteractor.swift in Sources */,
 				E3A47A6325EA2FF7002BDE69 /* StocksListViewController.swift in Sources */,
 				E3A47A5825EA2FCC002BDE69 /* StocksListProtocols.swift in Sources */,
+				E3A47AB225EA97D2002BDE69 /* DataStorage.swift in Sources */,
 				E3A47A6625EA3006002BDE69 /* StocksListContainer.swift in Sources */,
 				E3A47A5025EA2D8C002BDE69 /* TabBarController.swift in Sources */,
+				E3A47A8D25EA8C3A002BDE69 /* NetworkServiceProtocol.swift in Sources */,
+				E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */,
 				E3A47A6925EA304F002BDE69 /* StocksListPresenter.swift in Sources */,
 				E3A47A7625EA4F3A002BDE69 /* StarButton.swift in Sources */,
+				E3A47A9825EA8D5F002BDE69 /* NetworkServiceResult.swift in Sources */,
+				E3A47A8925EA8C1C002BDE69 /* Enviroment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +503,7 @@
 		};
 		E3A47A4425EA2C53002BDE69 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17EE438177E51C42F59BADD3 /* Pods-TossACoin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -377,6 +522,7 @@
 		};
 		E3A47A4525EA2C53002BDE69 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49060EBB9C7DAA4D9F8644F7 /* Pods-TossACoin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

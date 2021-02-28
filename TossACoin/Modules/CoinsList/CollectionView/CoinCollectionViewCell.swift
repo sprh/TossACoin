@@ -1,5 +1,5 @@
 //
-//  StockCollectionViewCell.swift
+//  CoinCollectionViewCell.swift
 //  TossACoin
 //
 //  Created by Софья Тимохина on 27.02.2021.
@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
+import AlamofireImage
 
-class StockCollectionViewCell: UICollectionViewCell {
-    fileprivate let stockName: UILabel = {() -> UILabel in
+class CoinCollectionViewCell: UICollectionViewCell {
+    fileprivate var coinName: UILabel = {() -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Arial-BoldMT", size: 18)
@@ -19,16 +20,15 @@ class StockCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    fileprivate let favouriteButton: StarButton = {() -> StarButton in
+    fileprivate var favouriteButton: StarButton = {() -> StarButton in
         let starButton = StarButton(frame: CGRect(x: 50, y: 50, width: 30, height: 30))
         starButton.translatesAutoresizingMaskIntoConstraints = false
         return starButton
     }()
 
-    fileprivate let companyIcon: UIImageView = {() -> UIImageView in
+    fileprivate var companyIcon: UIImageView = {() -> UIImageView in
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .red
         image.contentMode = UIView.ContentMode.scaleAspectFill
         image.layer.borderWidth = 0
         image.clipsToBounds = true
@@ -37,7 +37,7 @@ class StockCollectionViewCell: UICollectionViewCell {
 
     }()
 
-    fileprivate let stockCurrentPrice: UILabel = {() -> UILabel in
+    fileprivate var coinCurrentPrice: UILabel = {() -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .right
@@ -47,7 +47,7 @@ class StockCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    fileprivate let fullName: UILabel = {() -> UILabel  in
+    fileprivate var companyName: UILabel = {() -> UILabel  in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "AlNile", size: 12)
@@ -57,7 +57,7 @@ class StockCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    fileprivate let dayDelta: UILabel = {() -> UILabel in
+    fileprivate var dayDelta: UILabel = {() -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "AlNile", size: 12)
@@ -72,7 +72,19 @@ class StockCollectionViewCell: UICollectionViewCell {
         setupSubviews()
     }
     
-    // MARK: Style the StockCollectionViewCell.
+    public func loadData(model: CoinCellModel) {
+        self.coinName.text = model.name
+        self.companyName.text = model.companyName
+        self.coinCurrentPrice.text = model.financialCurrency
+        self.dayDelta.text = "\(model.exchangeDataDelayedBy)"
+        // TODO get url
+        guard let url = URL(string: model.symbol), let placeholderImage = UIImage(systemName: "coloncurrencysign.circle.fill") else {
+                return
+        }
+        companyIcon.af.setImage(withURL: url, placeholderImage: placeholderImage)
+    }
+    
+    // MARK: Style the CoinCollectionViewCell.
     func setupStyle() {
         layer.cornerRadius = 15
         layer.shadowRadius = 15
@@ -93,56 +105,50 @@ class StockCollectionViewCell: UICollectionViewCell {
             companyIcon.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: height - 8)
         ].forEach({$0.isActive = true})
 
-        contentView.addSubview(stockName)
+        contentView.addSubview(coinName)
         [
-            stockName.topAnchor.constraint(equalTo: self.topAnchor, constant: 14),
-            stockName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
-            stockName.leadingAnchor.constraint(equalTo: companyIcon.trailingAnchor, constant: 12),
+            coinName.topAnchor.constraint(equalTo: self.topAnchor, constant: 14),
+            coinName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
+            coinName.leadingAnchor.constraint(equalTo: companyIcon.trailingAnchor, constant: 12),
             // TODO рассчитать
-            stockName.trailingAnchor.constraint(equalTo: companyIcon.trailingAnchor, constant: 100)
+            coinName.trailingAnchor.constraint(equalTo: companyIcon.trailingAnchor, constant: 100)
         ].forEach({$0.isActive = true})
 
-        contentView.addSubview(fullName)
+        contentView.addSubview(companyName)
 
         [
-            fullName.topAnchor.constraint(equalTo: stockName.bottomAnchor),
-            fullName.bottomAnchor.constraint(equalTo: stockName.bottomAnchor, constant: 14),
-            fullName.leadingAnchor.constraint(equalTo: stockName.leadingAnchor),
-            fullName.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            companyName.topAnchor.constraint(equalTo: coinName.bottomAnchor),
+            companyName.bottomAnchor.constraint(equalTo: coinName.bottomAnchor, constant: 14),
+            companyName.leadingAnchor.constraint(equalTo: coinName.leadingAnchor),
+            companyName.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ].forEach({$0.isActive = true})
 
         contentView.addSubview(favouriteButton)
         [
-            favouriteButton.topAnchor.constraint(equalTo: stockName.topAnchor),
-            favouriteButton.bottomAnchor.constraint(equalTo: stockName.bottomAnchor),
+            favouriteButton.topAnchor.constraint(equalTo: coinName.topAnchor),
+            favouriteButton.bottomAnchor.constraint(equalTo: coinName.bottomAnchor),
             // TODO рассчитать
-            favouriteButton.leadingAnchor.constraint(equalTo: stockName.trailingAnchor, constant: 15),
-            favouriteButton.trailingAnchor.constraint(equalTo: stockName.trailingAnchor, constant: 40)
+            favouriteButton.leadingAnchor.constraint(equalTo: coinName.trailingAnchor, constant: 15),
+            favouriteButton.trailingAnchor.constraint(equalTo: coinName.trailingAnchor, constant: 40)
         ].forEach({$0.isActive = true})
 
-        contentView.addSubview(stockCurrentPrice)
+        contentView.addSubview(coinCurrentPrice)
         [
-            stockCurrentPrice.topAnchor.constraint(equalTo: self.topAnchor, constant: 14),
-            stockCurrentPrice.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
-            stockCurrentPrice.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -17),
+            coinCurrentPrice.topAnchor.constraint(equalTo: self.topAnchor, constant: 14),
+            coinCurrentPrice.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
+            coinCurrentPrice.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -17),
             // TODO рассчитать
-            stockCurrentPrice.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -150)
+            coinCurrentPrice.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -150)
         ].forEach({$0.isActive = true})
 
         contentView.addSubview(dayDelta)
         [
-            dayDelta.topAnchor.constraint(equalTo: stockCurrentPrice.bottomAnchor),
+            dayDelta.topAnchor.constraint(equalTo: coinCurrentPrice.bottomAnchor),
             dayDelta.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
             // TODO рассчитать
             dayDelta.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
             dayDelta.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -112)
         ].forEach({$0.isActive = true})
-
-        // TODO delete
-        stockName.text = "YNDX"
-        fullName.text = "Yandex, LLC"
-        stockCurrentPrice.text = "4764,6 руб"
-        dayDelta.text = "10%"
     }
 
     required init?(coder: NSCoder) {

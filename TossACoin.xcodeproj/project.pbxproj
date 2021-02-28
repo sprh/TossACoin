@@ -12,14 +12,8 @@
 		E3A47A3C25EA2C53002BDE69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */; };
 		E3A47A3F25EA2C53002BDE69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3D25EA2C53002BDE69 /* LaunchScreen.storyboard */; };
 		E3A47A5025EA2D8C002BDE69 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A4F25EA2D8C002BDE69 /* TabBarController.swift */; };
-		E3A47A5825EA2FCC002BDE69 /* StocksListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A5725EA2FCC002BDE69 /* StocksListProtocols.swift */; };
-		E3A47A5D25EA2FDE002BDE69 /* StocksListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A5C25EA2FDE002BDE69 /* StocksListRouter.swift */; };
-		E3A47A6025EA2FEA002BDE69 /* StocksListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A5F25EA2FEA002BDE69 /* StocksListInteractor.swift */; };
-		E3A47A6325EA2FF7002BDE69 /* StocksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A6225EA2FF7002BDE69 /* StocksListViewController.swift */; };
-		E3A47A6625EA3006002BDE69 /* StocksListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A6525EA3006002BDE69 /* StocksListContainer.swift */; };
-		E3A47A6925EA304F002BDE69 /* StocksListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A6825EA304F002BDE69 /* StocksListPresenter.swift */; };
-		E3A47A6E25EA4D39002BDE69 /* StocksCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A6D25EA4D39002BDE69 /* StocksCollectionViewFlowLayout.swift */; };
-		E3A47A7225EA4E44002BDE69 /* StockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A7125EA4E44002BDE69 /* StockCollectionViewCell.swift */; };
+		E3A47A6E25EA4D39002BDE69 /* CoinsCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A6D25EA4D39002BDE69 /* CoinsCollectionViewFlowLayout.swift */; };
+		E3A47A7225EA4E44002BDE69 /* CoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A7125EA4E44002BDE69 /* CoinCollectionViewCell.swift */; };
 		E3A47A7625EA4F3A002BDE69 /* StarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A7525EA4F3A002BDE69 /* StarButton.swift */; };
 		E3A47A8425EA8B59002BDE69 /* EnviromentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A8325EA8B59002BDE69 /* EnviromentProtocol.swift */; };
 		E3A47A8925EA8C1C002BDE69 /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A8825EA8C1C002BDE69 /* Enviroment.swift */; };
@@ -32,6 +26,11 @@
 		E3A47AAB25EA9510002BDE69 /* DataStorageOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AAA25EA9510002BDE69 /* DataStorageOptions.swift */; };
 		E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AAE25EA9664002BDE69 /* DataStorageKeys.swift */; };
 		E3A47AB225EA97D2002BDE69 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AB125EA97D2002BDE69 /* DataStorage.swift */; };
+		E3A47AB625EBE5BB002BDE69 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AB525EBE5BB002BDE69 /* Coin.swift */; };
+		E3A47AD125EBEEC4002BDE69 /* NetworkResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AD025EBEEC4002BDE69 /* NetworkResultModel.swift */; };
+		E3A47AD525EBF924002BDE69 /* CoinsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AD425EBF924002BDE69 /* CoinsListViewController.swift */; };
+		E3A47AD825EBF934002BDE69 /* CoinsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AD725EBF934002BDE69 /* CoinsListViewModel.swift */; };
+		E3A47AE125EC11F9002BDE69 /* CoinCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AE025EC11F9002BDE69 /* CoinCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,14 +43,8 @@
 		E3A47A3E25EA2C53002BDE69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3A47A4025EA2C53002BDE69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3A47A4F25EA2D8C002BDE69 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		E3A47A5725EA2FCC002BDE69 /* StocksListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListProtocols.swift; sourceTree = "<group>"; };
-		E3A47A5C25EA2FDE002BDE69 /* StocksListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListRouter.swift; sourceTree = "<group>"; };
-		E3A47A5F25EA2FEA002BDE69 /* StocksListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListInteractor.swift; sourceTree = "<group>"; };
-		E3A47A6225EA2FF7002BDE69 /* StocksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListViewController.swift; sourceTree = "<group>"; };
-		E3A47A6525EA3006002BDE69 /* StocksListContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListContainer.swift; sourceTree = "<group>"; };
-		E3A47A6825EA304F002BDE69 /* StocksListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListPresenter.swift; sourceTree = "<group>"; };
-		E3A47A6D25EA4D39002BDE69 /* StocksCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		E3A47A7125EA4E44002BDE69 /* StockCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCollectionViewCell.swift; sourceTree = "<group>"; };
+		E3A47A6D25EA4D39002BDE69 /* CoinsCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		E3A47A7125EA4E44002BDE69 /* CoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3A47A7525EA4F3A002BDE69 /* StarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarButton.swift; sourceTree = "<group>"; };
 		E3A47A8325EA8B59002BDE69 /* EnviromentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnviromentProtocol.swift; sourceTree = "<group>"; };
 		E3A47A8825EA8C1C002BDE69 /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
@@ -64,6 +57,11 @@
 		E3A47AAA25EA9510002BDE69 /* DataStorageOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageOptions.swift; sourceTree = "<group>"; };
 		E3A47AAE25EA9664002BDE69 /* DataStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageKeys.swift; sourceTree = "<group>"; };
 		E3A47AB125EA97D2002BDE69 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		E3A47AB525EBE5BB002BDE69 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		E3A47AD025EBEEC4002BDE69 /* NetworkResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResultModel.swift; sourceTree = "<group>"; };
+		E3A47AD425EBF924002BDE69 /* CoinsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListViewController.swift; sourceTree = "<group>"; };
+		E3A47AD725EBF934002BDE69 /* CoinsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListViewModel.swift; sourceTree = "<group>"; };
+		E3A47AE025EC11F9002BDE69 /* CoinCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +114,7 @@
 		E3A47A3125EA2C51002BDE69 /* TossACoin */ = {
 			isa = PBXGroup;
 			children = (
+				E3A47AB425EBE5AE002BDE69 /* Models */,
 				E3A47A7425EA4F15002BDE69 /* Custom */,
 				E3A47A4E25EA2D70002BDE69 /* TabBarController */,
 				E3A47A4D25EA2D5E002BDE69 /* Enviroment&Service */,
@@ -139,7 +138,7 @@
 		E3A47A4C25EA2D4B002BDE69 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E3A47A5625EA2FB1002BDE69 /* StocksList */,
+				E3A47A5625EA2FB1002BDE69 /* CoinsList */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -163,25 +162,21 @@
 			path = TabBarController;
 			sourceTree = "<group>";
 		};
-		E3A47A5625EA2FB1002BDE69 /* StocksList */ = {
+		E3A47A5625EA2FB1002BDE69 /* CoinsList */ = {
 			isa = PBXGroup;
 			children = (
 				E3A47A6C25EA4D26002BDE69 /* CollectionView */,
-				E3A47A5725EA2FCC002BDE69 /* StocksListProtocols.swift */,
-				E3A47A5C25EA2FDE002BDE69 /* StocksListRouter.swift */,
-				E3A47A5F25EA2FEA002BDE69 /* StocksListInteractor.swift */,
-				E3A47A6225EA2FF7002BDE69 /* StocksListViewController.swift */,
-				E3A47A6525EA3006002BDE69 /* StocksListContainer.swift */,
-				E3A47A6825EA304F002BDE69 /* StocksListPresenter.swift */,
+				E3A47AD425EBF924002BDE69 /* CoinsListViewController.swift */,
+				E3A47AD725EBF934002BDE69 /* CoinsListViewModel.swift */,
 			);
-			path = StocksList;
+			path = CoinsList;
 			sourceTree = "<group>";
 		};
 		E3A47A6C25EA4D26002BDE69 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				E3A47A6D25EA4D39002BDE69 /* StocksCollectionViewFlowLayout.swift */,
-				E3A47A7125EA4E44002BDE69 /* StockCollectionViewCell.swift */,
+				E3A47A6D25EA4D39002BDE69 /* CoinsCollectionViewFlowLayout.swift */,
+				E3A47A7125EA4E44002BDE69 /* CoinCollectionViewCell.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -209,6 +204,7 @@
 				E3A47A8C25EA8C3A002BDE69 /* NetworkServiceProtocol.swift */,
 				E3A47A9025EA8C7D002BDE69 /* NetworkService.swift */,
 				E3A47A9725EA8D5F002BDE69 /* NetworkServiceResult.swift */,
+				E3A47AD025EBEEC4002BDE69 /* NetworkResultModel.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -231,6 +227,15 @@
 				E3A47AB125EA97D2002BDE69 /* DataStorage.swift */,
 			);
 			path = DataStorage;
+			sourceTree = "<group>";
+		};
+		E3A47AB425EBE5AE002BDE69 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E3A47AE025EC11F9002BDE69 /* CoinCellModel.swift */,
+				E3A47AB525EBE5BB002BDE69 /* Coin.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,25 +351,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3A47A7225EA4E44002BDE69 /* StockCollectionViewCell.swift in Sources */,
-				E3A47A6E25EA4D39002BDE69 /* StocksCollectionViewFlowLayout.swift in Sources */,
+				E3A47A7225EA4E44002BDE69 /* CoinCollectionViewCell.swift in Sources */,
+				E3A47AE125EC11F9002BDE69 /* CoinCellModel.swift in Sources */,
+				E3A47A6E25EA4D39002BDE69 /* CoinsCollectionViewFlowLayout.swift in Sources */,
+				E3A47AB625EBE5BB002BDE69 /* Coin.swift in Sources */,
 				E3A47AAB25EA9510002BDE69 /* DataStorageOptions.swift in Sources */,
 				E3A47A8425EA8B59002BDE69 /* EnviromentProtocol.swift in Sources */,
 				E3A47AA825EA93FC002BDE69 /* DataStorageKey.swift in Sources */,
 				E3A47A9525EA8CB2002BDE69 /* APIClient.swift in Sources */,
 				E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */,
-				E3A47A5D25EA2FDE002BDE69 /* StocksListRouter.swift in Sources */,
 				E3A47A9125EA8C7D002BDE69 /* NetworkService.swift in Sources */,
 				E3A47AA525EA92A8002BDE69 /* DataStorageProtocol.swift in Sources */,
-				E3A47A6025EA2FEA002BDE69 /* StocksListInteractor.swift in Sources */,
-				E3A47A6325EA2FF7002BDE69 /* StocksListViewController.swift in Sources */,
-				E3A47A5825EA2FCC002BDE69 /* StocksListProtocols.swift in Sources */,
 				E3A47AB225EA97D2002BDE69 /* DataStorage.swift in Sources */,
-				E3A47A6625EA3006002BDE69 /* StocksListContainer.swift in Sources */,
 				E3A47A5025EA2D8C002BDE69 /* TabBarController.swift in Sources */,
+				E3A47AD825EBF934002BDE69 /* CoinsListViewModel.swift in Sources */,
+				E3A47AD125EBEEC4002BDE69 /* NetworkResultModel.swift in Sources */,
+				E3A47AD525EBF924002BDE69 /* CoinsListViewController.swift in Sources */,
 				E3A47A8D25EA8C3A002BDE69 /* NetworkServiceProtocol.swift in Sources */,
 				E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */,
-				E3A47A6925EA304F002BDE69 /* StocksListPresenter.swift in Sources */,
 				E3A47A7625EA4F3A002BDE69 /* StarButton.swift in Sources */,
 				E3A47A9825EA8D5F002BDE69 /* NetworkServiceResult.swift in Sources */,
 				E3A47A8925EA8C1C002BDE69 /* Enviroment.swift in Sources */,

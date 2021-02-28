@@ -7,4 +7,6 @@
 
 import Foundation
 protocol NetworkServiceProtocol {
+    func getCoins(page: Int, completion: @escaping (NetworkServiceResult<[Coin]>) -> Void)
+    func getCoin(symbols: [String], completion: @escaping (NetworkServiceResult<[Coin]>) -> Void)
 }

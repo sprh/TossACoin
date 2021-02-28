@@ -8,7 +8,12 @@
 import Foundation
 
 public protocol DataStorageProtocol {
-    func setValue<T>(value: T, for key: DataStorageKey<T>)
+    // MARK: The user's default db.
+    var userDefaults: UserDefaults {get}
+    // MARK: Add the value to db.
+    func setValue<T>(value: T, forKey key: DataStorageKey<T>)
+    // MARK: Get the value from db.
     func getValue<T>(forKey key: DataStorageKey<T>) -> T
-    func removeValue<T>(for key: DataStorageKey<T>)
+    // MARK: Remove the value from db.
+    func removeValue<T>(forKey key: DataStorageKey<T>)
 }

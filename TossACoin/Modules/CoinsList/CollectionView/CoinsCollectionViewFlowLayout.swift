@@ -1,5 +1,5 @@
 //
-//  CollectionViewFlowLayout.swift
+//  CoinsCollectionViewFlowLayout.swift
 //  TossACoin
 //
 //  Created by Софья Тимохина on 27.02.2021.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class StocksCollectionViewFlowLayout: UICollectionViewFlowLayout {
+class CoinsCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         scrollDirection = .vertical

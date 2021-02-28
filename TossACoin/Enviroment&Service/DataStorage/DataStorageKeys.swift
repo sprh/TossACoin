@@ -7,6 +7,9 @@
 
 import Foundation
 public struct DataStorageKeys {
-    static let currency = DataStorageKey(key: "Currency", dataStorageOptions: DataStorageOptions.defaults, valueType: String.self, defaultValue: "RUB")
-    static let favouriteStocks = DataStorageKey(key: "FavouriteStocks", dataStorageOptions: DataStorageOptions.defaults, valueType: String.self, defaultValue: "")
+    // MARK: Local currency.
+    static let currency = DataStorageKey(key: "Currency", dataStorageOptions: DataStorageOptions.userDefaults, valueType: String.self, defaultValue: "RUB")
+    
+    // MARK: Users favourite coins.
+    static let favouriteCoins = DataStorageKey(key: "FavouriteCoins", dataStorageOptions: DataStorageOptions.userDefaults, valueType: [String: Float].self, defaultValue: [:])
 }

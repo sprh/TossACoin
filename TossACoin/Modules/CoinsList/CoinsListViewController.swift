@@ -55,6 +55,7 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
         viewModel.createCell(cell: cell, at: indexPath.item)
+        cell.backgroundColor = indexPath.item % 2 == 0 ? #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1) : #colorLiteral(red: 0.9498714805, green: 1, blue: 0.7609667182, alpha: 1)
         return cell
     }
 }

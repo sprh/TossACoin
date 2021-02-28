@@ -30,7 +30,8 @@ public struct NetworkService: NetworkServiceProtocol {
 
             do {
                 let result = try self.decoder.decode(Result.self, from: data)
-                print(result.data)
+                let coins = result.data
+                completion(.Success(coins))
             }
             catch let decodeError {
                 print("\(decodeError)")

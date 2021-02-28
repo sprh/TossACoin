@@ -9,17 +9,17 @@ import Foundation
 import UIKit
 
 public struct CoinCellModel {
-    let exchangeDataDelayedBy: Float
+    let id: String
+    let regularMarketChangePercent: Float
     let companyName: String
-    let financialCurrency: String
-    let symbol: String
     let name: String
+    let price: Float
     
     init(coin: Coin) {
-        self.exchangeDataDelayedBy = coin.exchangeDataDelayedBy
+        self.id = coin.id
+        self.regularMarketChangePercent = coin.regularMarketChangePercent
         self.companyName = coin.companyName
-        self.financialCurrency = coin.financialCurrency
-        self.symbol = coin.symbol
         self.name = coin.name
+        self.price = coin.price
     }
 }

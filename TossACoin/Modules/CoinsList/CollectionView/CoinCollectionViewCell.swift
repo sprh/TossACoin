@@ -26,18 +26,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         return starButton
     }()
 
-    fileprivate var companyIcon: UIImageView = {() -> UIImageView in
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = UIView.ContentMode.scaleAspectFill
-        image.layer.borderWidth = 0
-        image.clipsToBounds = true
-        image.layer.cornerRadius = 10
-        return image
-
-    }()
-
-    fileprivate var coinCurrentPrice: UILabel = {() -> UILabel in
+    fileprivate var price: UILabel = {() -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .right
@@ -50,17 +39,17 @@ class CoinCollectionViewCell: UICollectionViewCell {
     fileprivate var companyName: UILabel = {() -> UILabel  in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "AlNile", size: 12)
+        label.font = UIFont(name: "AlNile", size: 15)
         label.numberOfLines = 1
         label.textColor = .black
         label.textAlignment = .left
         return label
     }()
 
-    fileprivate var dayDelta: UILabel = {() -> UILabel in
+    fileprivate var regularMarketChangePercent: UILabel = {() -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "AlNile", size: 12)
+        label.font = UIFont(name: "AlNile", size: 15)
         label.numberOfLines = 1
         label.textAlignment = .right
         return label
@@ -75,13 +64,9 @@ class CoinCollectionViewCell: UICollectionViewCell {
     public func loadData(model: CoinCellModel) {
         self.coinName.text = model.name
         self.companyName.text = model.companyName
-        self.coinCurrentPrice.text = model.financialCurrency
-        self.dayDelta.text = "\(model.exchangeDataDelayedBy)"
-        // TODO get url
-        guard let url = URL(string: model.symbol), let placeholderImage = UIImage(systemName: "coloncurrencysign.circle.fill") else {
-                return
-        }
-        companyIcon.af.setImage(withURL: url, placeholderImage: placeholderImage)
+        self.price.text = "\(model.price)"
+        self.regularMarketChangePercent.text = "\(round(model.regularMarketChangePercent * 10) / 10)%"
+        self.regularMarketChangePercent.textColor = model.regularMarketChangePercent < 0 ? .red : .green
     }
     
     // MARK: Style the CoinCollectionViewCell.
@@ -95,23 +80,13 @@ class CoinCollectionViewCell: UICollectionViewCell {
     
     // MARK: Setup subviews.
     func setupSubviews() {
-        let height = contentView.bounds.size.height
-        companyIcon.bounds.size = CGSize(width: height - 16, height: height - 16)
-        contentView.addSubview(companyIcon)
-        [
-            companyIcon.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            companyIcon.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            companyIcon.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            companyIcon.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: height - 8)
-        ].forEach({$0.isActive = true})
-
         contentView.addSubview(coinName)
         [
             coinName.topAnchor.constraint(equalTo: self.topAnchor, constant: 14),
             coinName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
-            coinName.leadingAnchor.constraint(equalTo: companyIcon.trailingAnchor, constant: 12),
+            coinName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
             // TODO рассчитать
-            coinName.trailingAnchor.constraint(equalTo: companyIcon.trailingAnchor, constant: 100)
+            coinName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 100)
         ].forEach({$0.isActive = true})
 
         contentView.addSubview(companyName)
@@ -132,22 +107,22 @@ class CoinCollectionViewCell: UICollectionViewCell {
             favouriteButton.trailingAnchor.constraint(equalTo: coinName.trailingAnchor, constant: 40)
         ].forEach({$0.isActive = true})
 
-        contentView.addSubview(coinCurrentPrice)
+        contentView.addSubview(price)
         [
-            coinCurrentPrice.topAnchor.constraint(equalTo: self.topAnchor, constant: 14),
-            coinCurrentPrice.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
-            coinCurrentPrice.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -17),
+            price.topAnchor.constraint(equalTo: self.topAnchor, constant: 14),
+            price.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
+            price.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -17),
             // TODO рассчитать
-            coinCurrentPrice.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -150)
+            price.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -150)
         ].forEach({$0.isActive = true})
 
-        contentView.addSubview(dayDelta)
+        contentView.addSubview(regularMarketChangePercent)
         [
-            dayDelta.topAnchor.constraint(equalTo: coinCurrentPrice.bottomAnchor),
-            dayDelta.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
+            regularMarketChangePercent.topAnchor.constraint(equalTo: price.bottomAnchor),
+            regularMarketChangePercent.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
             // TODO рассчитать
-            dayDelta.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
-            dayDelta.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -112)
+            regularMarketChangePercent.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+            regularMarketChangePercent.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -112)
         ].forEach({$0.isActive = true})
     }
 

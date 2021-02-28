@@ -9,13 +9,12 @@ import Foundation
 
 public struct APIClient {
     static let apiUrl: String =  "https://mboum.com/api/v1"
-    static let baseUrl: String = "https://cryptocompare.com"
 
     static func getCoins(page: Int = 1) -> String {
-        return "\(apiUrl)/co/collections/?list=day_gainers&start=\(page)&apikey=demo"
+        return "\(apiUrl)/co/collections/?list=undervalued_growth_stocks&start=\(page)&apikey=demo"
     }
     
-    static func getCoin(symbols: String, currency: String) -> String {
-        return "\(apiUrl)/data/coin/generalinfo?fsyms=\(symbols)&tsym=\(currency)"
+    static func getQuotes(symbol: String) -> String {
+        return "\(apiUrl)/qu/quote/?symbol=\(symbol),F&apikey=demo"
     }
 }

@@ -14,6 +14,7 @@ public struct CoinCellModel {
     let companyName: String
     let name: String
     let price: Float
+    let financialCurrency: String
     
     init(coin: Coin) {
         self.id = coin.id
@@ -21,5 +22,6 @@ public struct CoinCellModel {
         self.companyName = coin.companyName
         self.name = coin.name
         self.price = coin.price
+        self.financialCurrency = coin.financialCurrency
     }
 }

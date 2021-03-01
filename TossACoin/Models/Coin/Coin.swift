@@ -38,7 +38,6 @@ public struct Coin: Codable {
         self.exchangeDataDelayedBy = try container.decode(Float.self, forKey: CodingKeys.exchangeDataDelayedBy)
         self.companyName = try container.decode(String.self, forKey: CodingKeys.companyName)
         self.financialCurrency = try container.decode(String.self, forKey: CodingKeys.financialCurrency)
-//        self.symbol = try container.decode(String.self, forKey: CodingKeys.symbol)
         self.name = try container.decode(String.self, forKey: CodingKeys.name)
         self.id = try container.decode(String.self, forKey: CodingKeys.id)
         self.price = try container.decode(Float.self, forKey: CodingKeys.price)

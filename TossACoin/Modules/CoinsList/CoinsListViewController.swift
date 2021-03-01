@@ -25,7 +25,6 @@ class CoinsListViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         let view = UIView()
         view.backgroundColor = .green
         self.view = view
@@ -49,6 +48,7 @@ class CoinsListViewController: UIViewController {
         searchController.searchBar.tintColor = .orange
         definesPresentationContext = true
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     func initCoinCollection() {
@@ -67,14 +67,11 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
         viewModel.createCell(cell: cell, at: indexPath.item)
-        cell.backgroundColor = indexPath.item % 2 == 0 ? #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1) : #colorLiteral(red: 0.9498714805, green: 1, blue: 0.7609667182, alpha: 1)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let coinData = CoinData()
-        let viewModel =  CoinInfoViewModel(data: coinData)
-        let viewController = CoinInfoViewController(viewModel: viewModel)
+        let viewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
         let transition = CATransition()
         transition.duration = 0.5
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
@@ -85,7 +82,7 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.item >= viewModel.getCoinsCount() - 1){
+        if (indexPath.item >= viewModel.getCoinsCount() - 2){
             initCoinCollection()
         }
     }

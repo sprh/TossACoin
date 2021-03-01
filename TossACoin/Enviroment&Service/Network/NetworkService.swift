@@ -29,7 +29,7 @@ public struct NetworkService: NetworkServiceProtocol {
             }
 
             do {
-                let result = try self.decoder.decode(Result.self, from: data)
+                let result = try self.decoder.decode(ResultAllCoins.self, from: data)
                 let coins = result.data
                 completion(.Success(coins))
             }

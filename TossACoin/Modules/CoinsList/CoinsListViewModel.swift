@@ -18,6 +18,7 @@ class CoinsListViewModel {
         self.networkService = networkService
     }
     
+    // TODO Create data cash and update (refresh control) in the vc scree with a datetime info about last update.
     func getCoins(completion: @escaping () -> Void) {
         networkService.getCoins(page: page) { [weak self] result in
             guard let `self` = self else { return }
@@ -54,5 +55,11 @@ class CoinsListViewModel {
         let viewModel =  CoinInfoViewModel(data: coinData)
         let viewController = CoinInfoViewController(viewModel: viewModel)
         return viewController
+    }
+    
+    func prepareSearchViewController() -> SearchCoinViewController {
+        let searchCoinViewModel = SearchCoinViewModel(enviroment: enviroment, networkService: networkService)
+        let searchCoinViewController = SearchCoinViewController(viewModel: searchCoinViewModel)
+        return searchCoinViewController
     }
 }

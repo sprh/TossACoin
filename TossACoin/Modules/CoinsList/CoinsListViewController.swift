@@ -11,8 +11,7 @@ import UIKit
 class CoinsListViewController: UIViewController {
     fileprivate let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
     fileprivate let viewModel: CoinsListViewModel!
-    fileprivate let searchController = UISearchController(searchResultsController: nil)
-    fileprivate let searchCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
+    fileprivate let searchButton = SearchButtonBarItem()
     
     init(viewModel: CoinsListViewModel) {
         self.viewModel = viewModel
@@ -29,8 +28,31 @@ class CoinsListViewController: UIViewController {
         view.backgroundColor = .green
         self.view = view
         setupCollectionView()
-        setupSearchController()
+        addSearchButton()
         initCoinCollection()
+    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//    }
+//    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.navigationBar.prefersLargeTitles = false
+//    }
+    
+    private func addSearchButton() {
+        self.navigationItem.rightBarButtonItem = searchButton
+        searchButton.target = self
+        searchButton.tintColor = .orange
+        searchButton.action = #selector(startSearch)
+    }
+    
+    @objc func startSearch() {
+        let searchCoinViewController = viewModel.prepareSearchViewController()
+        searchCoinViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(searchCoinViewController, animated: true)
     }
     
     private func setupCollectionView() {
@@ -39,16 +61,6 @@ class CoinsListViewController: UIViewController {
         collectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
         collectionView.backgroundColor = .white
         self.view.addSubview(collectionView)
-    }
-    
-    private func setupSearchController() {
-        searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
-        self.definesPresentationContext = true
-        searchController.searchBar.tintColor = .orange
-        definesPresentationContext = true
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     func initCoinCollection() {
@@ -71,14 +83,9 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.moveIn
-        transition.subtype = CATransitionSubtype.fromTop
-        self.navigationController?.view.layer.add(transition, forKey: nil)
-        self.navigationController?.pushViewController(viewController, animated: false)
+        let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
+        getCoinViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(getCoinViewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -88,8 +95,3 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
-extension CoinsListViewController: UISearchBarDelegate, UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-}

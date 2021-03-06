@@ -7,39 +7,25 @@
 
 import Foundation
 
+// MARK: - Модель основной информации об акции.
 public struct Coin: Codable {
     let id: String
-    let regularMarketChangePercent: Float
-    let priceHint: Float
-    let exchangeDataDelayedBy: Float
-    let companyName: String
-    let financialCurrency: String
     let name: String
-    let price: Float
+    let fullName: String
+    let imageUrl: String
     
     enum CodingKeys: String, CodingKey {
-        case id = "messageBoardId"
-        case regularMarketChangePercent = "regularMarketChangePercent"
-        case priceHint = "priceHint"
-        case exchangeDataDelayedBy = "exchangeDataDelayedBy"
-        // I'm not sure.
-        case companyName = "shortName"
-        case financialCurrency = "financialCurrency"
-        // I'm not sure.
-        case name = "symbol"
-        case price = "regularMarketPrice"
+        case id = "Id"
+        case name = "Name"
+        case imageUrl = "ImageUrl"
+        case fullName = "FullName"
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.regularMarketChangePercent = try container.decode(Float.self, forKey: CodingKeys.regularMarketChangePercent)
-        self.priceHint = try container.decode(Float.self, forKey: CodingKeys.priceHint)
-        self.exchangeDataDelayedBy = try container.decode(Float.self, forKey: CodingKeys.exchangeDataDelayedBy)
-        self.companyName = try container.decode(String.self, forKey: CodingKeys.companyName)
-        self.financialCurrency = try container.decode(String.self, forKey: CodingKeys.financialCurrency)
-        self.name = try container.decode(String.self, forKey: CodingKeys.name)
-        self.id = try container.decode(String.self, forKey: CodingKeys.id)
-        self.price = try container.decode(Float.self, forKey: CodingKeys.price)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.fullName = try container.decode(String.self, forKey: .fullName)
+        self.imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl) ?? ""
         }
 }

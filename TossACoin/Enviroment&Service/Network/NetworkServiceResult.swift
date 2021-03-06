@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Результат подключения.
 enum NetworkServiceResult<T> {
     case Success(T)
     case Error(Error)

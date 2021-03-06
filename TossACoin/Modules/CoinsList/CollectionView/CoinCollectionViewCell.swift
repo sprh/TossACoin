@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import AlamofireImage
 
+// MARK: - CollectionViewCell для Coin.
 class CoinCollectionViewCell: UICollectionViewCell {
     fileprivate var coinName: UILabel = {() -> UILabel in
         let label = UILabel()
@@ -49,18 +50,35 @@ class CoinCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    fileprivate var image: UIImageView = {() -> UIImageView in
+        let image = UIImageView()
+        image.layer.cornerRadius = 15
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupStyle()
         setupSubviews()
     }
     
+    // Загрузка данных из модели.
     public func loadData(model: CoinCellModel) {
         self.coinName.text = model.name
-        self.companyName.text = model.companyName
-        self.price.text = "\(model.price)\(model.financialCurrency.currencySymbol)"
-        self.regularMarketChangePercent.text = "\(round(model.regularMarketChangePercent * 10) / 10)%"
-        self.regularMarketChangePercent.textColor = model.regularMarketChangePercent < 0 ? #colorLiteral(red: 0.9908824563, green: 0.2480533719, blue: 0.2447027266, alpha: 1) : #colorLiteral(red: 0.2567636371, green: 0.7126277089, blue: 0.2477055192, alpha: 1)
+        self.companyName.text = model.fullName
+        self.price.text = model.price
+        self.regularMarketChangePercent.textColor =
+            (Int(model.changePercent)  ?? 0) < 0 ? #colorLiteral(red: 0.9908824563, green: 0.2480533719, blue: 0.2447027266, alpha: 1) : #colorLiteral(red: 0.2567636371, green: 0.7126277089, blue: 0.2477055192, alpha: 1)
+        self.regularMarketChangePercent.text = "\(model.changePercent)%"
+        setImage(imageUrl: model.imageUrl)
+    }
+    
+    // Установка изобрадения.
+    private func setImage(imageUrl: String) {
+        // TODO cache
+        guard let url = URL(string: APIClient.getImageUrl(imageUrl: imageUrl)), let placeholder = UIImage(systemName: "dollarsign.square.fill")?.withTintColor(#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)) else { return }
+        image.af.setImage(withURL: url, placeholderImage: placeholder)
     }
     
     // MARK: Style the CoinCollectionViewCell.
@@ -74,29 +92,38 @@ class CoinCollectionViewCell: UICollectionViewCell {
     
     // MARK: Setup subviews.
     func setupSubviews() {
+        let height = contentView.bounds.height
+        contentView.addSubview(image)
+        [
+            image.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: height - 16),
+            image.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
+            image.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            image.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
+        ].forEach({$0.isActive = true})
+        
         contentView.addSubview(coinName)
         [
-            coinName.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            coinName.topAnchor.constraint(equalTo: self.topAnchor, constant: 15)
+            coinName.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),
+            coinName.leadingAnchor.constraint(equalTo: self.image.trailingAnchor, constant: 8)
         ].forEach({$0.isActive = true})
 
         contentView.addSubview(companyName)
 
         [
-            companyName.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            companyName.topAnchor.constraint(equalTo: self.coinName.bottomAnchor, constant: 17)
+            companyName.topAnchor.constraint(equalTo: coinName.bottomAnchor, constant: 8),
+            companyName.leadingAnchor.constraint(equalTo: coinName.leadingAnchor)
         ].forEach({$0.isActive = true})
         
         contentView.addSubview(price)
         [
-            price.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            price.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15)
+            price.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            price.topAnchor.constraint(equalTo: coinName.topAnchor)
         ].forEach({$0.isActive = true})
 
         contentView.addSubview(regularMarketChangePercent)
         [
-            regularMarketChangePercent.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            regularMarketChangePercent.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15)
+            regularMarketChangePercent.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            regularMarketChangePercent.topAnchor.constraint(equalTo: companyName.topAnchor)
         ].forEach({$0.isActive = true})
     }
 

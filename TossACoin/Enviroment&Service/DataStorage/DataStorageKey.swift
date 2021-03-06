@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Ключи для хранилища.
 public struct DataStorageKey<T> {
     public let key: String
     public let dataStorageOptions: DataStorageOptions

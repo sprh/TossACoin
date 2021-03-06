@@ -7,11 +7,13 @@
 
 import UIKit
 
+// MARK: - Application's Tab Bar.
 public final class TabBarController: UITabBarController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
     }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -21,7 +23,7 @@ public final class TabBarController: UITabBarController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Set view controllers.
+    // MARK: - Инициализация контроллеров.
     private func setup() {
         tabBar.tintColor = .orange
         
@@ -33,12 +35,14 @@ public final class TabBarController: UITabBarController {
         viewControllers = [coinsListNavigationController]
     }
     
+    // MARK: Контроллер со всеми акциями.
     private func createCoinsListViewController(with enviroment: Enviroment, with networkService: NetworkService) -> CoinsListViewController {
         let viewModel = CoinsListViewModel(enviroment: enviroment, networkService: networkService)
         let viewController = CoinsListViewController(viewModel: viewModel)
         return viewController
     }
     
+    // MARK: - Настройка контроллеров.
     private func setupViewController(title: String, unselectedImage: UIImage, selectedImage: UIImage, viewController: UIViewController) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)
         viewController.title = title

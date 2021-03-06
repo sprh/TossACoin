@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: - View Controller для экрана со всеми акциями.
 class CoinsListViewController: UIViewController {
     fileprivate let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
     fileprivate let viewModel: CoinsListViewModel!

@@ -8,9 +8,9 @@
 import Foundation
 
 class CoinInfoViewModel {
-    var data: CoinData
+    var data: MintedCoin
     
-    init(data: CoinData) {
+    init(data: MintedCoin) {
         self.data = data
     }
 }

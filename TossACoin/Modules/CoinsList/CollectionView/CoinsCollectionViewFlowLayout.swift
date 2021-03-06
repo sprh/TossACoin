@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: - ColletionViewFlowLayout для Coin.
 class CoinsCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()

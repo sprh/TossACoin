@@ -7,9 +7,12 @@
 
 import Foundation
 
+// MARK: - Среда.
 class Enviroment: EnviromentProtocol {
+    // Хранилище.
     private let dataStorage: DataStorage = DataStorage()
     
+    // Сброс хранилища.
     public func reset() {
         dataStorage.removeValue(forKey: DataStorageKeys.currency)
         dataStorage.removeValue(forKey: DataStorageKeys.favouriteCoins)
@@ -24,6 +27,7 @@ class Enviroment: EnviromentProtocol {
 //        }
 //    }
     
+    // Акции в избранном.
     var favouriteCoins: [String: Float] {
         get {
             return dataStorage.getValue(forKey: DataStorageKeys.favouriteCoins)

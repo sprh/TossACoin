@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Протокол среды приложения.
 protocol EnviromentProtocol {
 //    var currency: String { get set }
     var favouriteCoins: [String: Float] { get set }

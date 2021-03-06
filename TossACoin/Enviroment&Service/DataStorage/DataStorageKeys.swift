@@ -6,10 +6,13 @@
 //
 
 import Foundation
+
 public struct DataStorageKeys {
-    // MARK: Local currency.
+    // MARK: - Валюта.
+    // Пока что не задействовано.
     static let currency = DataStorageKey(key: "Currency", dataStorageOptions: DataStorageOptions.userDefaults, valueType: String.self, defaultValue: "RUB")
     
-    // MARK: Users favourite coins.
+    // MARK: - Избранные акции.
     static let favouriteCoins = DataStorageKey(key: "FavouriteCoins", dataStorageOptions: DataStorageOptions.userDefaults, valueType: [String: Float].self, defaultValue: [:])
+    // Возможно, тут будут избранные новости.
 }

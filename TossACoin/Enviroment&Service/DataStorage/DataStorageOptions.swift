@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Параметры хранения данных.
 public enum DataStorageOptions {
     case userDefaults
 }

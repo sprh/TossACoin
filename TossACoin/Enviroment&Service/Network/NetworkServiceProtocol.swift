@@ -6,7 +6,12 @@
 //
 
 import Foundation
+// MARK: - Протокол подключения.
 protocol NetworkServiceProtocol {
-    func getCoins(page: Int, completion: @escaping (NetworkServiceResult<[Coin]>) -> Void)
-    func getCoin(symbols: [String], completion: @escaping (NetworkServiceResult<[Coin]>) -> Void)
+    // Получение всех монет со страницы.
+    func getCoins(page: Int, completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void)
+    // Получение 1 монеты по тикету.
+    func getCoin(symbols: [String], completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void)
+    // Получение цен в различных валютах.
+    func getPrices(symbols: String, completion: @escaping (NetworkServiceResult<CoinPrice>) -> Void)
 }

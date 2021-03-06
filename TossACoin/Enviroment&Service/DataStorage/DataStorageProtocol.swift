@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Хранилище данных пользователя.
 public protocol DataStorageProtocol {
     // MARK: The user's default db.
     var userDefaults: UserDefaults {get}

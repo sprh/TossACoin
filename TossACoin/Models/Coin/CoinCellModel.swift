@@ -8,20 +8,22 @@
 import Foundation
 import UIKit
 
+// MARK: - Модель для CoinsCollectionView.
 public struct CoinCellModel {
     let id: String
-    let regularMarketChangePercent: Float
-    let companyName: String
     let name: String
-    let price: Float
-    let financialCurrency: String
+    let fullName: String
+    let imageUrl: String
+    let price: String
+    let changePercent: String
     
-    init(coin: Coin) {
+    
+    init(coin: Coin, priceDisplay: CoinPriceDisplay) {
         self.id = coin.id
-        self.regularMarketChangePercent = coin.regularMarketChangePercent
-        self.companyName = coin.companyName
         self.name = coin.name
-        self.price = coin.price
-        self.financialCurrency = coin.financialCurrency
+        self.fullName = coin.fullName
+        self.imageUrl = coin.imageUrl
+        self.price = priceDisplay.price
+        self.changePercent = priceDisplay.changePercent
     }
 }

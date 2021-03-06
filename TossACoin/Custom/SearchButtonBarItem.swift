@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: - Кнопка поиска.
 class SearchButtonBarItem: UIBarButtonItem {
     var buttonImage = UIImage(systemName: "magnifyingglass")?.withTintColor(.orange)
     

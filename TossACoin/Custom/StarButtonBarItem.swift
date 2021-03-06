@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Пока что не доделано.
 class StarButtonBarItem: UIBarButtonItem {
     var buttonImage = UIImage(systemName: "star.fill")?.withTintColor(.orange)
     

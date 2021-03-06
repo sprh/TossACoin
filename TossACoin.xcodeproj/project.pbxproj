@@ -15,7 +15,6 @@
 		E30ECDD925EC3D76005B53C6 /* CoinInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDD825EC3D76005B53C6 /* CoinInfoViewController.swift */; };
 		E30ECDDE25EC3DC4005B53C6 /* CoinInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDDD25EC3DC4005B53C6 /* CoinInfoModel.swift */; };
 		E30ECDE325EC498F005B53C6 /* CoinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDE225EC498F005B53C6 /* CoinData.swift */; };
-		E35FB5FC25ECE8FE00DC2DA7 /* CurrencySign.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35FB5FB25ECE8FE00DC2DA7 /* CurrencySign.swift */; };
 		E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */; };
 		E3A47A3C25EA2C53002BDE69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */; };
 		E3A47A3F25EA2C53002BDE69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3D25EA2C53002BDE69 /* LaunchScreen.storyboard */; };
@@ -45,6 +44,7 @@
 		E3F35C4225F3E2E300D3B3B0 /* CoinPriceDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4125F3E2E300D3B3B0 /* CoinPriceDisplay.swift */; };
 		E3F35C4525F3E36900D3B3B0 /* CoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */; };
 		E3F35C4925F3E54200D3B3B0 /* MintedCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */; };
+		E3F35C4F25F4199400D3B3B0 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4E25F4199400D3B3B0 /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +58,6 @@
 		E30ECDD825EC3D76005B53C6 /* CoinInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoViewController.swift; sourceTree = "<group>"; };
 		E30ECDDD25EC3DC4005B53C6 /* CoinInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoModel.swift; sourceTree = "<group>"; };
 		E30ECDE225EC498F005B53C6 /* CoinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinData.swift; sourceTree = "<group>"; };
-		E35FB5FB25ECE8FE00DC2DA7 /* CurrencySign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySign.swift; sourceTree = "<group>"; };
 		E3A47A2F25EA2C51002BDE69 /* TossACoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TossACoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +89,7 @@
 		E3F35C4125F3E2E300D3B3B0 /* CoinPriceDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceDisplay.swift; sourceTree = "<group>"; };
 		E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPrice.swift; sourceTree = "<group>"; };
 		E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintedCoin.swift; sourceTree = "<group>"; };
+		E3F35C4E25F4199400D3B3B0 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +157,6 @@
 		E35FB5FA25ECE8DC00DC2DA7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E35FB5FB25ECE8FE00DC2DA7 /* CurrencySign.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -165,6 +164,7 @@
 		E35FB60025ECEBCB00DC2DA7 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				E3F35C4E25F4199400D3B3B0 /* ImageCache.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -446,6 +446,7 @@
 				E3A47A7225EA4E44002BDE69 /* CoinCollectionViewCell.swift in Sources */,
 				E3A47AE125EC11F9002BDE69 /* CoinCellModel.swift in Sources */,
 				E3A47A6E25EA4D39002BDE69 /* CoinsCollectionViewFlowLayout.swift in Sources */,
+				E3F35C4F25F4199400D3B3B0 /* ImageCache.swift in Sources */,
 				E3A47AB625EBE5BB002BDE69 /* Coin.swift in Sources */,
 				E3A47AAB25EA9510002BDE69 /* DataStorageOptions.swift in Sources */,
 				E3A47A8425EA8B59002BDE69 /* EnviromentProtocol.swift in Sources */,
@@ -472,7 +473,6 @@
 				E30ECDDE25EC3DC4005B53C6 /* CoinInfoModel.swift in Sources */,
 				E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */,
 				E3A47A7625EA4F3A002BDE69 /* StarButton.swift in Sources */,
-				E35FB5FC25ECE8FE00DC2DA7 /* CurrencySign.swift in Sources */,
 				E3A47A9825EA8D5F002BDE69 /* NetworkServiceResult.swift in Sources */,
 				E3A47A8925EA8C1C002BDE69 /* Enviroment.swift in Sources */,
 				E30BA28C25ED4A7B00CB15E1 /* StarButtonBarItem.swift in Sources */,

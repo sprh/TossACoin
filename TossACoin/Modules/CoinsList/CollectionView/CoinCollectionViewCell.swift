@@ -54,6 +54,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         let image = UIImageView()
         image.layer.cornerRadius = 15
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
@@ -69,16 +70,17 @@ class CoinCollectionViewCell: UICollectionViewCell {
         self.companyName.text = model.fullName
         self.price.text = model.price
         self.regularMarketChangePercent.textColor =
-            (Int(model.changePercent)  ?? 0) < 0 ? #colorLiteral(red: 0.9908824563, green: 0.2480533719, blue: 0.2447027266, alpha: 1) : #colorLiteral(red: 0.2567636371, green: 0.7126277089, blue: 0.2477055192, alpha: 1)
+            model.changePercent.contains("-") ? #colorLiteral(red: 0.9908824563, green: 0.2480533719, blue: 0.2447027266, alpha: 1) : #colorLiteral(red: 0.2567636371, green: 0.7126277089, blue: 0.2477055192, alpha: 1)
         self.regularMarketChangePercent.text = "\(model.changePercent)%"
         setImage(imageUrl: model.imageUrl)
     }
     
-    // Установка изобрадения.
+    // Установка изображения.
     private func setImage(imageUrl: String) {
-        // TODO cache
-        guard let url = URL(string: APIClient.getImageUrl(imageUrl: imageUrl)), let placeholder = UIImage(systemName: "dollarsign.square.fill")?.withTintColor(#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)) else { return }
-        image.af.setImage(withURL: url, placeholderImage: placeholder)
+        guard let url = URL(string: APIClient.getImageUrl(imageUrl: imageUrl)) else { return }
+        ImageCache.getImage(url: url) { (coinImage) in
+            self.image.image = coinImage   
+        }
     }
     
     // MARK: Style the CoinCollectionViewCell.

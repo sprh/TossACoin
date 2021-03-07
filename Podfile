@@ -6,7 +6,7 @@ target 'TossACoin' do
   use_frameworks!
   pod 'Alamofire'
   pod 'AlamofireImage'
-
+  pod 'XLPagerTabStrip', '~> 9.0'
   # Pods for TossACoin
 
 end

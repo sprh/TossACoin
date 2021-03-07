@@ -23,6 +23,10 @@ public struct APIClient {
         return "\(apiUrl)/data/pricemultifull?fsyms=\(symbols)&tsyms=RUB"
     }
     
+    static func getQuote(symbols: String) -> String {
+        return "https://mboum.com/api/v1/qu/quote/?symbol=\(symbols),F&apikey=demo"
+    }
+    
     // Url -> получение изображения.
     static func getImageUrl(imageUrl: String) -> String{
         return "https://cryptocompare.com/\(imageUrl)"

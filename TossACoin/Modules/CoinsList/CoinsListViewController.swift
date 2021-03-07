@@ -86,7 +86,9 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
         getCoinViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.present(getCoinViewController, animated: true)
+        self.navigationController?.modalPresentationStyle = .fullScreen
+        present(getCoinViewController, animated: true)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

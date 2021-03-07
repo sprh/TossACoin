@@ -9,8 +9,12 @@ import Foundation
 
 class CoinInfoViewModel {
     var data: MintedCoin
+    var enviroment: Enviroment
+    var networkService: NetworkService
     
-    init(data: MintedCoin) {
+    init(data: MintedCoin, enviroment: Enviroment, networkService: NetworkService) {
         self.data = data
+        self.enviroment = enviroment
+        self.networkService = networkService
     }
 }

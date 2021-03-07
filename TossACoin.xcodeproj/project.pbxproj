@@ -45,6 +45,9 @@
 		E3F35C4525F3E36900D3B3B0 /* CoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */; };
 		E3F35C4925F3E54200D3B3B0 /* MintedCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */; };
 		E3F35C4F25F4199400D3B3B0 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4E25F4199400D3B3B0 /* ImageCache.swift */; };
+		E3F35C5B25F4F9FC00D3B3B0 /* CoinInfoIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C5A25F4F9FC00D3B3B0 /* CoinInfoIconCell.swift */; };
+		E3F35C6425F4FB7000D3B3B0 /* MainInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C6325F4FB7000D3B3B0 /* MainInfoViewController.swift */; };
+		E3F35C6725F4FBF000D3B3B0 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +93,9 @@
 		E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPrice.swift; sourceTree = "<group>"; };
 		E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintedCoin.swift; sourceTree = "<group>"; };
 		E3F35C4E25F4199400D3B3B0 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		E3F35C5A25F4F9FC00D3B3B0 /* CoinInfoIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoIconCell.swift; sourceTree = "<group>"; };
+		E3F35C6325F4FB7000D3B3B0 /* MainInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoViewController.swift; sourceTree = "<group>"; };
+		E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,8 @@
 		E30ECDD725EC3D6A005B53C6 /* CoinInfo */ = {
 			isa = PBXGroup;
 			children = (
+				E3F35C6225F4FB3100D3B3B0 /* ChildModules */,
+				E3F35C5925F4F9DF00D3B3B0 /* IconCell */,
 				E30ECDD825EC3D76005B53C6 /* CoinInfoViewController.swift */,
 				E30ECDDD25EC3DC4005B53C6 /* CoinInfoModel.swift */,
 			);
@@ -152,13 +160,6 @@
 				E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */,
 			);
 			path = Coin;
-			sourceTree = "<group>";
-		};
-		E35FB5FA25ECE8DC00DC2DA7 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E35FB60025ECEBCB00DC2DA7 /* Cache */ = {
@@ -191,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				E35FB60025ECEBCB00DC2DA7 /* Cache */,
-				E35FB5FA25ECE8DC00DC2DA7 /* Extensions */,
 				E3A47AB425EBE5AE002BDE69 /* Models */,
 				E3A47A7425EA4F15002BDE69 /* Custom */,
 				E3A47A4E25EA2D70002BDE69 /* TabBarController */,
@@ -328,6 +328,23 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		E3F35C5925F4F9DF00D3B3B0 /* IconCell */ = {
+			isa = PBXGroup;
+			children = (
+				E3F35C5A25F4F9FC00D3B3B0 /* CoinInfoIconCell.swift */,
+			);
+			path = IconCell;
+			sourceTree = "<group>";
+		};
+		E3F35C6225F4FB3100D3B3B0 /* ChildModules */ = {
+			isa = PBXGroup;
+			children = (
+				E3F35C6325F4FB7000D3B3B0 /* MainInfoViewController.swift */,
+				E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */,
+			);
+			path = ChildModules;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -448,11 +465,13 @@
 				E3A47A6E25EA4D39002BDE69 /* CoinsCollectionViewFlowLayout.swift in Sources */,
 				E3F35C4F25F4199400D3B3B0 /* ImageCache.swift in Sources */,
 				E3A47AB625EBE5BB002BDE69 /* Coin.swift in Sources */,
+				E3F35C6725F4FBF000D3B3B0 /* NewsViewController.swift in Sources */,
 				E3A47AAB25EA9510002BDE69 /* DataStorageOptions.swift in Sources */,
 				E3A47A8425EA8B59002BDE69 /* EnviromentProtocol.swift in Sources */,
 				E3A47AA825EA93FC002BDE69 /* DataStorageKey.swift in Sources */,
 				E30BA28925ED475C00CB15E1 /* SearchButtonBarItem.swift in Sources */,
 				E3A47A9525EA8CB2002BDE69 /* APIClient.swift in Sources */,
+				E3F35C6425F4FB7000D3B3B0 /* MainInfoViewController.swift in Sources */,
 				E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */,
 				E30BA28625ED463500CB15E1 /* SearchCoinViewController.swift in Sources */,
 				E30ECDD925EC3D76005B53C6 /* CoinInfoViewController.swift in Sources */,
@@ -476,6 +495,7 @@
 				E3A47A9825EA8D5F002BDE69 /* NetworkServiceResult.swift in Sources */,
 				E3A47A8925EA8C1C002BDE69 /* Enviroment.swift in Sources */,
 				E30BA28C25ED4A7B00CB15E1 /* StarButtonBarItem.swift in Sources */,
+				E3F35C5B25F4F9FC00D3B3B0 /* CoinInfoIconCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

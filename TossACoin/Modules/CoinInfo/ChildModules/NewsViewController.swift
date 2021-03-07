@@ -14,5 +14,10 @@ class NewsViewController: UIViewController, IndicatorInfoProvider {
         return IndicatorInfo(title: "News")
     }
     
-    
+    override func viewDidLoad() {
+        let view = UIView()
+        view.backgroundColor = .white
+        self.view = view
+        super.viewDidLoad()
+    }
 }

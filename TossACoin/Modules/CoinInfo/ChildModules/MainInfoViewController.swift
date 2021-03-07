@@ -14,5 +14,11 @@ class MainInfoViewController: UIViewController, IndicatorInfoProvider {
         return IndicatorInfo(title: "MainInfo")
     }
     
+    override func viewDidLoad() {
+        let view = UIView()
+        view.backgroundColor = .white
+        self.view = view
+        super.viewDidLoad()
+    }
     
 }

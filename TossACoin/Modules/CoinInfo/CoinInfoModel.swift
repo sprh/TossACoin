@@ -8,13 +8,25 @@
 import Foundation
 
 class CoinInfoViewModel {
-    var data: MintedCoin
+    var mintedCoin: MintedCoin
     var enviroment: Enviroment
     var networkService: NetworkService
     
-    init(data: MintedCoin, enviroment: Enviroment, networkService: NetworkService) {
-        self.data = data
+    init(mintedCoin: MintedCoin, enviroment: Enviroment, networkService: NetworkService) {
+        self.mintedCoin = mintedCoin
         self.enviroment = enviroment
         self.networkService = networkService
+    }
+    
+    func getMainViewController() {
+        
+    }
+    
+    func getCoinName() -> String {
+        return mintedCoin.coin.name
+    }
+    
+    func getCompanyName() -> String {
+        return mintedCoin.coin.fullName
     }
 }

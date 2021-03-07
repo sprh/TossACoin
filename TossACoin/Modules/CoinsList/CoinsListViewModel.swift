@@ -55,7 +55,7 @@ class CoinsListViewModel {
     
     // Новый контроллер с информацией об акции.
     func getCoinInfoViewController(cellIndex: Int) -> CoinInfoViewController{
-        let viewModel =  CoinInfoViewModel(data: coins[cellIndex], enviroment: enviroment, networkService: networkService)
+        let viewModel =  CoinInfoViewModel(mintedCoin: coins[cellIndex], enviroment: enviroment, networkService: networkService)
         let viewController = CoinInfoViewController(viewModel: viewModel)
         return viewController
     }

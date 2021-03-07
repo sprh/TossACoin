@@ -12,16 +12,24 @@ class MainInfoViewModel {
     let enviroment: Enviroment
     let networkService: NetworkService
     var coinPriceForAPeriod = CoinPriceForAPeriod()
-    let symbol: String
+    let mintedCoin: MintedCoin
     
-    init(enviroment: Enviroment, networkService: NetworkService, symbol: String) {
+    init(enviroment: Enviroment, networkService: NetworkService, mintedCoin: MintedCoin) {
         self.enviroment = enviroment
         self.networkService = networkService
-        self.symbol = symbol
+        self.mintedCoin = mintedCoin
+    }
+    
+    public func getLastPrice() -> String {
+        return mintedCoin.price.price
+    }
+    
+    public func getChangePercent() -> String {
+        return mintedCoin.price.changePercent
     }
     
     private func getDailyPair(complection: @escaping () -> Void) {
-        networkService.getDailyPair(symbol: symbol) {
+        networkService.getDailyPair(symbol: mintedCoin.coin.name) {
             [weak self] result in
             guard let `self` = self else { return }
             

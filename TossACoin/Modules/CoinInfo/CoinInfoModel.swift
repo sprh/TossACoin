@@ -19,7 +19,7 @@ class CoinInfoViewModel {
     }
     
     func getMainViewController() -> MainInfoViewController {
-        let viewModel = MainInfoViewModel(enviroment: enviroment, networkService: networkService, symbol: mintedCoin.coin.name)
+        let viewModel = MainInfoViewModel(enviroment: enviroment, networkService: networkService, mintedCoin: mintedCoin)
         let mainViewController = MainInfoViewController(viewModel: viewModel)
         return mainViewController
     }

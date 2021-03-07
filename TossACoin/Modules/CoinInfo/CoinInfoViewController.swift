@@ -50,7 +50,6 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         view.addSubview(headerView)
         view.addSubview(buttonBarView)
         view.addSubview(containerView)
-        headerView.translatesAutoresizingMaskIntoConstraints = false
         
         headerView.frame = CGRect(
             x: 0,
@@ -69,7 +68,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
             y: headerView.frame.height + buttonBarView.frame.height,
             width: self.view.bounds.width,
             height: self.view.bounds.height - (headerView.frame.height + buttonBarView.frame.height))
-        // setupHeaderView()
+         setupHeaderView()
     }
     
     private func setupHeaderView() {
@@ -101,11 +100,10 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         starButton.translatesAutoresizingMaskIntoConstraints = false
         [
             starButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
-            starButton.leadingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -65),
-            starButton.topAnchor.constraint(equalTo: headerView.centerYAnchor, constant: -25),
-            starButton.bottomAnchor.constraint(equalTo: headerView.centerYAnchor, constant: 25),
+            starButton.topAnchor.constraint(equalTo: headerView.centerYAnchor, constant: -15)
         ].forEach({$0.isActive = true})
-        starButton.imageEdgeInsets = UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
+        // TODO: Пофиксить, выдает ошибку.
+//        starButton.imageEdgeInsets = UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 40)
         starButton.addTarget(self, action: #selector(addToFavoutite), for: .touchDown)
         if(viewModel.isFavourite()) {
             starButton.setStatus(status: true)

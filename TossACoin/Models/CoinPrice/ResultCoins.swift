@@ -1,5 +1,5 @@
 //
-//  NetworkResultCoins.swift
+//  ResultCoins.swift
 //  TossACoin
 //
 //  Created by Софья Тимохина on 28.02.2021.

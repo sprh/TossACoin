@@ -2,11 +2,13 @@ PODS:
   - Alamofire (5.4.1)
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
+  - SwiftChart (1.0.1)
   - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - SwiftChart (from `https://github.com/gpbl/SwiftChart`, branch `master`)
   - XLPagerTabStrip (~> 9.0)
 
 SPEC REPOS:
@@ -15,11 +17,22 @@ SPEC REPOS:
     - AlamofireImage
     - XLPagerTabStrip
 
+EXTERNAL SOURCES:
+  SwiftChart:
+    :branch: master
+    :git: https://github.com/gpbl/SwiftChart
+
+CHECKOUT OPTIONS:
+  SwiftChart:
+    :commit: 4949a94090641ca85b8133129f7a7b2230694788
+    :git: https://github.com/gpbl/SwiftChart
+
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  SwiftChart: 6ed8c61f3731cc32e3cb92858dba339d08ddac87
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 182d4bc31284ad7ed57ef2b008b80cbad03646cc
+PODFILE CHECKSUM: d148d6431e12308fb36e07968b8e22013d03c58c
 
 COCOAPODS: 1.10.1

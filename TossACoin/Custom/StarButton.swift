@@ -11,6 +11,7 @@ import UIKit
 // MARK: - Звездная кнопка. Используется для визуализации добавления акции в избранное.
 final class StarButton: UIButton {
     var image = UIImage(systemName: "star.fill")
+    
     var status: Bool = false {
         didSet {
             self.update()
@@ -29,6 +30,7 @@ final class StarButton: UIButton {
     func update() {
         UIView.transition(with: self, duration: 0.10, options: .transitionCrossDissolve, animations: {
             self.setImage(UIImage(systemName: "star.fill")?.withTintColor((self.status ? #colorLiteral(red: 1, green: 0.7903846502, blue: 0.1099510416, alpha: 1): #colorLiteral(red: 0.7293314338, green: 0.7294582725, blue: 0.7293233275, alpha: 1)), renderingMode: .alwaysOriginal), for: .normal)
+            self.imageView?.contentMode = .scaleAspectFit
         }, completion: nil)
     }
     

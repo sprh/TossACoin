@@ -32,6 +32,9 @@ public struct APIClient {
         return "https://cryptocompare.com/\(imageUrl)"
     }
     
+    static func getDailyPair(symbol: String) ->String {
+        return "\(apiUrl)/data/v2/histoday?fsym=\(symbol)&tsym=RUB&limit=15"
+    }
 //    static func getQuotes(symbol: String) -> String {
 //        return "\(apiUrl)/qu/quote/?symbol=\(symbol),F&apikey=demo"
 //    }

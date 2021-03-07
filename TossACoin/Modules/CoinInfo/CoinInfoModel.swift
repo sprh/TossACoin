@@ -18,8 +18,10 @@ class CoinInfoViewModel {
         self.networkService = networkService
     }
     
-    func getMainViewController() {
-        
+    func getMainViewController() -> MainInfoViewController {
+        let viewModel = MainInfoViewModel(enviroment: enviroment, networkService: networkService, symbol: mintedCoin.coin.name)
+        let mainViewController = MainInfoViewController(viewModel: viewModel)
+        return mainViewController
     }
     
     func getCoinName() -> String {
@@ -28,5 +30,20 @@ class CoinInfoViewModel {
     
     func getCompanyName() -> String {
         return mintedCoin.coin.fullName
+    }
+    
+    func isFavourite() -> Bool {
+        return enviroment.favouriteCoins.contains(mintedCoin.coin.id)
+    }
+    
+    func addToFavourite() {
+        if(isFavourite()) {
+            if let index = enviroment.favouriteCoins.firstIndex(of: mintedCoin.coin.id) {
+                enviroment.favouriteCoins.remove(at: index)
+            }
+        }
+        else {
+            enviroment.favouriteCoins.append(mintedCoin.coin.id)
+        }
     }
 }

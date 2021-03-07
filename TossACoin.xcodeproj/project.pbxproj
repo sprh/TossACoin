@@ -34,10 +34,15 @@
 		E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AAE25EA9664002BDE69 /* DataStorageKeys.swift */; };
 		E3A47AB225EA97D2002BDE69 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AB125EA97D2002BDE69 /* DataStorage.swift */; };
 		E3A47AB625EBE5BB002BDE69 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AB525EBE5BB002BDE69 /* Coin.swift */; };
-		E3A47AD125EBEEC4002BDE69 /* NetworkResultCoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AD025EBEEC4002BDE69 /* NetworkResultCoins.swift */; };
+		E3A47AD125EBEEC4002BDE69 /* ResultCoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AD025EBEEC4002BDE69 /* ResultCoins.swift */; };
 		E3A47AD525EBF924002BDE69 /* CoinsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AD425EBF924002BDE69 /* CoinsListViewController.swift */; };
 		E3A47AD825EBF934002BDE69 /* CoinsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AD725EBF934002BDE69 /* CoinsListViewModel.swift */; };
 		E3A47AE125EC11F9002BDE69 /* CoinCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AE025EC11F9002BDE69 /* CoinCellModel.swift */; };
+		E3BE2C4325F556F5009942DB /* CoinPriceForAPeriodCloseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C4225F556F4009942DB /* CoinPriceForAPeriodCloseInfo.swift */; };
+		E3BE2C4625F55842009942DB /* CoinPriceForAPeriodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C4525F55842009942DB /* CoinPriceForAPeriodData.swift */; };
+		E3BE2C4925F5596F009942DB /* CoinPriceForAPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C4825F5596F009942DB /* CoinPriceForAPeriod.swift */; };
+		E3BE2C4F25F562F3009942DB /* MainInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C4E25F562F3009942DB /* MainInfoViewModel.swift */; };
+		E3BE2C5425F56567009942DB /* EnumChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C5325F56567009942DB /* EnumChartType.swift */; };
 		E3F35C3125F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C3025F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift */; };
 		E3F35C3625F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C3525F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift */; };
 		E3F35C3F25F3E17300D3B3B0 /* ConversionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C3E25F3E17300D3B3B0 /* ConversionInfo.swift */; };
@@ -45,7 +50,6 @@
 		E3F35C4525F3E36900D3B3B0 /* CoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */; };
 		E3F35C4925F3E54200D3B3B0 /* MintedCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */; };
 		E3F35C4F25F4199400D3B3B0 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4E25F4199400D3B3B0 /* ImageCache.swift */; };
-		E3F35C5B25F4F9FC00D3B3B0 /* CoinInfoIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C5A25F4F9FC00D3B3B0 /* CoinInfoIconCell.swift */; };
 		E3F35C6425F4FB7000D3B3B0 /* MainInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C6325F4FB7000D3B3B0 /* MainInfoViewController.swift */; };
 		E3F35C6725F4FBF000D3B3B0 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -82,10 +86,15 @@
 		E3A47AAE25EA9664002BDE69 /* DataStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageKeys.swift; sourceTree = "<group>"; };
 		E3A47AB125EA97D2002BDE69 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		E3A47AB525EBE5BB002BDE69 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
-		E3A47AD025EBEEC4002BDE69 /* NetworkResultCoins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResultCoins.swift; sourceTree = "<group>"; };
+		E3A47AD025EBEEC4002BDE69 /* ResultCoins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCoins.swift; sourceTree = "<group>"; };
 		E3A47AD425EBF924002BDE69 /* CoinsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListViewController.swift; sourceTree = "<group>"; };
 		E3A47AD725EBF934002BDE69 /* CoinsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListViewModel.swift; sourceTree = "<group>"; };
 		E3A47AE025EC11F9002BDE69 /* CoinCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCellModel.swift; sourceTree = "<group>"; };
+		E3BE2C4225F556F4009942DB /* CoinPriceForAPeriodCloseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceForAPeriodCloseInfo.swift; sourceTree = "<group>"; };
+		E3BE2C4525F55842009942DB /* CoinPriceForAPeriodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceForAPeriodData.swift; sourceTree = "<group>"; };
+		E3BE2C4825F5596F009942DB /* CoinPriceForAPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceForAPeriod.swift; sourceTree = "<group>"; };
+		E3BE2C4E25F562F3009942DB /* MainInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoViewModel.swift; sourceTree = "<group>"; };
+		E3BE2C5325F56567009942DB /* EnumChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumChartType.swift; sourceTree = "<group>"; };
 		E3F35C3025F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWithButtonsLayout.swift; sourceTree = "<group>"; };
 		E3F35C3525F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWithButtonsCell.swift; sourceTree = "<group>"; };
 		E3F35C3E25F3E17300D3B3B0 /* ConversionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionInfo.swift; sourceTree = "<group>"; };
@@ -93,7 +102,6 @@
 		E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPrice.swift; sourceTree = "<group>"; };
 		E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintedCoin.swift; sourceTree = "<group>"; };
 		E3F35C4E25F4199400D3B3B0 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		E3F35C5A25F4F9FC00D3B3B0 /* CoinInfoIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoIconCell.swift; sourceTree = "<group>"; };
 		E3F35C6325F4FB7000D3B3B0 /* MainInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoViewController.swift; sourceTree = "<group>"; };
 		E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				E3F35C6225F4FB3100D3B3B0 /* ChildModules */,
-				E3F35C5925F4F9DF00D3B3B0 /* IconCell */,
 				E30ECDD825EC3D76005B53C6 /* CoinInfoViewController.swift */,
 				E30ECDDD25EC3DC4005B53C6 /* CoinInfoModel.swift */,
 			);
@@ -155,8 +162,6 @@
 				E3A47AB525EBE5BB002BDE69 /* Coin.swift */,
 				E30ECDE225EC498F005B53C6 /* CoinData.swift */,
 				E3F35C3E25F3E17300D3B3B0 /* ConversionInfo.swift */,
-				E3F35C4125F3E2E300D3B3B0 /* CoinPriceDisplay.swift */,
-				E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */,
 				E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */,
 			);
 			path = Coin;
@@ -286,7 +291,6 @@
 				E3A47A8C25EA8C3A002BDE69 /* NetworkServiceProtocol.swift */,
 				E3A47A9025EA8C7D002BDE69 /* NetworkService.swift */,
 				E3A47A9725EA8D5F002BDE69 /* NetworkServiceResult.swift */,
-				E3A47AD025EBEEC4002BDE69 /* NetworkResultCoins.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -314,9 +318,41 @@
 		E3A47AB425EBE5AE002BDE69 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E3BE2C4025F552B9009942DB /* CoinPrice */,
 				E30ECDE025EC4645005B53C6 /* Coin */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E3BE2C4025F552B9009942DB /* CoinPrice */ = {
+			isa = PBXGroup;
+			children = (
+				E3A47AD025EBEEC4002BDE69 /* ResultCoins.swift */,
+				E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */,
+				E3F35C4125F3E2E300D3B3B0 /* CoinPriceDisplay.swift */,
+				E3BE2C4225F556F4009942DB /* CoinPriceForAPeriodCloseInfo.swift */,
+				E3BE2C4525F55842009942DB /* CoinPriceForAPeriodData.swift */,
+				E3BE2C4825F5596F009942DB /* CoinPriceForAPeriod.swift */,
+			);
+			path = CoinPrice;
+			sourceTree = "<group>";
+		};
+		E3BE2C4D25F562E1009942DB /* MainInfo */ = {
+			isa = PBXGroup;
+			children = (
+				E3BE2C5225F5654A009942DB /* EnumForChartType */,
+				E3F35C6325F4FB7000D3B3B0 /* MainInfoViewController.swift */,
+				E3BE2C4E25F562F3009942DB /* MainInfoViewModel.swift */,
+			);
+			path = MainInfo;
+			sourceTree = "<group>";
+		};
+		E3BE2C5225F5654A009942DB /* EnumForChartType */ = {
+			isa = PBXGroup;
+			children = (
+				E3BE2C5325F56567009942DB /* EnumChartType.swift */,
+			);
+			path = EnumForChartType;
 			sourceTree = "<group>";
 		};
 		E3F35C2F25F023C900D3B3B0 /* CollectionView */ = {
@@ -328,18 +364,10 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
-		E3F35C5925F4F9DF00D3B3B0 /* IconCell */ = {
-			isa = PBXGroup;
-			children = (
-				E3F35C5A25F4F9FC00D3B3B0 /* CoinInfoIconCell.swift */,
-			);
-			path = IconCell;
-			sourceTree = "<group>";
-		};
 		E3F35C6225F4FB3100D3B3B0 /* ChildModules */ = {
 			isa = PBXGroup;
 			children = (
-				E3F35C6325F4FB7000D3B3B0 /* MainInfoViewController.swift */,
+				E3BE2C4D25F562E1009942DB /* MainInfo */,
 				E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */,
 			);
 			path = ChildModules;
@@ -487,6 +515,7 @@
 				E3A47AAB25EA9510002BDE69 /* DataStorageOptions.swift in Sources */,
 				E3A47A8425EA8B59002BDE69 /* EnviromentProtocol.swift in Sources */,
 				E3A47AA825EA93FC002BDE69 /* DataStorageKey.swift in Sources */,
+				E3BE2C5425F56567009942DB /* EnumChartType.swift in Sources */,
 				E30BA28925ED475C00CB15E1 /* SearchButtonBarItem.swift in Sources */,
 				E3A47A9525EA8CB2002BDE69 /* APIClient.swift in Sources */,
 				E3F35C6425F4FB7000D3B3B0 /* MainInfoViewController.swift in Sources */,
@@ -501,19 +530,22 @@
 				E3A47A5025EA2D8C002BDE69 /* TabBarController.swift in Sources */,
 				E3A47AD825EBF934002BDE69 /* CoinsListViewModel.swift in Sources */,
 				E3F35C4925F3E54200D3B3B0 /* MintedCoin.swift in Sources */,
+				E3BE2C4F25F562F3009942DB /* MainInfoViewModel.swift in Sources */,
 				E3F35C3625F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift in Sources */,
 				E3F35C4225F3E2E300D3B3B0 /* CoinPriceDisplay.swift in Sources */,
-				E3A47AD125EBEEC4002BDE69 /* NetworkResultCoins.swift in Sources */,
+				E3BE2C4325F556F5009942DB /* CoinPriceForAPeriodCloseInfo.swift in Sources */,
+				E3A47AD125EBEEC4002BDE69 /* ResultCoins.swift in Sources */,
 				E3A47AD525EBF924002BDE69 /* CoinsListViewController.swift in Sources */,
 				E3A47A8D25EA8C3A002BDE69 /* NetworkServiceProtocol.swift in Sources */,
 				E30BA28225ED45D100CB15E1 /* SearchCoinViewModel.swift in Sources */,
 				E30ECDDE25EC3DC4005B53C6 /* CoinInfoModel.swift in Sources */,
 				E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */,
 				E3A47A7625EA4F3A002BDE69 /* StarButton.swift in Sources */,
+				E3BE2C4925F5596F009942DB /* CoinPriceForAPeriod.swift in Sources */,
 				E3A47A9825EA8D5F002BDE69 /* NetworkServiceResult.swift in Sources */,
 				E3A47A8925EA8C1C002BDE69 /* Enviroment.swift in Sources */,
 				E30BA28C25ED4A7B00CB15E1 /* StarButtonBarItem.swift in Sources */,
-				E3F35C5B25F4F9FC00D3B3B0 /* CoinInfoIconCell.swift in Sources */,
+				E3BE2C4625F55842009942DB /* CoinPriceForAPeriodData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

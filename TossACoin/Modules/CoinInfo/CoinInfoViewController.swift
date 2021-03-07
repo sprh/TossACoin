@@ -37,7 +37,6 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     
     override func viewDidLoad() {
         setSettings()
-        containerView?.isScrollEnabled = true
         super.viewDidLoad()
         definesPresentationContext = true
         super.viewDidLoad()
@@ -51,8 +50,8 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         view.addSubview(headerView)
         view.addSubview(buttonBarView)
         view.addSubview(containerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
         
-        // TODO: Рассчитать?
         headerView.frame = CGRect(
             x: 0,
             y: 0,
@@ -70,14 +69,16 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
             y: headerView.frame.height + buttonBarView.frame.height,
             width: self.view.bounds.width,
             height: self.view.bounds.height - (headerView.frame.height + buttonBarView.frame.height))
-        setupHeaderView()
+        // setupHeaderView()
     }
     
     private func setupHeaderView() {
         let coinName = UILabel()
         let companyName = UILabel()
+        let starButton = StarButton()
         headerView.addSubview(coinName)
         headerView.addSubview(companyName)
+        headerView.addSubview(starButton)
         
         coinName.translatesAutoresizingMaskIntoConstraints = false
         [
@@ -96,6 +97,23 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         companyName.font = .systemFont(ofSize: 16)
         companyName.textColor = .gray
         companyName.text = self.viewModel.getCompanyName()
+        
+        starButton.translatesAutoresizingMaskIntoConstraints = false
+        [
+            starButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
+            starButton.leadingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -65),
+            starButton.topAnchor.constraint(equalTo: headerView.centerYAnchor, constant: -25),
+            starButton.bottomAnchor.constraint(equalTo: headerView.centerYAnchor, constant: 25),
+        ].forEach({$0.isActive = true})
+        starButton.imageEdgeInsets = UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
+        starButton.addTarget(self, action: #selector(addToFavoutite), for: .touchDown)
+        if(viewModel.isFavourite()) {
+            starButton.setStatus(status: true)
+        }
+    }
+    
+    @objc func addToFavoutite() {
+        viewModel.addToFavourite()
     }
     
     private func setSettings() {
@@ -116,10 +134,11 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
             oldCell?.label.font = .boldSystemFont(ofSize: 14)
             newCell?.label.font = .boldSystemFont(ofSize: 17)
         }
+        containerView?.isScrollEnabled = false
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let mainViewController = MainInfoViewController()
+        let mainViewController =  viewModel.getMainViewController()
         let newsViewController = NewsViewController()
         return [mainViewController, newsViewController]
     }

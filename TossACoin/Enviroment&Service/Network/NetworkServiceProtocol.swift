@@ -14,4 +14,6 @@ protocol NetworkServiceProtocol {
     func getCoin(symbols: [String], completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void)
     // Получение цен в различных валютах.
     func getPrices(symbols: String, completion: @escaping (NetworkServiceResult<CoinPrice>) -> Void)
+    
+    func getDailyPair(symbol: String, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void)
 }

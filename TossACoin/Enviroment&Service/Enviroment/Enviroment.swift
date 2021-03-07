@@ -28,11 +28,12 @@ class Enviroment: EnviromentProtocol {
 //    }
     
     // Акции в избранном.
-    var favouriteCoins: [String: Float] {
+    var favouriteCoins: [String] {
         get {
             return dataStorage.getValue(forKey: DataStorageKeys.favouriteCoins)
         }
-        set {
+        set (newValue) {
+            print(newValue)
             dataStorage.setValue(value: newValue, forKey: DataStorageKeys.favouriteCoins)
         }
     }

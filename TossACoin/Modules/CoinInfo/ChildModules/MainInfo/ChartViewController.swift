@@ -23,8 +23,8 @@ class ChartViewController: UIViewController {
     fileprivate let dailyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     fileprivate let hourlyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     fileprivate let minuteButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    fileprivate let scrollView = UIScrollView()
     fileprivate var buyButton: UIButton = {
-//        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.backgroundColor = .black
@@ -66,31 +66,61 @@ class ChartViewController: UIViewController {
         setupSubviews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width,
+                                        height: UIScreen.main.bounds.height - view.safeAreaInsets.bottom + scrollView.convert(stackForButtons.frame.origin, to: buyButton).y - 100)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        scrollView.contentSize = CGSize.zero
+    }
+    
     private func setupSubviews() {
-        // MARK: - labelWithLastPrice
-        self.view.addSubview(labelWithLastPrice)
+        // MARK: - scrollView
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.alwaysBounceVertical = true
         [
-            labelWithLastPrice.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            labelWithLastPrice.topAnchor.constraint(equalTo: view.topAnchor, constant: 20)
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ].forEach({$0.isActive = true})
+        
+        // MARK: - buyButton
+        view.addSubview(buyButton)
+        [
+            buyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            buyButton.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIScreen.main.bounds.width - 20),
+            buyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25),
+            buyButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -75)
+        ].forEach({$0.isActive = true})
+        buyButton.addTarget(self, action: #selector(buyButtonTap), for: .touchDown)
+        
+        // MARK: - labelWithLastPrice
+        scrollView.addSubview(labelWithLastPrice)
+        [
+            labelWithLastPrice.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            labelWithLastPrice.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20)
         ].forEach({$0.isActive = true})
         labelWithLastPrice.text = viewModel.getLastPrice()
         
         // MARK: -labelChangePercent
-        self.view.addSubview(labelChangePercent)
+        scrollView.addSubview(labelChangePercent)
         [
             labelChangePercent.topAnchor.constraint(equalTo: labelWithLastPrice.bottomAnchor, constant: 8),
-            labelChangePercent.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            labelChangePercent.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
         ].forEach({$0.isActive = true})
         labelChangePercent.text = "\(viewModel.getChangePercent())%"
         labelChangePercent.textColor = labelChangePercent.text!.contains("-") ? ApplicationColors.redPercent : ApplicationColors.greenPercent
 
         // MARK: - Chart
-        self.view.addSubview(chart)
+        scrollView.addSubview(chart)
         chart.translatesAutoresizingMaskIntoConstraints = false
         [
             chart.topAnchor.constraint(equalTo: labelChangePercent.bottomAnchor, constant: 40),
             chart.bottomAnchor.constraint(equalTo: labelChangePercent.bottomAnchor, constant: 300),
-            chart.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            chart.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             chart.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ].forEach({$0.isActive = true})
         chart.showXLabelsAndGrid = false
@@ -99,9 +129,9 @@ class ChartViewController: UIViewController {
         setData(ofType: .daily)
         
         // MARK: - labelWithPrice
-        self.view.addSubview(labelWithPrice)
+        scrollView.addSubview(labelWithPrice)
         labelWithPrice.translatesAutoresizingMaskIntoConstraints = false
-        labelLeadingMarginConstraint = NSLayoutConstraint(item: labelWithPrice, attribute: NSLayoutConstraint.Attribute.leadingMargin, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.leadingMargin, multiplier: 1, constant: 0)
+        labelLeadingMarginConstraint = NSLayoutConstraint(item: labelWithPrice, attribute: NSLayoutConstraint.Attribute.leadingMargin, relatedBy: NSLayoutConstraint.Relation.equal, toItem: scrollView, attribute: NSLayoutConstraint.Attribute.leadingMargin, multiplier: 1, constant: 0)
         [
             labelWithPrice.bottomAnchor.constraint(equalTo: chart.topAnchor, constant: -10),
             labelLeadingMarginConstraint
@@ -109,14 +139,15 @@ class ChartViewController: UIViewController {
         labelLeadingMarginInitialConstant = labelLeadingMarginConstraint.constant
     
     // MARK: - stackForButtons
-        self.view.addSubview(stackForButtons)
+        scrollView.addSubview(stackForButtons)
         [
             stackForButtons.topAnchor.constraint(equalTo: chart.bottomAnchor, constant: 10),
-            stackForButtons.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackForButtons.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackForButtons.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor),
+            stackForButtons.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor),
             stackForButtons.bottomAnchor.constraint(equalTo: chart.bottomAnchor, constant: 60)
         ].forEach({$0.isActive = true})
         dailyButton.setTitle(" Daily ", for: .normal)
+        
         stackForButtons.addSubview(dailyButton)
         [
             dailyButton.centerXAnchor.constraint(equalTo: stackForButtons.centerXAnchor, constant: 10),
@@ -140,17 +171,6 @@ class ChartViewController: UIViewController {
             minuteButton.centerYAnchor.constraint(equalTo: stackForButtons.centerYAnchor)
         ].forEach({$0.isActive = true})
         minuteButton.addTarget(self, action: #selector(minuteButtonTap), for: .touchDown)
-        
-        // MARK: - buyButton
-        view.addSubview(buyButton)
-        [
-//            buyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            buyButton.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIScreen.main.bounds.width - 20),
-            buyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -45),
-            buyButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
-        ].forEach({$0.isActive = true})
-        buyButton.addTarget(self, action: #selector(buyButtonTap), for: .touchDown)
     }
 }
 

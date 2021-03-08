@@ -28,38 +28,8 @@ class ChartViewModel {
         return mintedCoin.price.changePercent
     }
     
-    private func getDailyPair(complection: @escaping () -> Void) {
-        networkService.getDailyPair(symbol: mintedCoin.coin.name) {
-            [weak self] result in
-            guard let `self` = self else { return }
-            
-            switch result {
-                case .Success(let dailyPairs):
-                    self.coinPriceForAPeriod = dailyPairs
-                    complection()
-            case .Error:
-                print("Error")
-            }
-        }
-    }
-    
-    private func getHourlyPair(complection: @escaping () -> Void) {
-        networkService.getHourlyPair(symbol: mintedCoin.coin.name) {
-            [weak self] result in
-            guard let `self` = self else { return }
-            
-            switch result {
-                case .Success(let dailyPairs):
-                    self.coinPriceForAPeriod = dailyPairs
-                    complection()
-            case .Error:
-                print("Error")
-            }
-        }
-    }
-    
-    private func getMinutePair(complection: @escaping () -> Void) {
-        networkService.getMinutePair(symbol: mintedCoin.coin.name) {
+    private func getPair(ofType: ChartType, complection: @escaping () -> Void) {
+        networkService.getPair(symbol: mintedCoin.coin.name, ofType: ofType) {
             [weak self] result in
             guard let `self` = self else { return }
             
@@ -74,25 +44,10 @@ class ChartViewModel {
     }
     
     public func getData(ofType: ChartType, completion: @escaping ([Double])  -> ()) {
-        switch ofType {
-        case .daily:
-            getDailyPair {
-                var seriesData: [Double] = []
-                self.coinPriceForAPeriod.data.data.forEach({ seriesData.append($0.close) })
-                completion(seriesData)
-            }
-        case .hourly:
-            getHourlyPair {
-                var seriesData: [Double] = []
-                self.coinPriceForAPeriod.data.data.forEach({ seriesData.append($0.close) })
-                completion(seriesData)
-            }
-        case .minute:
-            getMinutePair {
-                var seriesData: [Double] = []
-                self.coinPriceForAPeriod.data.data.forEach({ seriesData.append($0.close) })
-                completion(seriesData)
-            }
+        getPair(ofType: ofType) {
+            var seriesData: [Double] = []
+            self.coinPriceForAPeriod.data.data.forEach({ seriesData.append($0.close) })
+            completion(seriesData)
         }
     }
     

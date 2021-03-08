@@ -15,9 +15,5 @@ protocol NetworkServiceProtocol {
     // Получение цен в различных валютах.
     func getPrices(symbols: String, completion: @escaping (NetworkServiceResult<CoinPrice>) -> Void)
     
-    func getDailyPair(symbol: String, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void)
-    
-    func getHourlyPair(symbol: String, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void)
-    
-    func getMinutePair(symbol: String, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void)
+    func getPair(symbol: String, ofType: ChartType, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void)
 }

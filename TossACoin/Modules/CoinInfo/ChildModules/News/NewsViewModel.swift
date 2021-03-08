@@ -38,4 +38,14 @@ class NewsViewModel {
             }
         }
     }
+    
+    public func createCell(cell: NewsCollectionViewCell, at indexPath: Int){
+        if (articles.count <= indexPath) { return }
+        let article = articles[indexPath]
+        cell.loadData(article: article)
+    }
+    
+    func getArticlesCount() -> Int {
+        return articles.count
+    }
 }

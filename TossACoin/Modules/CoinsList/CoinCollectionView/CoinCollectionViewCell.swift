@@ -78,7 +78,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
     // Установка изображения.
     private func setImage(imageUrl: String) {
         guard let url = URL(string: APIClient.getImageUrl(imageUrl: imageUrl)) else { return }
-        ImageCache.getImage(url: url) { (coinImage) in
+        ImageCache.getImage(url: url, placeholderName: "dollarsign.square.fill") { (coinImage) in
             self.image.image = coinImage   
         }
     }
@@ -133,6 +133,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // TODO: Добавить нажатие.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
     }

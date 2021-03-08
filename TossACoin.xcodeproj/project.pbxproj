@@ -18,6 +18,8 @@
 		E3734EFE25F6399500CDF7D5 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734EFD25F6399500CDF7D5 /* Article.swift */; };
 		E3734F0225F63A8500CDF7D5 /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734F0125F63A8500CDF7D5 /* NewsData.swift */; };
 		E3734F0B25F63D6000CDF7D5 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734F0A25F63D6000CDF7D5 /* NewsViewModel.swift */; };
+		E3734F1125F64C2F00CDF7D5 /* NewsCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734F1025F64C2F00CDF7D5 /* NewsCollectionViewFlowLayout.swift */; };
+		E3734F1525F64C7600CDF7D5 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734F1425F64C7600CDF7D5 /* NewsCollectionViewCell.swift */; };
 		E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */; };
 		E3A47A3C25EA2C53002BDE69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */; };
 		E3A47A3F25EA2C53002BDE69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3D25EA2C53002BDE69 /* LaunchScreen.storyboard */; };
@@ -73,6 +75,8 @@
 		E3734EFD25F6399500CDF7D5 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		E3734F0125F63A8500CDF7D5 /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
 		E3734F0A25F63D6000CDF7D5 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		E3734F1025F64C2F00CDF7D5 /* NewsCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		E3734F1425F64C7600CDF7D5 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3A47A2F25EA2C51002BDE69 /* TossACoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TossACoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -197,10 +201,20 @@
 		E3734F0925F63D3A00CDF7D5 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				E3734F0F25F64C1B00CDF7D5 /* NewsCollectionView */,
 				E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */,
 				E3734F0A25F63D6000CDF7D5 /* NewsViewModel.swift */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		E3734F0F25F64C1B00CDF7D5 /* NewsCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E3734F1025F64C2F00CDF7D5 /* NewsCollectionViewFlowLayout.swift */,
+				E3734F1425F64C7600CDF7D5 /* NewsCollectionViewCell.swift */,
+			);
+			path = NewsCollectionView;
 			sourceTree = "<group>";
 		};
 		E3A47A2625EA2C51002BDE69 = {
@@ -554,6 +568,7 @@
 				E30BA28625ED463500CB15E1 /* SearchCoinViewController.swift in Sources */,
 				E30ECDD925EC3D76005B53C6 /* CoinInfoViewController.swift in Sources */,
 				E3A47A9125EA8C7D002BDE69 /* NetworkService.swift in Sources */,
+				E3734F1125F64C2F00CDF7D5 /* NewsCollectionViewFlowLayout.swift in Sources */,
 				E3F35C4525F3E36900D3B3B0 /* CoinPrice.swift in Sources */,
 				E3A47AA525EA92A8002BDE69 /* DataStorageProtocol.swift in Sources */,
 				E30ECDE325EC498F005B53C6 /* CoinData.swift in Sources */,
@@ -577,6 +592,7 @@
 				E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */,
 				E3A47A7625EA4F3A002BDE69 /* StarButton.swift in Sources */,
 				E3734F0B25F63D6000CDF7D5 /* NewsViewModel.swift in Sources */,
+				E3734F1525F64C7600CDF7D5 /* NewsCollectionViewCell.swift in Sources */,
 				E3BE2C4925F5596F009942DB /* CoinPriceForAPeriod.swift in Sources */,
 				E3A47A9825EA8D5F002BDE69 /* NetworkServiceResult.swift in Sources */,
 				E3A47A8925EA8C1C002BDE69 /* Enviroment.swift in Sources */,

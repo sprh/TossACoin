@@ -68,7 +68,7 @@ class ChartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width,
-                                        height: UIScreen.main.bounds.height - view.safeAreaInsets.bottom + scrollView.convert(stackForButtons.frame.origin, to: buyButton).y - 100)
+                                        height: UIScreen.main.bounds.height - view.safeAreaInsets.bottom + scrollView.convert(stackForButtons.frame.origin, to: buyButton).y - 120)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -1,5 +1,5 @@
 //
-//  MainInfoViewModel.swift
+//  ChartViewModel.swift
 //  TossACoin
 //
 //  Created by Софья Тимохина on 07.03.2021.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftChart
 
-class MainInfoViewModel {
+class ChartViewModel {
     let enviroment: Enviroment
     let networkService: NetworkService
     var coinPriceForAPeriod = CoinPriceForAPeriod()
@@ -52,5 +52,12 @@ class MainInfoViewModel {
                 completion(seriesData)
             }
         }
+    }
+    
+    public func openBuyCoin() {
+        guard let url = URL(string: APIClient.getBuyCoin(symbol: mintedCoin.coin.name)) else {
+            return
+        }
+        UIApplication.shared.open(url)
     }
 }

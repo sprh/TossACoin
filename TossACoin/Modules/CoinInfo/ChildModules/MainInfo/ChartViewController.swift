@@ -1,5 +1,5 @@
 //
-//  MainInfoViewController.swift
+//  ChartMainInfoViewController.swift
 //  TossACoin
 //
 //  Created by Софья Тимохина on 07.03.2021.
@@ -10,31 +10,46 @@ import UIKit
 import XLPagerTabStrip
 import SwiftChart
 
-class MainInfoViewController: UIViewController {
+class ChartViewController: UIViewController {
     fileprivate let chart = Chart()
-    
     fileprivate lazy var labelLeadingMarginConstraint = NSLayoutConstraint()
-    
     fileprivate lazy var labelWithPrice = UILabel()
-    
     fileprivate var labelLeadingMarginInitialConstant: CGFloat! = 0
+    fileprivate var stackForButtons: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    fileprivate let dailyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    fileprivate let hourlyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    fileprivate let minuteButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    fileprivate var buyButton: UIButton = {
+//        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        let button = UIButton()
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .black
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Buy", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     fileprivate let labelWithLastPrice: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 23)
+        label.font = .boldSystemFont(ofSize: 27)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     fileprivate let labelChangePercent: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 22)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    fileprivate let viewModel: MainInfoViewModel!
+    fileprivate let viewModel: ChartViewModel!
     
-    init(viewModel: MainInfoViewModel) {
+    init(viewModel: ChartViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -67,7 +82,7 @@ class MainInfoViewController: UIViewController {
             labelChangePercent.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ].forEach({$0.isActive = true})
         labelChangePercent.text = "\(viewModel.getChangePercent())%"
-        labelChangePercent.textColor = labelChangePercent.text!.contains("-") ? #colorLiteral(red: 0.9908824563, green: 0.2480533719, blue: 0.2447027266, alpha: 1) : #colorLiteral(red: 0.2567636371, green: 0.7126277089, blue: 0.2477055192, alpha: 1)
+        labelChangePercent.textColor = labelChangePercent.text!.contains("-") ? ApplicationColors.redPercent : ApplicationColors.greenPercent
 
         // MARK: - Chart
         self.view.addSubview(chart)
@@ -92,12 +107,81 @@ class MainInfoViewController: UIViewController {
             labelLeadingMarginConstraint
         ].forEach({$0.isActive = true})
         labelLeadingMarginInitialConstant = labelLeadingMarginConstraint.constant
+    
+    // MARK: - stackForButtons
+        self.view.addSubview(stackForButtons)
+        [
+            stackForButtons.topAnchor.constraint(equalTo: chart.bottomAnchor, constant: 10),
+            stackForButtons.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackForButtons.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackForButtons.bottomAnchor.constraint(equalTo: chart.bottomAnchor, constant: 60)
+        ].forEach({$0.isActive = true})
+        dailyButton.setTitle(" Daily ", for: .normal)
+        stackForButtons.addSubview(dailyButton)
+        [
+            dailyButton.centerXAnchor.constraint(equalTo: stackForButtons.centerXAnchor, constant: 10),
+            dailyButton.centerYAnchor.constraint(equalTo: stackForButtons.centerYAnchor)
+        ].forEach({$0.isActive = true})
+        dailyButton.addTarget(self, action: #selector(dailyButtonTap), for: .touchDown)
+        dailyButton.didSelect()
+        
+        hourlyButton.setTitle(" Hourly ", for: .normal)
+        stackForButtons.addSubview(hourlyButton)
+        [
+            hourlyButton.trailingAnchor.constraint(equalTo: dailyButton.leadingAnchor, constant: -10),
+            hourlyButton.centerYAnchor.constraint(equalTo: stackForButtons.centerYAnchor)
+        ].forEach({$0.isActive = true})
+        hourlyButton.addTarget(self, action: #selector(hourlyButtonTap), for: .touchDown)
+        
+        minuteButton.setTitle(" Minute ", for: .normal)
+        stackForButtons.addSubview(minuteButton)
+        [
+            minuteButton.leadingAnchor.constraint(equalTo: dailyButton.trailingAnchor, constant: 10),
+            minuteButton.centerYAnchor.constraint(equalTo: stackForButtons.centerYAnchor)
+        ].forEach({$0.isActive = true})
+        minuteButton.addTarget(self, action: #selector(minuteButtonTap), for: .touchDown)
+        
+        // MARK: - buyButton
+        view.addSubview(buyButton)
+        [
+//            buyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            buyButton.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIScreen.main.bounds.width - 20),
+            buyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -45),
+            buyButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+        ].forEach({$0.isActive = true})
+        buyButton.addTarget(self, action: #selector(buyButtonTap), for: .touchDown)
     }
 }
 
-extension MainInfoViewController: ChartDelegate {
+extension ChartViewController {
+    @objc func dailyButtonTap() {
+        dailyButton.didSelect()
+        hourlyButton.didUnselect()
+        minuteButton.didUnselect()
+    }
+    
+    @objc func hourlyButtonTap() {
+        dailyButton.didUnselect()
+        hourlyButton.didSelect()
+        minuteButton.didUnselect()
+    }
+    
+    @objc func minuteButtonTap() {
+        dailyButton.didUnselect()
+        hourlyButton.didUnselect()
+        minuteButton.didSelect()
+    }
+    
+    @objc func buyButtonTap() {
+        viewModel.openBuyCoin()
+    }
+}
+
+extension ChartViewController: ChartDelegate {
     func didTouchChart(_ chart: Chart, indexes: [Int?], x: Double, left: CGFloat) {
-        if let value = chart.valueForSeries(0, atIndex: indexes[0]) {
+        guard let value = chart.valueForSeries(0, atIndex: indexes[0]) else {
+            return}
             
             let numberFormatter = NumberFormatter()
             numberFormatter.minimumFractionDigits = 2
@@ -116,7 +200,6 @@ extension MainInfoViewController: ChartDelegate {
             
             labelLeadingMarginConstraint.constant = constant
             
-        }
     }
     
     func didFinishTouchingChart(_ chart: Chart) {
@@ -131,14 +214,14 @@ extension MainInfoViewController: ChartDelegate {
     func setData(ofType: ChartType) {
         viewModel.getData(ofType: ofType) { (result) -> () in
             let chartSeries = ChartSeries(result)
-            chartSeries.color = .orange
+            chartSeries.color = ApplicationColors.orangeColor
             chartSeries.area = true
             self.chart.add(chartSeries)
         }
     }
 }
 
-extension MainInfoViewController: IndicatorInfoProvider {
+extension ChartViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Chart")
     }

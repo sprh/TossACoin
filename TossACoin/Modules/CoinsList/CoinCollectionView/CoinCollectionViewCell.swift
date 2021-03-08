@@ -14,7 +14,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
     fileprivate var coinName: UILabel = {() -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Roboto", size: 23)
+        label.font = .systemFont(ofSize: 22)
         label.numberOfLines = 1
         label.textColor = .black
         label.textAlignment = .left
@@ -25,7 +25,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .right
-        label.font = UIFont(name: "Roboto", size: 16)
+        label.font = .systemFont(ofSize: 18)
         label.numberOfLines = 1
         label.textColor = .black
         return label
@@ -34,7 +34,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
     fileprivate var companyName: UILabel = {() -> UILabel  in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Roboto", size: 16)
+        label.font = .systemFont(ofSize: 18)
         label.numberOfLines = 1
         label.textColor = #colorLiteral(red: 0.3792319894, green: 0.384829402, blue: 0.3670491576, alpha: 1)
         label.textAlignment = .left
@@ -44,7 +44,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
     fileprivate var regularMarketChangePercent: UILabel = {() -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Roboto", size: 16)
+        label.font = .systemFont(ofSize: 18)
         label.numberOfLines = 1
         label.textAlignment = .right
         return label
@@ -70,7 +70,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         self.companyName.text = model.fullName
         self.price.text = model.price
         self.regularMarketChangePercent.textColor =
-            model.changePercent.contains("-") ? #colorLiteral(red: 0.9908824563, green: 0.2480533719, blue: 0.2447027266, alpha: 1) : #colorLiteral(red: 0.2567636371, green: 0.7126277089, blue: 0.2477055192, alpha: 1)
+            model.changePercent.contains("-") ? ApplicationColors.redPercent : ApplicationColors.greenPercent
         self.regularMarketChangePercent.text = "\(model.changePercent)%"
         setImage(imageUrl: model.imageUrl)
     }

@@ -20,8 +20,8 @@ struct CoinPriceForAPeriodData: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.timeFrom = try container.decode(UInt.self, forKey: .timeFrom)
-        self.timeTo = try container.decode(UInt.self, forKey: .timeTo)
+        self.timeFrom = try container.decodeIfPresent(UInt.self, forKey: .timeFrom) ?? 0
+        self.timeTo = try container.decodeIfPresent(UInt.self, forKey: .timeTo) ?? 0
         self.data = try container.decode([CoinPriceForAPeriodCloseInfo].self, forKey: .data)
     }
     

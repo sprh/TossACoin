@@ -19,6 +19,7 @@ final class StarButton: UIButton {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
         setStatus(status: false)
     }
     

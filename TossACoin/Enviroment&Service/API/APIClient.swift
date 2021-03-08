@@ -38,4 +38,8 @@ public struct APIClient {
 //    static func getQuotes(symbol: String) -> String {
 //        return "\(apiUrl)/qu/quote/?symbol=\(symbol),F&apikey=demo"
 //    }
+    
+    static func getBuyCoin(symbol: String) -> String {
+        return "https://yandex.ru/search/?text=buy%20\(symbol)&lr=0"
+    }
 }

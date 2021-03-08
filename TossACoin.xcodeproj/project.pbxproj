@@ -41,8 +41,10 @@
 		E3BE2C4325F556F5009942DB /* CoinPriceForAPeriodCloseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C4225F556F4009942DB /* CoinPriceForAPeriodCloseInfo.swift */; };
 		E3BE2C4625F55842009942DB /* CoinPriceForAPeriodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C4525F55842009942DB /* CoinPriceForAPeriodData.swift */; };
 		E3BE2C4925F5596F009942DB /* CoinPriceForAPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C4825F5596F009942DB /* CoinPriceForAPeriod.swift */; };
-		E3BE2C4F25F562F3009942DB /* MainInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C4E25F562F3009942DB /* MainInfoViewModel.swift */; };
+		E3BE2C4F25F562F3009942DB /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C4E25F562F3009942DB /* ChartViewModel.swift */; };
 		E3BE2C5425F56567009942DB /* EnumChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C5325F56567009942DB /* EnumChartType.swift */; };
+		E3BE2C6925F60086009942DB /* RoundedButtonForDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C6825F60086009942DB /* RoundedButtonForDate.swift */; };
+		E3BE2C6C25F60B52009942DB /* ApplicationColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C6B25F60B52009942DB /* ApplicationColors.swift */; };
 		E3F35C3125F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C3025F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift */; };
 		E3F35C3625F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C3525F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift */; };
 		E3F35C3F25F3E17300D3B3B0 /* ConversionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C3E25F3E17300D3B3B0 /* ConversionInfo.swift */; };
@@ -50,7 +52,7 @@
 		E3F35C4525F3E36900D3B3B0 /* CoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */; };
 		E3F35C4925F3E54200D3B3B0 /* MintedCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */; };
 		E3F35C4F25F4199400D3B3B0 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4E25F4199400D3B3B0 /* ImageCache.swift */; };
-		E3F35C6425F4FB7000D3B3B0 /* MainInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C6325F4FB7000D3B3B0 /* MainInfoViewController.swift */; };
+		E3F35C6425F4FB7000D3B3B0 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C6325F4FB7000D3B3B0 /* ChartViewController.swift */; };
 		E3F35C6725F4FBF000D3B3B0 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,8 +95,10 @@
 		E3BE2C4225F556F4009942DB /* CoinPriceForAPeriodCloseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceForAPeriodCloseInfo.swift; sourceTree = "<group>"; };
 		E3BE2C4525F55842009942DB /* CoinPriceForAPeriodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceForAPeriodData.swift; sourceTree = "<group>"; };
 		E3BE2C4825F5596F009942DB /* CoinPriceForAPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceForAPeriod.swift; sourceTree = "<group>"; };
-		E3BE2C4E25F562F3009942DB /* MainInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoViewModel.swift; sourceTree = "<group>"; };
+		E3BE2C4E25F562F3009942DB /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 		E3BE2C5325F56567009942DB /* EnumChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumChartType.swift; sourceTree = "<group>"; };
+		E3BE2C6825F60086009942DB /* RoundedButtonForDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonForDate.swift; sourceTree = "<group>"; };
+		E3BE2C6B25F60B52009942DB /* ApplicationColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationColors.swift; sourceTree = "<group>"; };
 		E3F35C3025F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWithButtonsLayout.swift; sourceTree = "<group>"; };
 		E3F35C3525F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWithButtonsCell.swift; sourceTree = "<group>"; };
 		E3F35C3E25F3E17300D3B3B0 /* ConversionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionInfo.swift; sourceTree = "<group>"; };
@@ -102,7 +106,7 @@
 		E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPrice.swift; sourceTree = "<group>"; };
 		E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintedCoin.swift; sourceTree = "<group>"; };
 		E3F35C4E25F4199400D3B3B0 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		E3F35C6325F4FB7000D3B3B0 /* MainInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoViewController.swift; sourceTree = "<group>"; };
+		E3F35C6325F4FB7000D3B3B0 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,20 +254,20 @@
 		E3A47A5625EA2FB1002BDE69 /* CoinsList */ = {
 			isa = PBXGroup;
 			children = (
-				E3A47A6C25EA4D26002BDE69 /* CollectionView */,
+				E3A47A6C25EA4D26002BDE69 /* CoinCollectionView */,
 				E3A47AD425EBF924002BDE69 /* CoinsListViewController.swift */,
 				E3A47AD725EBF934002BDE69 /* CoinsListViewModel.swift */,
 			);
 			path = CoinsList;
 			sourceTree = "<group>";
 		};
-		E3A47A6C25EA4D26002BDE69 /* CollectionView */ = {
+		E3A47A6C25EA4D26002BDE69 /* CoinCollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				E3A47A6D25EA4D39002BDE69 /* CoinsCollectionViewFlowLayout.swift */,
 				E3A47A7125EA4E44002BDE69 /* CoinCollectionViewCell.swift */,
 			);
-			path = CollectionView;
+			path = CoinCollectionView;
 			sourceTree = "<group>";
 		};
 		E3A47A7425EA4F15002BDE69 /* Custom */ = {
@@ -272,6 +276,8 @@
 				E3A47A7525EA4F3A002BDE69 /* StarButton.swift */,
 				E30BA28825ED475C00CB15E1 /* SearchButtonBarItem.swift */,
 				E30BA28B25ED4A7B00CB15E1 /* StarButtonBarItem.swift */,
+				E3BE2C6825F60086009942DB /* RoundedButtonForDate.swift */,
+				E3BE2C6B25F60B52009942DB /* ApplicationColors.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -341,8 +347,8 @@
 			isa = PBXGroup;
 			children = (
 				E3BE2C5225F5654A009942DB /* EnumForChartType */,
-				E3F35C6325F4FB7000D3B3B0 /* MainInfoViewController.swift */,
-				E3BE2C4E25F562F3009942DB /* MainInfoViewModel.swift */,
+				E3F35C6325F4FB7000D3B3B0 /* ChartViewController.swift */,
+				E3BE2C4E25F562F3009942DB /* ChartViewModel.swift */,
 			);
 			path = MainInfo;
 			sourceTree = "<group>";
@@ -518,7 +524,7 @@
 				E3BE2C5425F56567009942DB /* EnumChartType.swift in Sources */,
 				E30BA28925ED475C00CB15E1 /* SearchButtonBarItem.swift in Sources */,
 				E3A47A9525EA8CB2002BDE69 /* APIClient.swift in Sources */,
-				E3F35C6425F4FB7000D3B3B0 /* MainInfoViewController.swift in Sources */,
+				E3F35C6425F4FB7000D3B3B0 /* ChartViewController.swift in Sources */,
 				E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */,
 				E30BA28625ED463500CB15E1 /* SearchCoinViewController.swift in Sources */,
 				E30ECDD925EC3D76005B53C6 /* CoinInfoViewController.swift in Sources */,
@@ -530,12 +536,14 @@
 				E3A47A5025EA2D8C002BDE69 /* TabBarController.swift in Sources */,
 				E3A47AD825EBF934002BDE69 /* CoinsListViewModel.swift in Sources */,
 				E3F35C4925F3E54200D3B3B0 /* MintedCoin.swift in Sources */,
-				E3BE2C4F25F562F3009942DB /* MainInfoViewModel.swift in Sources */,
+				E3BE2C4F25F562F3009942DB /* ChartViewModel.swift in Sources */,
 				E3F35C3625F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift in Sources */,
+				E3BE2C6C25F60B52009942DB /* ApplicationColors.swift in Sources */,
 				E3F35C4225F3E2E300D3B3B0 /* CoinPriceDisplay.swift in Sources */,
 				E3BE2C4325F556F5009942DB /* CoinPriceForAPeriodCloseInfo.swift in Sources */,
 				E3A47AD125EBEEC4002BDE69 /* ResultCoins.swift in Sources */,
 				E3A47AD525EBF924002BDE69 /* CoinsListViewController.swift in Sources */,
+				E3BE2C6925F60086009942DB /* RoundedButtonForDate.swift in Sources */,
 				E3A47A8D25EA8C3A002BDE69 /* NetworkServiceProtocol.swift in Sources */,
 				E30BA28225ED45D100CB15E1 /* SearchCoinViewModel.swift in Sources */,
 				E30ECDDE25EC3DC4005B53C6 /* CoinInfoModel.swift in Sources */,

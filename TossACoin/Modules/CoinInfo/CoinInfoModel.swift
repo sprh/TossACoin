@@ -18,9 +18,9 @@ class CoinInfoViewModel {
         self.networkService = networkService
     }
     
-    func getMainViewController() -> MainInfoViewController {
-        let viewModel = MainInfoViewModel(enviroment: enviroment, networkService: networkService, mintedCoin: mintedCoin)
-        let mainViewController = MainInfoViewController(viewModel: viewModel)
+    func getChartViewController() -> ChartViewController {
+        let viewModel = ChartViewModel(enviroment: enviroment, networkService: networkService, mintedCoin: mintedCoin)
+        let mainViewController = ChartViewController(viewModel: viewModel)
         return mainViewController
     }
     

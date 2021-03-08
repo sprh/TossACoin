@@ -85,7 +85,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
             coinName.centerYAnchor.constraint(equalTo: headerView.centerYAnchor, constant: 0)
         ].forEach({$0.isActive = true})
         coinName.text = self.viewModel.getCoinName()
-        coinName.font = .boldSystemFont(ofSize: 24)
+        coinName.font = .boldSystemFont(ofSize: 26)
         coinName.text = self.viewModel.getCoinName()
         
         companyName.translatesAutoresizingMaskIntoConstraints = false
@@ -93,11 +93,10 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
             companyName.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             companyName.topAnchor.constraint(equalTo: coinName.bottomAnchor, constant: 8)
         ].forEach({$0.isActive = true})
-        companyName.font = .systemFont(ofSize: 16)
+        companyName.font = .systemFont(ofSize: 20)
         companyName.textColor = .gray
         companyName.text = self.viewModel.getCompanyName()
         
-        starButton.translatesAutoresizingMaskIntoConstraints = false
         [
             starButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
             starButton.topAnchor.constraint(equalTo: headerView.centerYAnchor, constant: -15)
@@ -127,7 +126,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = .black
-            newCell?.label.textColor = .orange
+            newCell?.label.textColor = ApplicationColors.orangeColor
             oldCell?.label.font = .boldSystemFont(ofSize: 14)
             newCell?.label.font = .boldSystemFont(ofSize: 17)
         }
@@ -135,7 +134,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let mainViewController =  viewModel.getMainViewController()
+        let mainViewController =  viewModel.getChartViewController()
         let newsViewController = NewsViewController()
         return [mainViewController, newsViewController]
     }

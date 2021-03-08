@@ -74,7 +74,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     private func setupHeaderView() {
         let coinName = UILabel()
         let companyName = UILabel()
-        let starButton = StarButton()
+        let starButton = StarButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         headerView.addSubview(coinName)
         headerView.addSubview(companyName)
         headerView.addSubview(starButton)
@@ -102,11 +102,10 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
             starButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
             starButton.topAnchor.constraint(equalTo: headerView.centerYAnchor, constant: -15)
         ].forEach({$0.isActive = true})
-        // TODO: Пофиксить, выдает ошибку.
-//        starButton.imageEdgeInsets = UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 40)
+        starButton.imageEdgeInsets = UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 40)
         starButton.addTarget(self, action: #selector(addToFavoutite), for: .touchDown)
         if(viewModel.isFavourite()) {
-            starButton.setStatus(status: true)
+             starButton.setStatus(status: true)
         }
     }
     

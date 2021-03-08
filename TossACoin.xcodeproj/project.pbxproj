@@ -15,6 +15,9 @@
 		E30ECDD925EC3D76005B53C6 /* CoinInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDD825EC3D76005B53C6 /* CoinInfoViewController.swift */; };
 		E30ECDDE25EC3DC4005B53C6 /* CoinInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDDD25EC3DC4005B53C6 /* CoinInfoModel.swift */; };
 		E30ECDE325EC498F005B53C6 /* CoinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDE225EC498F005B53C6 /* CoinData.swift */; };
+		E3734EFE25F6399500CDF7D5 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734EFD25F6399500CDF7D5 /* Article.swift */; };
+		E3734F0225F63A8500CDF7D5 /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734F0125F63A8500CDF7D5 /* NewsData.swift */; };
+		E3734F0B25F63D6000CDF7D5 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734F0A25F63D6000CDF7D5 /* NewsViewModel.swift */; };
 		E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */; };
 		E3A47A3C25EA2C53002BDE69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */; };
 		E3A47A3F25EA2C53002BDE69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3D25EA2C53002BDE69 /* LaunchScreen.storyboard */; };
@@ -67,6 +70,9 @@
 		E30ECDD825EC3D76005B53C6 /* CoinInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoViewController.swift; sourceTree = "<group>"; };
 		E30ECDDD25EC3DC4005B53C6 /* CoinInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoModel.swift; sourceTree = "<group>"; };
 		E30ECDE225EC498F005B53C6 /* CoinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinData.swift; sourceTree = "<group>"; };
+		E3734EFD25F6399500CDF7D5 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		E3734F0125F63A8500CDF7D5 /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
+		E3734F0A25F63D6000CDF7D5 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		E3A47A2F25EA2C51002BDE69 /* TossACoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TossACoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -177,6 +183,24 @@
 				E3F35C4E25F4199400D3B3B0 /* ImageCache.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		E3734EFC25F6366A00CDF7D5 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				E3734EFD25F6399500CDF7D5 /* Article.swift */,
+				E3734F0125F63A8500CDF7D5 /* NewsData.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		E3734F0925F63D3A00CDF7D5 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */,
+				E3734F0A25F63D6000CDF7D5 /* NewsViewModel.swift */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		E3A47A2625EA2C51002BDE69 = {
@@ -324,6 +348,7 @@
 		E3A47AB425EBE5AE002BDE69 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E3734EFC25F6366A00CDF7D5 /* News */,
 				E3BE2C4025F552B9009942DB /* CoinPrice */,
 				E30ECDE025EC4645005B53C6 /* Coin */,
 			);
@@ -343,14 +368,14 @@
 			path = CoinPrice;
 			sourceTree = "<group>";
 		};
-		E3BE2C4D25F562E1009942DB /* MainInfo */ = {
+		E3BE2C4D25F562E1009942DB /* Chart */ = {
 			isa = PBXGroup;
 			children = (
 				E3BE2C5225F5654A009942DB /* EnumForChartType */,
 				E3F35C6325F4FB7000D3B3B0 /* ChartViewController.swift */,
 				E3BE2C4E25F562F3009942DB /* ChartViewModel.swift */,
 			);
-			path = MainInfo;
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		E3BE2C5225F5654A009942DB /* EnumForChartType */ = {
@@ -373,8 +398,8 @@
 		E3F35C6225F4FB3100D3B3B0 /* ChildModules */ = {
 			isa = PBXGroup;
 			children = (
-				E3BE2C4D25F562E1009942DB /* MainInfo */,
-				E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */,
+				E3734F0925F63D3A00CDF7D5 /* News */,
+				E3BE2C4D25F562E1009942DB /* Chart */,
 			);
 			path = ChildModules;
 			sourceTree = "<group>";
@@ -534,11 +559,13 @@
 				E30ECDE325EC498F005B53C6 /* CoinData.swift in Sources */,
 				E3A47AB225EA97D2002BDE69 /* DataStorage.swift in Sources */,
 				E3A47A5025EA2D8C002BDE69 /* TabBarController.swift in Sources */,
+				E3734F0225F63A8500CDF7D5 /* NewsData.swift in Sources */,
 				E3A47AD825EBF934002BDE69 /* CoinsListViewModel.swift in Sources */,
 				E3F35C4925F3E54200D3B3B0 /* MintedCoin.swift in Sources */,
 				E3BE2C4F25F562F3009942DB /* ChartViewModel.swift in Sources */,
 				E3F35C3625F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift in Sources */,
 				E3BE2C6C25F60B52009942DB /* ApplicationColors.swift in Sources */,
+				E3734EFE25F6399500CDF7D5 /* Article.swift in Sources */,
 				E3F35C4225F3E2E300D3B3B0 /* CoinPriceDisplay.swift in Sources */,
 				E3BE2C4325F556F5009942DB /* CoinPriceForAPeriodCloseInfo.swift in Sources */,
 				E3A47AD125EBEEC4002BDE69 /* ResultCoins.swift in Sources */,
@@ -549,6 +576,7 @@
 				E30ECDDE25EC3DC4005B53C6 /* CoinInfoModel.swift in Sources */,
 				E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */,
 				E3A47A7625EA4F3A002BDE69 /* StarButton.swift in Sources */,
+				E3734F0B25F63D6000CDF7D5 /* NewsViewModel.swift in Sources */,
 				E3BE2C4925F5596F009942DB /* CoinPriceForAPeriod.swift in Sources */,
 				E3A47A9825EA8D5F002BDE69 /* NetworkServiceResult.swift in Sources */,
 				E3A47A8925EA8C1C002BDE69 /* Enviroment.swift in Sources */,

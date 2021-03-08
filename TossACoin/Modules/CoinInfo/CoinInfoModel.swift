@@ -24,6 +24,12 @@ class CoinInfoViewModel {
         return mainViewController
     }
     
+    func getNewsViewController() -> NewsViewController {
+        let viewModel = NewsViewModel(mintedCoin: mintedCoin, enviroment: enviroment, networkService: networkService)
+        let newsViewController = NewsViewController(viewModel: viewModel)
+        return newsViewController
+    }
+    
     func getCoinName() -> String {
         return mintedCoin.coin.name
     }

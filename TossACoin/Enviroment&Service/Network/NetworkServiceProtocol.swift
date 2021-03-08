@@ -16,4 +16,6 @@ protocol NetworkServiceProtocol {
     func getPrices(symbols: String, completion: @escaping (NetworkServiceResult<CoinPrice>) -> Void)
     
     func getPair(symbol: String, ofType: ChartType, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void)
+    
+    func getNews(symbol: String, page: Int, completion: @escaping (NetworkServiceResult<NewsData>) -> Void)
 }

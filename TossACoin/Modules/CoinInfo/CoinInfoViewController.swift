@@ -135,7 +135,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let mainViewController =  viewModel.getChartViewController()
-        let newsViewController = NewsViewController()
+        let newsViewController = viewModel.getNewsViewController()
         return [mainViewController, newsViewController]
     }
 }

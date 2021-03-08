@@ -10,6 +10,20 @@ import Alamofire
 
 // MARK: - Подключение.
 public struct NetworkService: NetworkServiceProtocol {
+    func getNews(symbol: String, page: Int, completion: @escaping (NetworkServiceResult<NewsData>) -> Void) {
+        guard let url = URL(string: APIClient.getNews(symbol: symbol, page: page)) else { return }
+        
+        print(APIClient.getNews(symbol: symbol, page: page))
+        AF.request(url).responseData { (dataResponse) in
+            if let error = dataResponse.error {print(error); return}
+            guard let data = dataResponse.data else {return}
+            do {
+                let result = try self.decoder.decode(NewsData.self, from: data)
+                completion(.Success(result))
+            }catch let error {print(error)}
+        }
+    }
+    
     func getPair(symbol: String, ofType: ChartType, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void) {
         let url: URL
         switch ofType {

@@ -10,6 +10,40 @@ import Alamofire
 
 // MARK: - Подключение.
 public struct NetworkService: NetworkServiceProtocol {
+    func getHourlyPair(symbol: String, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void) {
+        guard let url = URL(string: APIClient.getHourlyPair(symbol: symbol)) else { return }
+        // Подключение церез Alamofire.
+        AF.request(url).responseData { (dataResponse) in
+            // Обработка ошибок.
+            if let error = dataResponse.error {print(error); return }
+            guard let data = dataResponse.data else { print("error data"); return }
+            
+            do {
+                let result = try self.decoder.decode(CoinPriceForAPeriod.self, from: data)
+                // Вызов замыкания.
+                completion(.Success(result))
+            }
+            catch let error { print(error) }
+        }
+    }
+    
+    func getMinutePair(symbol: String, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void) {
+        guard let url = URL(string: APIClient.getMinutePair(symbol: symbol)) else { return }
+        // Подключение церез Alamofire.
+        AF.request(url).responseData { (dataResponse) in
+            // Обработка ошибок.
+            if let error = dataResponse.error {print(error); return }
+            guard let data = dataResponse.data else { print("error data"); return }
+            
+            do {
+                let result = try self.decoder.decode(CoinPriceForAPeriod.self, from: data)
+                // Вызов замыкания.
+                completion(.Success(result))
+            }
+            catch let error { print(error) }
+        }
+    }
+    
     func getDailyPair(symbol: String, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void) {
         guard let url = URL(string: APIClient.getDailyPair(symbol: symbol)) else { return }
         // Подключение церез Alamofire.

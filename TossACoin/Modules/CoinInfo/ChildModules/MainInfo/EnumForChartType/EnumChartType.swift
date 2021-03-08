@@ -9,4 +9,6 @@ import Foundation
 
 enum ChartType {
     case daily
+    case hourly
+    case minute
 }

@@ -42,4 +42,12 @@ public struct APIClient {
     static func getBuyCoin(symbol: String) -> String {
         return "https://yandex.ru/search/?text=buy%20\(symbol)&lr=0"
     }
+    
+    static func getHourlyPair(symbol: String) -> String {
+        return "\(apiUrl)/data/v2/histohour?fsym=\(symbol)&tsym=RUB&limit=15"
+    }
+    
+    static func getMinutePair(symbol: String) -> String {
+        return "\(apiUrl)/data/v2/histominute?fsym=\(symbol)&tsym=RUB&limit=15"
+    }
 }

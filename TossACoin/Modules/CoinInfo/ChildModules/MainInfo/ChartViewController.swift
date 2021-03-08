@@ -126,6 +126,7 @@ class ChartViewController: UIViewController {
         chart.showXLabelsAndGrid = false
         chart.gridColor = .clear
         chart.delegate = self
+        chart.clearsContextBeforeDrawing = true
         setData(ofType: .daily)
         
         // MARK: - labelWithPrice
@@ -179,18 +180,21 @@ extension ChartViewController {
         dailyButton.didSelect()
         hourlyButton.didUnselect()
         minuteButton.didUnselect()
+        setData(ofType: .daily)
     }
     
     @objc func hourlyButtonTap() {
         dailyButton.didUnselect()
         hourlyButton.didSelect()
         minuteButton.didUnselect()
+        setData(ofType: .hourly)
     }
     
     @objc func minuteButtonTap() {
         dailyButton.didUnselect()
         hourlyButton.didUnselect()
         minuteButton.didSelect()
+        setData(ofType: .minute)
     }
     
     @objc func buyButtonTap() {
@@ -236,7 +240,7 @@ extension ChartViewController: ChartDelegate {
             let chartSeries = ChartSeries(result)
             chartSeries.color = ApplicationColors.orangeColor
             chartSeries.area = true
-            self.chart.add(chartSeries)
+            self.chart.series = [chartSeries]
         }
     }
 }

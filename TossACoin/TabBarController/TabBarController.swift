@@ -30,17 +30,17 @@ public final class TabBarController: UITabBarController {
         let enviroment = Enviroment()
         let networkService = NetworkService()
         
-        let coinsListViewController = createCoinsListViewController(with: enviroment, with: networkService)
-        let coinsListNavigationController = setupViewController(title: "Coins", unselectedImage: UIImage(systemName: "bitcoinsign.circle")!, selectedImage: UIImage(systemName: "bitcoinsign.circle.fill")!, viewController: coinsListViewController)
-        viewControllers = [coinsListNavigationController]
+//        let coinsListViewController = createCoinsListViewController(with: enviroment, with: networkService)
+//        let coinsListNavigationController = setupViewController(title: "Coins", unselectedImage: UIImage(systemName: "bitcoinsign.circle")!, selectedImage: UIImage(systemName: "bitcoinsign.circle.fill")!, viewController: coinsListViewController)
+//        viewControllers = [coinsListNavigationController]
     }
     
     // MARK: Контроллер со всеми акциями.
-    private func createCoinsListViewController(with enviroment: Enviroment, with networkService: NetworkService) -> CoinsListViewController {
-        let viewModel = CoinsListViewModel(enviroment: enviroment, networkService: networkService)
-        let viewController = CoinsListViewController(viewModel: viewModel)
-        return viewController
-    }
+//    private func createCoinsListViewController(with enviroment: Enviroment, with networkService: NetworkService) -> CoinsListViewController {
+//        let viewModel = CoinsListViewModel(enviroment: enviroment, networkService: networkService, type: .all)
+//        let viewController = CoinsListViewController(viewModel: viewModel)
+//        return viewController
+//    }
     
     // MARK: - Настройка контроллеров.
     private func setupViewController(title: String, unselectedImage: UIImage, selectedImage: UIImage, viewController: UIViewController) -> UINavigationController {

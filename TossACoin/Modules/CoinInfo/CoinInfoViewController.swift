@@ -114,8 +114,6 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     
     // Настройка ButtonBarView.
     private func setSettings() {
-        settings.style.buttonBarBackgroundColor = .white
-        settings.style.buttonBarItemBackgroundColor = .white
         settings.style.selectedBarBackgroundColor = .orange
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 2.0
@@ -126,6 +124,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarRightContentInset = 0
         changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
+            oldCell?.imageView.tintColor = .orange
             oldCell?.label.textColor = .black
             newCell?.label.textColor = ApplicationColors.orangeColor
             oldCell?.label.font = .boldSystemFont(ofSize: 14)

@@ -12,6 +12,7 @@ import UIKit
 class SearchCoinViewController: UIViewController {
     fileprivate var viewModel: SearchCoinViewModel!
     fileprivate var searchController: UISearchController = UISearchController(searchResultsController: nil)
+    // TODO: Сделать предложения.
 //    fileprivate var popularRequestsLabel: UILabel = { () -> UILabel in
 //        let label = UILabel()
 //        label.text = "Popular requests"
@@ -54,6 +55,7 @@ class SearchCoinViewController: UIViewController {
         self.hidesBottomBarWhenPushed = true
         self.navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.navigationBar.tintColor = ApplicationColors.orangeColor
+        self.navigationController?.hidesBottomBarWhenPushed = true
     }
     
     

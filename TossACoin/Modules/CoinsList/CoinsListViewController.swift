@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import XLPagerTabStrip
 
 // MARK: - View Controller для экрана со всеми акциями.
 class CoinsListViewController: UIViewController {
@@ -114,4 +115,12 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
            self.coinsCollectionView.refreshControl?.endRefreshing()
         }
     }
+}
+
+extension CoinsListViewController: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: viewModel.getTitle())
+    }
+    
+    
 }

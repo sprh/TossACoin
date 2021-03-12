@@ -13,11 +13,17 @@ class CoinsListViewModel {
     private let networkService: NetworkService
     private var coins = [MintedCoin]()
     private var page: Int = 0
+    private var type: CoinsListType
     
     // Конструктор.
-    init(enviroment: Enviroment, networkService: NetworkService) {
+    init(enviroment: Enviroment, networkService: NetworkService, type: CoinsListType) {
         self.enviroment = enviroment
         self.networkService = networkService
+        self.type = type
+    }
+    
+    func getTitle() -> String{
+        return type == .all ? "All": "Favourite"
     }
     
     // Получение информации об акциях.
@@ -75,3 +81,4 @@ class CoinsListViewModel {
         }
     }
 }
+

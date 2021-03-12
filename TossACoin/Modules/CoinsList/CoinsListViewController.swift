@@ -10,9 +10,10 @@ import UIKit
 
 // MARK: - View Controller для экрана со всеми акциями.
 class CoinsListViewController: UIViewController {
-    fileprivate let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
+    fileprivate let coinsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
     fileprivate let viewModel: CoinsListViewModel!
     fileprivate let searchButton = SearchButtonBarItem()
+    fileprivate let refreshControl = UIRefreshControl()
     
     init(viewModel: CoinsListViewModel) {
         self.viewModel = viewModel
@@ -33,16 +34,16 @@ class CoinsListViewController: UIViewController {
         initCoinCollection()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//    }
-//    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationController?.navigationBar.prefersLargeTitles = false
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
     
+    // Кнопка поиска.
     private func addSearchButton() {
         self.navigationItem.rightBarButtonItem = searchButton
         searchButton.target = self
@@ -50,39 +51,50 @@ class CoinsListViewController: UIViewController {
         searchButton.action = #selector(startSearch)
     }
     
+    // Нажатие на кнопку поиска.
     @objc func startSearch() {
         let searchCoinViewController = viewModel.prepareSearchViewController()
         searchCoinViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(searchCoinViewController, animated: true)
+        navigationController?.pushViewController(searchCoinViewController, animated: true)
     }
     
+    // Настройка CollectionView.
     private func setupCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
-        collectionView.backgroundColor = .white
-        self.view.addSubview(collectionView)
+        coinsCollectionView.delegate = self
+        coinsCollectionView.dataSource = self
+        coinsCollectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
+        coinsCollectionView.backgroundColor = .white
+        coinsCollectionView.refreshControl = refreshControl
+        coinsCollectionView.refreshControl?.addTarget(self, action:
+                                                    #selector(refreshCoins),
+                                                    for: .valueChanged)
+        self.view.addSubview(coinsCollectionView)
     }
     
+    // Загрузка коллекции акций.
     func initCoinCollection() {
         viewModel.getCoins { [weak self] in
             guard let `self` = self else { return }
-            self.collectionView.reloadData()
+            self.coinsCollectionView.reloadData()
         }
     }
 }
 
 extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    // Количество ячеек.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.getCoinsCount()
     }
     
+    // Получение новой ячейки.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
+        let cell = coinsCollectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
+        // Запрос к модели.
         viewModel.createCell(cell: cell, at: indexPath.item)
         return cell
     }
     
+    // Нажатие на одну из ячеек CollectionView.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
         getCoinViewController.hidesBottomBarWhenPushed = true
@@ -91,9 +103,21 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
         
     }
     
+    // Догрузка коллекции
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.item >= viewModel.getCoinsCount() - 2){
+        // Сделала больше, а не больше или равно, чтобы не отправлять постоянно get'ы.
+        if (indexPath.item > viewModel.getCoinsCount() - 2){
             initCoinCollection()
+        }
+    }
+    
+    // Обновление. Функция привязана к UIRefreshControl.
+    @objc func refreshCoins() {
+        viewModel.refresh {
+            self.initCoinCollection()
+        }
+        DispatchQueue.main.async {
+           self.coinsCollectionView.refreshControl?.endRefreshing()
         }
     }
 }

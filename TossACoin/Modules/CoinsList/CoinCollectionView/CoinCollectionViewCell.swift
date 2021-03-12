@@ -11,6 +11,7 @@ import AlamofireImage
 
 // MARK: - CollectionViewCell для Coin.
 class CoinCollectionViewCell: UICollectionViewCell {
+    // Название акции (тикет).
     fileprivate var coinName: UILabel = {() -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,6 +22,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    // Последняя цена.
     fileprivate var price: UILabel = {() -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -31,6 +33,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    // Название компании.
     fileprivate var companyName: UILabel = {() -> UILabel  in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -41,6 +44,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    // Процент изменения.
     fileprivate var regularMarketChangePercent: UILabel = {() -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +54,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    // Изображение.
     fileprivate var image: UIImageView = {() -> UIImageView in
         let image = UIImageView()
         image.layer.cornerRadius = 15
@@ -62,6 +67,10 @@ class CoinCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setupStyle()
         setupSubviews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // Загрузка данных из модели.
@@ -78,12 +87,13 @@ class CoinCollectionViewCell: UICollectionViewCell {
     // Установка изображения.
     private func setImage(imageUrl: String) {
         guard let url = URL(string: APIClient.getImageUrl(imageUrl: imageUrl)) else { return }
+        // Ображение к кешу. Кеш немного псевдо, т к в том случае, если изображение не было получено, оно подгружается и добавляется в кеш. Отправляется также placeholder - изображение, которое в случае неудачи послужит заменой.
         ImageCache.getImage(url: url, placeholderName: "dollarsign.square.fill") { (coinImage) in
             self.image.image = coinImage   
         }
     }
     
-    // MARK: Style the CoinCollectionViewCell.
+    // Добавление стиля.
     func setupStyle() {
         layer.cornerRadius = 15
         layer.shadowRadius = 5
@@ -92,9 +102,10 @@ class CoinCollectionViewCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 2)
     }
     
-    // MARK: Setup subviews.
+    // MARK: - Добавление элементов.
     func setupSubviews() {
         let height = contentView.bounds.height
+        // MARK: - Изображение.
         contentView.addSubview(image)
         [
             image.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: height - 16),
@@ -103,12 +114,14 @@ class CoinCollectionViewCell: UICollectionViewCell {
             image.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
         ].forEach({$0.isActive = true})
         
+        // MARK: - Имя.
         contentView.addSubview(coinName)
         [
             coinName.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),
             coinName.leadingAnchor.constraint(equalTo: self.image.trailingAnchor, constant: 8)
         ].forEach({$0.isActive = true})
 
+        // MARK: - Название компании.
         contentView.addSubview(companyName)
 
         [
@@ -116,21 +129,19 @@ class CoinCollectionViewCell: UICollectionViewCell {
             companyName.leadingAnchor.constraint(equalTo: coinName.leadingAnchor)
         ].forEach({$0.isActive = true})
         
+        // MARK: - Цена.
         contentView.addSubview(price)
         [
             price.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
             price.topAnchor.constraint(equalTo: coinName.topAnchor)
         ].forEach({$0.isActive = true})
 
+        // MARK: - Процент изменения.
         contentView.addSubview(regularMarketChangePercent)
         [
             regularMarketChangePercent.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
             regularMarketChangePercent.topAnchor.constraint(equalTo: companyName.topAnchor)
         ].forEach({$0.isActive = true})
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     // TODO: Добавить нажатие.

@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 import XLPagerTabStrip
 
-class NewsViewController: UIViewController, IndicatorInfoProvider {
+class NewsViewController: UIViewController {
     let viewModel: NewsViewModel
-    fileprivate let collectionView =  UICollectionView(frame: CGRect(x: 0, y: 00, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 200), collectionViewLayout: NewsCollectionViewFlowLayout())
+    fileprivate let newsCollectionView =  UICollectionView(frame: CGRect(x: 0, y: 00, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 200), collectionViewLayout: NewsCollectionViewFlowLayout())
     init(viewModel: NewsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -19,9 +19,6 @@ class NewsViewController: UIViewController, IndicatorInfoProvider {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "News")
     }
     
     override func viewDidLoad() {
@@ -34,36 +31,46 @@ class NewsViewController: UIViewController, IndicatorInfoProvider {
     }
     
     func setupSubviews() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "NewsCollectionViewCell")
-        collectionView.backgroundColor = .white
-        view.addSubview(collectionView)
+        // Настройка newsCollectionView.
+        newsCollectionView.delegate = self
+        newsCollectionView.dataSource = self
+        newsCollectionView.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "NewsCollectionViewCell")
+        newsCollectionView.backgroundColor = .white
+        view.addSubview(newsCollectionView)
     }
     
+    // Получение новостей.
     func initCoinCollection() {
         viewModel.getNews
         { [weak self] in
             guard let `self` = self else { return }
-            self.collectionView.reloadData()
+            self.newsCollectionView.reloadData()
         }
     }
 }
 
 extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    // Количество ячеек.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.getArticlesCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewsCollectionViewCell", for: indexPath) as! NewsCollectionViewCell
+        // Получение ячейки.
+        let cell = newsCollectionView.dequeueReusableCell(withReuseIdentifier: "NewsCollectionViewCell", for: indexPath) as! NewsCollectionViewCell
         viewModel.createCell(cell: cell, at: indexPath.item)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.row >= viewModel.getArticlesCount() - 2) {
-            initCoinCollection()
-        }
+    // Нажатие на ячейку.
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.openArticle(at: indexPath.item)
+    }
+}
+
+// Наследование XLPagerTabStrip. Дочерний контроллер.
+extension NewsViewController: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "News")
     }
 }

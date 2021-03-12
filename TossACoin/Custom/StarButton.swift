@@ -41,9 +41,12 @@ final class StarButton: UIButton {
         setStatus(status: !status)
     }
     
+    // Изменение статуса.
     func setStatus(status: Bool) {
         self.status = status
     }
+    
+    // Обратная связь.
     func sendHapticFeedback() {
         let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
         impactFeedbackgenerator.prepare()

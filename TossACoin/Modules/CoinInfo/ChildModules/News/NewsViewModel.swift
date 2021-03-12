@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class NewsViewModel {
     let mintedCoin: MintedCoin
@@ -20,8 +21,9 @@ class NewsViewModel {
         self.networkService = networkService
     }
     
+    // Получение новостей.
     func getNews(completion: @escaping () -> Void) {
-        networkService.getNews(symbol: mintedCoin.coin.name, page: page) { [weak self] result in
+        networkService.getNews(symbol: mintedCoin.coin.name) { [weak self] result in
             guard let `self` = self else { return }
 
             switch result {
@@ -39,13 +41,25 @@ class NewsViewModel {
         }
     }
     
+    // Создание ячейки под новость.
     public func createCell(cell: NewsCollectionViewCell, at indexPath: Int){
         if (articles.count <= indexPath) { return }
         let article = articles[indexPath]
-        cell.loadData(article: article)
+        cell.loadData(title: article.title, imageUrl: article.imageUrl)
+        cell.backgroundColor = indexPath % 2 == 0 ? #colorLiteral(red: 0.989908874, green: 1, blue: 0.9611904025, alpha: 1) : #colorLiteral(red: 0.9994921088, green: 0.9913042188, blue: 0.7818924785, alpha: 1)
     }
     
+    // Количество новостей.
     func getArticlesCount() -> Int {
         return articles.count
+    }
+    
+    // Открытие новости.
+    func openArticle(at indexPath: Int) {
+        guard let url = URL(string: articles[indexPath].url) else {
+            return
+        }
+        // Открытие ссылки.
+        UIApplication.shared.open(url)
     }
 }

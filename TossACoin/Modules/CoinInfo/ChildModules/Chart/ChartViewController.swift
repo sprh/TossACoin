@@ -11,19 +11,28 @@ import XLPagerTabStrip
 import SwiftChart
 
 class ChartViewController: UIViewController {
+    // График.
     fileprivate let chart = Chart()
-    fileprivate lazy var labelLeadingMarginConstraint = NSLayoutConstraint()
+    // Label для информации о том, какая величина соответствует точке на графике.
     fileprivate lazy var labelWithPrice = UILabel()
+    // Конструкции для labelWithPrice.
+    fileprivate lazy var labelLeadingMarginConstraint = NSLayoutConstraint()
     fileprivate var labelLeadingMarginInitialConstant: CGFloat! = 0
+    
+    // Кнопки для изменения типа графика.
+    fileprivate let dailyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    fileprivate let hourlyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    fileprivate let minuteButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    // Стэк для кнопок.
     fileprivate var stackForButtons: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    fileprivate let dailyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-    fileprivate let hourlyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-    fileprivate let minuteButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    
+    
     fileprivate let scrollView = UIScrollView()
+    // Кнопка, которая на самом деле просто открывает браузер.
     fileprivate var buyButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 10
@@ -34,6 +43,7 @@ class ChartViewController: UIViewController {
         return button
     }()
     
+    // Последняя цена.
     fileprivate let labelWithLastPrice: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 27)
@@ -41,6 +51,7 @@ class ChartViewController: UIViewController {
         return label
     }()
     
+    // Процент изменения.
     fileprivate let labelChangePercent: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 22)
@@ -67,16 +78,21 @@ class ChartViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        // Изменение contentSize для scrollView.
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width,
-                                        height: UIScreen.main.bounds.height - view.safeAreaInsets.bottom + scrollView.convert(stackForButtons.frame.origin, to: buyButton).y - 120)
+                                        height: UIScreen.main.bounds.height -
+                                            view.safeAreaInsets.bottom +
+                                            // Т к Buy привязана не к scrollView, а к view, высчитывается оптимальное расстояние.
+                                            scrollView.convert(stackForButtons.frame.origin, to: buyButton).y - 120)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        // Сброс размера для того, чтобы позднее нормально его восстановить в viewDidAppear.
         scrollView.contentSize = CGSize.zero
     }
     
     private func setupSubviews() {
-        // MARK: - scrollView
+        // MARK: - ScrollView.
         view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.alwaysBounceVertical = true
@@ -87,7 +103,7 @@ class ChartViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ].forEach({$0.isActive = true})
         
-        // MARK: - buyButton
+        // MARK: - BuyButton.
         view.addSubview(buyButton)
         [
             buyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
@@ -97,7 +113,7 @@ class ChartViewController: UIViewController {
         ].forEach({$0.isActive = true})
         buyButton.addTarget(self, action: #selector(buyButtonTap), for: .touchDown)
         
-        // MARK: - labelWithLastPrice
+        // MARK: - LabelWithLastPrice.
         scrollView.addSubview(labelWithLastPrice)
         [
             labelWithLastPrice.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
@@ -105,7 +121,7 @@ class ChartViewController: UIViewController {
         ].forEach({$0.isActive = true})
         labelWithLastPrice.text = viewModel.getLastPrice()
         
-        // MARK: -labelChangePercent
+        // MARK: - LabelChangePercent.
         scrollView.addSubview(labelChangePercent)
         [
             labelChangePercent.topAnchor.constraint(equalTo: labelWithLastPrice.bottomAnchor, constant: 8),
@@ -114,7 +130,7 @@ class ChartViewController: UIViewController {
         labelChangePercent.text = "\(viewModel.getChangePercent())%"
         labelChangePercent.textColor = labelChangePercent.text!.contains("-") ? ApplicationColors.redPercent : ApplicationColors.greenPercent
 
-        // MARK: - Chart
+        // MARK: - Chart.
         scrollView.addSubview(chart)
         chart.translatesAutoresizingMaskIntoConstraints = false
         [
@@ -129,7 +145,7 @@ class ChartViewController: UIViewController {
         chart.clearsContextBeforeDrawing = true
         setData(ofType: .daily)
         
-        // MARK: - labelWithPrice
+        // MARK: - LabelWithPrice.
         scrollView.addSubview(labelWithPrice)
         labelWithPrice.translatesAutoresizingMaskIntoConstraints = false
         labelLeadingMarginConstraint = NSLayoutConstraint(item: labelWithPrice, attribute: NSLayoutConstraint.Attribute.leadingMargin, relatedBy: NSLayoutConstraint.Relation.equal, toItem: scrollView, attribute: NSLayoutConstraint.Attribute.leadingMargin, multiplier: 1, constant: 0)
@@ -139,7 +155,7 @@ class ChartViewController: UIViewController {
         ].forEach({$0.isActive = true})
         labelLeadingMarginInitialConstant = labelLeadingMarginConstraint.constant
     
-    // MARK: - stackForButtons
+    // MARK: - StackForButtons.
         scrollView.addSubview(stackForButtons)
         [
             stackForButtons.topAnchor.constraint(equalTo: chart.bottomAnchor, constant: 10),
@@ -176,10 +192,12 @@ class ChartViewController: UIViewController {
 }
 
 extension ChartViewController {
+    // В зависимости от того, какая кнопка была нажата, отправляется запрос в другой метод + изменяется цвет кнопок.
     @objc func dailyButtonTap() {
         dailyButton.didSelect()
         hourlyButton.didUnselect()
         minuteButton.didUnselect()
+        // Используется enum.
         setData(ofType: .daily)
     }
     
@@ -203,38 +221,41 @@ extension ChartViewController {
 }
 
 extension ChartViewController: ChartDelegate {
+    func didEndTouchingChart(_ chart: Chart) {
+    }
+    
+    // Нажатие на Chart.
     func didTouchChart(_ chart: Chart, indexes: [Int?], x: Double, left: CGFloat) {
         guard let value = chart.valueForSeries(0, atIndex: indexes[0]) else {
             return}
             
-            let numberFormatter = NumberFormatter()
-            numberFormatter.minimumFractionDigits = 2
-            numberFormatter.maximumFractionDigits = 2
-            labelWithPrice.text = numberFormatter.string(from: NSNumber(value: value))
-            var constant = labelLeadingMarginInitialConstant + left - (labelWithPrice.frame.width / 2)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        labelWithPrice.text = numberFormatter.string(from: NSNumber(value: value))
+        var constant = labelLeadingMarginInitialConstant + left - (labelWithPrice.frame.width / 2)
             
-            if constant < labelLeadingMarginInitialConstant {
-                constant = labelLeadingMarginInitialConstant
-            }
+        // Проверка, что все ок и не было выходв за пределы графика.
+        if constant < labelLeadingMarginInitialConstant {
+            constant = labelLeadingMarginInitialConstant
+        }
             
-            let rightMargin = chart.frame.width - labelWithPrice.frame.width
-            if constant > rightMargin {
-                constant = rightMargin
-            }
+        let rightMargin = chart.frame.width - labelWithPrice.frame.width
+        if constant > rightMargin {
+            constant = rightMargin
+        }
             
-            labelLeadingMarginConstraint.constant = constant
+        // Изменение положения labelWithPrice.
+        labelLeadingMarginConstraint.constant = constant
             
     }
     
     func didFinishTouchingChart(_ chart: Chart) {
-        labelWithPrice.text = ""
+        // Обновление конструкции.
         labelLeadingMarginConstraint.constant = labelLeadingMarginInitialConstant
     }
     
-    func didEndTouchingChart(_ chart: Chart) {
-        
-    }
-    
+    // Обновление графика.
     func setData(ofType: ChartType) {
         viewModel.getData(ofType: ofType) { (result) -> () in
             let chartSeries = ChartSeries(result)
@@ -245,6 +266,7 @@ extension ChartViewController: ChartDelegate {
     }
 }
 
+// Наследование XLPagerTabStrip. Дочерний контроллер.
 extension ChartViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Chart")

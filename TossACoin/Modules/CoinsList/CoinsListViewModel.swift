@@ -14,12 +14,13 @@ class CoinsListViewModel {
     private var coins = [MintedCoin]()
     private var page: Int = 0
     
+    // Конструктор.
     init(enviroment: Enviroment, networkService: NetworkService) {
         self.enviroment = enviroment
         self.networkService = networkService
     }
     
-    // TODO Create data cash and update (refresh control) in the vc scree with a datetime info about last update.
+    // Получение информации об акциях.
     func getCoins(completion: @escaping () -> Void) {
         networkService.getCoins(page: page) { [weak self] result in
             guard let `self` = self else { return }
@@ -65,5 +66,14 @@ class CoinsListViewModel {
         let searchCoinViewModel = SearchCoinViewModel(enviroment: enviroment, networkService: networkService)
         let searchCoinViewController = SearchCoinViewController(viewModel: searchCoinViewModel)
         return searchCoinViewController
+    }
+    
+    // Для обновления очищается массив полученных ранее монет и подгружаются новые.
+    func refresh(completion: @escaping () -> Void) {
+        coins = []
+        page = 0
+        getCoins {
+            completion()
+        }
     }
 }

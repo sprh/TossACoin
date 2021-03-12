@@ -7,17 +7,15 @@
 
 import Foundation
 
+// Все новости.
 struct NewsData: Codable {
-    let status: String
      let news: [Article]
     enum CodingKeys: String, CodingKey {
-        case status = "status"
-        case news = "articles"
+        case news = "Data"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.news = try container.decode([Article].self, forKey: .news)
-        self.status = try container.decode(String.self, forKey: .status)
     }
 }

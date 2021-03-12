@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Тип графика.
 enum ChartType {
     case daily
     case hourly

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+// Кнопка для выбора даты на ChartView.
 class RoundedButtonForDate: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,12 +21,14 @@ class RoundedButtonForDate: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Изменение цвета фона и текста.
     func didSelect() {
         backgroundColor = .black
         setTitleColor(.white, for: .normal)
 //        titleLabel?.font = .systemFont(ofSize: 22)
     }
     
+    // Изменение цвета фона и текста.
     func didUnselect() {
         backgroundColor = ApplicationColors.lightOrangeColor
         setTitleColor(.black, for: .normal)

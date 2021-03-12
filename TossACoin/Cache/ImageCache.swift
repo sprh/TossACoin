@@ -22,11 +22,9 @@ class ImageCache {
             AF.request(url).responseImage { response in
                 if case .success(let image) = response.result {
                     setImage(url: url, image: image)
-                    print("success \(url.absoluteString)")
                     completion(image)
                 }
                 else {
-                    print("error \(url.absoluteString)")
                     completion(UIImage(systemName: placeholderName)?.withTintColor(ApplicationColors.orangeColor))
                 }
             }

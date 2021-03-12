@@ -11,7 +11,6 @@ import Foundation
 public struct APIClient {
     // Дефолтный адрес.
     static let apiUrlForCoins: String =  "https://min-api.cryptocompare.com"
-    static let apiUrlForNews: String = "https://newsapi.org"
 
     // Url -> получение (всех) акций на странице.
     static func getCoins(page: Int = 1) -> String {
@@ -24,35 +23,33 @@ public struct APIClient {
         return "\(apiUrlForCoins)/data/pricemultifull?fsyms=\(symbols)&tsyms=RUB"
     }
     
-    static func getQuote(symbols: String) -> String {
-        return "https://mboum.com/api/v1/qu/quote/?symbol=\(symbols),F&apikey=demo"
-    }
-    
     // Url -> получение изображения.
     static func getImageUrl(imageUrl: String) -> String{
         return "https://cryptocompare.com/\(imageUrl)"
     }
     
+    // Информация о цене акции по дням.
     static func getDailyPair(symbol: String) ->String {
-        return "\(apiUrlForCoins)/data/v2/histoday?fsym=\(symbol)&tsym=RUB&limit=15"
+        return "\(apiUrlForCoins)/data/v2/histoday?fsym=\(symbol)&tsym=RUB&limit=20"
     }
-//    static func getQuotes(symbol: String) -> String {
-//        return "\(apiUrlForCoins)/qu/quote/?symbol=\(symbol),F&apikey=demo"
-//    }
     
+    // Открытие страницы в яндексе.
     static func getBuyCoin(symbol: String) -> String {
         return "https://yandex.ru/search/?text=buy%20\(symbol)&lr=0"
     }
     
+    // Информация о цене акции по часам.
     static func getHourlyPair(symbol: String) -> String {
-        return "\(apiUrlForCoins)/data/v2/histohour?fsym=\(symbol)&tsym=RUB&limit=15"
+        return "\(apiUrlForCoins)/data/v2/histohour?fsym=\(symbol)&tsym=RUB&limit=20"
     }
     
+    // Информация о цене акции по минутам.
     static func getMinutePair(symbol: String) -> String {
-        return "\(apiUrlForCoins)/data/v2/histominute?fsym=\(symbol)&tsym=RUB&limit=15"
+        return "\(apiUrlForCoins)/data/v2/histominute?fsym=\(symbol)&tsym=RUB&limit=20"
     }
     
-    static func getNews(symbol: String, page: Int) -> String {
-        return "\(apiUrlForNews)/v2/everything?q=\(symbol)&language=en&pageSize=10&page=\(page)&apiKey=a330532395e14e728a7b8fc3b3e0f8ee"
+    // Получение новостей.
+    static func getNews(symbol: String) -> String {
+        return "\(apiUrlForCoins)data/v2/news/?categories=\(symbol)"
     }
 }

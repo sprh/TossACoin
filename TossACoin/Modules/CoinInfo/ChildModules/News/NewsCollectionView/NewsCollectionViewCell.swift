@@ -8,12 +8,15 @@
 import Foundation
 import UIKit
 
+// UICollectionViewCell для NewsViewController.
 class NewsCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
+        setupStyle()
     }
     
+    // Название новости.
     fileprivate let title: UILabel = { () -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -24,9 +27,9 @@ class NewsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    // Изображение.
     fileprivate let articleImage: UIImageView = { () ->  UIImageView in
         let image = UIImageView()
-        // TODO: Возможно, придется изменить.
         image.layer.cornerRadius = 10
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
@@ -37,8 +40,20 @@ class NewsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Настройка стиля.
+    func setupStyle() {
+        layer.cornerRadius = 15
+        layer.shadowRadius = 5
+        layer.shadowOpacity = 0.3
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+    }
+    
+    
+    // Добавление элементов.
     private func setupSubviews() {
         let height = contentView.bounds.height
+        // MARK: - Изображение.
         contentView.addSubview(articleImage)
         [
             articleImage.trailingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: height - 16),
@@ -47,6 +62,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
             articleImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ].forEach({$0.isActive = true})
         
+        // MARK: - Название.
         contentView.addSubview(title)
         [
             title.leadingAnchor.constraint(equalTo: articleImage.trailingAnchor, constant: 10),
@@ -57,16 +73,17 @@ class NewsCollectionViewCell: UICollectionViewCell {
     
     // Установка изображения.
     private func setImage(imageUrl: String) {
-        guard let url = URL(string: APIClient.getImageUrl(imageUrl: imageUrl)) else { return }
+        guard let url = URL(string: imageUrl) else { return }
         
+        // Обращение к псевдо кешу.
         ImageCache.getImage(url: url, placeholderName: "newspaper.fill") { (coinImage) in
             self.articleImage.image = coinImage
         }
     }
     
-    public func loadData(article: Article) {
-        title.text = article.title
-        setImage(imageUrl: "https://i.insider.com/6038b76dd920880018592239?width=1200&format=jpeg")
-        // TODO: Доделать.
+    // Загрузка данных.
+    public func loadData(title: String, imageUrl: String) {
+        self.title.text = title
+        setImage(imageUrl: imageUrl)
     }
 }

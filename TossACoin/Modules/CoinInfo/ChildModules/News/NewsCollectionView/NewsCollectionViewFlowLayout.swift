@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 
+// CollectionViewFlowLayout для NewsViewController.
 class NewsCollectionViewFlowLayout: CoinsCollectionViewFlowLayout {
-    
 }

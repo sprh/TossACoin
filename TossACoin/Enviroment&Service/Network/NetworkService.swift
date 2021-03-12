@@ -10,10 +10,8 @@ import Alamofire
 
 // MARK: - Подключение.
 public struct NetworkService: NetworkServiceProtocol {
-    func getNews(symbol: String, page: Int, completion: @escaping (NetworkServiceResult<NewsData>) -> Void) {
-        guard let url = URL(string: APIClient.getNews(symbol: symbol, page: page)) else { return }
-        
-        print(APIClient.getNews(symbol: symbol, page: page))
+    func getNews(symbol: String, completion: @escaping (NetworkServiceResult<NewsData>) -> Void) {
+        guard let url = URL(string: APIClient.getNews(symbol: symbol)) else { return }
         AF.request(url).responseData { (dataResponse) in
             if let error = dataResponse.error {print(error); return}
             guard let data = dataResponse.data else {return}
@@ -26,6 +24,7 @@ public struct NetworkService: NetworkServiceProtocol {
     
     func getPair(symbol: String, ofType: ChartType, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void) {
         let url: URL
+        // Тип запрашиваемого графика.
         switch ofType {
         case .daily:
             guard let urlForSymbol = URL(string: APIClient.getDailyPair(symbol: symbol)) else { return }
@@ -51,10 +50,6 @@ public struct NetworkService: NetworkServiceProtocol {
             }
             catch let error { print(error) }
         }
-    }
-    
-    func getCoin(symbols: [String], completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void) {
-        
     }
     
     func getPrices(symbols: String, completion: @escaping (NetworkServiceResult<CoinPrice>) -> Void) {

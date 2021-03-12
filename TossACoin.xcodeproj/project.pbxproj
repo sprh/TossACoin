@@ -50,9 +50,6 @@
 		E3BE2C5425F56567009942DB /* EnumChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C5325F56567009942DB /* EnumChartType.swift */; };
 		E3BE2C6925F60086009942DB /* RoundedButtonForDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C6825F60086009942DB /* RoundedButtonForDate.swift */; };
 		E3BE2C6C25F60B52009942DB /* ApplicationColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE2C6B25F60B52009942DB /* ApplicationColors.swift */; };
-		E3F35C3125F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C3025F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift */; };
-		E3F35C3625F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C3525F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift */; };
-		E3F35C3F25F3E17300D3B3B0 /* ConversionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C3E25F3E17300D3B3B0 /* ConversionInfo.swift */; };
 		E3F35C4225F3E2E300D3B3B0 /* CoinPriceDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4125F3E2E300D3B3B0 /* CoinPriceDisplay.swift */; };
 		E3F35C4525F3E36900D3B3B0 /* CoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */; };
 		E3F35C4925F3E54200D3B3B0 /* MintedCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */; };
@@ -109,9 +106,6 @@
 		E3BE2C5325F56567009942DB /* EnumChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumChartType.swift; sourceTree = "<group>"; };
 		E3BE2C6825F60086009942DB /* RoundedButtonForDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonForDate.swift; sourceTree = "<group>"; };
 		E3BE2C6B25F60B52009942DB /* ApplicationColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationColors.swift; sourceTree = "<group>"; };
-		E3F35C3025F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWithButtonsLayout.swift; sourceTree = "<group>"; };
-		E3F35C3525F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWithButtonsCell.swift; sourceTree = "<group>"; };
-		E3F35C3E25F3E17300D3B3B0 /* ConversionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionInfo.swift; sourceTree = "<group>"; };
 		E3F35C4125F3E2E300D3B3B0 /* CoinPriceDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceDisplay.swift; sourceTree = "<group>"; };
 		E3F35C4425F3E36900D3B3B0 /* CoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPrice.swift; sourceTree = "<group>"; };
 		E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintedCoin.swift; sourceTree = "<group>"; };
@@ -152,7 +146,6 @@
 		E30BA28025ED45B500CB15E1 /* SearchCoin */ = {
 			isa = PBXGroup;
 			children = (
-				E3F35C2F25F023C900D3B3B0 /* CollectionView */,
 				E30BA28125ED45D100CB15E1 /* SearchCoinViewModel.swift */,
 				E30BA28525ED463500CB15E1 /* SearchCoinViewController.swift */,
 			);
@@ -175,7 +168,6 @@
 				E3A47AE025EC11F9002BDE69 /* CoinCellModel.swift */,
 				E3A47AB525EBE5BB002BDE69 /* Coin.swift */,
 				E30ECDE225EC498F005B53C6 /* CoinData.swift */,
-				E3F35C3E25F3E17300D3B3B0 /* ConversionInfo.swift */,
 				E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */,
 			);
 			path = Coin;
@@ -400,15 +392,6 @@
 			path = EnumForChartType;
 			sourceTree = "<group>";
 		};
-		E3F35C2F25F023C900D3B3B0 /* CollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				E3F35C3025F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift */,
-				E3F35C3525F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift */,
-			);
-			path = CollectionView;
-			sourceTree = "<group>";
-		};
 		E3F35C6225F4FB3100D3B3B0 /* ChildModules */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,8 +532,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3F35C3125F023ED00D3B3B0 /* CollectionViewWithButtonsLayout.swift in Sources */,
-				E3F35C3F25F3E17300D3B3B0 /* ConversionInfo.swift in Sources */,
 				E3A47A7225EA4E44002BDE69 /* CoinCollectionViewCell.swift in Sources */,
 				E3A47AE125EC11F9002BDE69 /* CoinCellModel.swift in Sources */,
 				E3A47A6E25EA4D39002BDE69 /* CoinsCollectionViewFlowLayout.swift in Sources */,
@@ -578,7 +559,6 @@
 				E3A47AD825EBF934002BDE69 /* CoinsListViewModel.swift in Sources */,
 				E3F35C4925F3E54200D3B3B0 /* MintedCoin.swift in Sources */,
 				E3BE2C4F25F562F3009942DB /* ChartViewModel.swift in Sources */,
-				E3F35C3625F0248000D3B3B0 /* CollectionViewWithButtonsCell.swift in Sources */,
 				E3BE2C6C25F60B52009942DB /* ApplicationColors.swift in Sources */,
 				E3734EFE25F6399500CDF7D5 /* Article.swift in Sources */,
 				E3F35C4225F3E2E300D3B3B0 /* CoinPriceDisplay.swift in Sources */,

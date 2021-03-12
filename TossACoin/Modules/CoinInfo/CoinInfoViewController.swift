@@ -9,17 +9,12 @@ import Foundation
 import UIKit
 import XLPagerTabStrip
 
+// MARK: - Экран с подробной информацией об акции.
+// Использовала библиотеку XLPagerTabStrip для реализации чего-то похожего на Tab Page.
 class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     var viewModel: CoinInfoViewModel!
     
-    lazy var barView: ButtonBarView = {
-        let layout = UICollectionViewFlowLayout()
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 64)
-        let collectionView = ButtonBarView(frame: frame, collectionViewLayout: layout)
-        collectionView.backgroundColor = .red
-        return collectionView
-      }()
-    
+    // Тут содержится имя самой акции и имя компании.
     fileprivate var headerView = UIView()
     
     init(viewModel: CoinInfoViewModel) {
@@ -43,14 +38,12 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         setupView()
     }
     
+    // Настройка вью.
     private func setupView() {
         self.view.backgroundColor = .white
-        buttonBarView.removeFromSuperview()
-        containerView.removeFromSuperview()
         view.addSubview(headerView)
-        view.addSubview(buttonBarView)
-        view.addSubview(containerView)
         
+        // Изменяем конструкции.
         headerView.frame = CGRect(
             x: 0,
             y: 0,
@@ -68,17 +61,14 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
             y: headerView.frame.height + buttonBarView.frame.height,
             width: self.view.bounds.width,
             height: self.view.bounds.height - (headerView.frame.height + buttonBarView.frame.height))
+        // Настройка header view.
          setupHeaderView()
     }
     
     private func setupHeaderView() {
+        // MARK: - Название акции.
         let coinName = UILabel()
-        let companyName = UILabel()
-        let starButton = StarButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         headerView.addSubview(coinName)
-        headerView.addSubview(companyName)
-        headerView.addSubview(starButton)
-        
         coinName.translatesAutoresizingMaskIntoConstraints = false
         [
             coinName.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
@@ -88,6 +78,9 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         coinName.font = .boldSystemFont(ofSize: 26)
         coinName.text = self.viewModel.getCoinName()
         
+        // MARK: - Название компании.
+        let companyName = UILabel()
+        headerView.addSubview(companyName)
         companyName.translatesAutoresizingMaskIntoConstraints = false
         [
             companyName.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
@@ -97,21 +90,29 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         companyName.textColor = .gray
         companyName.text = self.viewModel.getCompanyName()
         
+        // MARK: - Кнопка добавления в избранное.
+        let starButton = StarButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        headerView.addSubview(starButton)
         [
             starButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
             starButton.topAnchor.constraint(equalTo: headerView.centerYAnchor, constant: -15)
         ].forEach({$0.isActive = true})
         starButton.imageEdgeInsets = UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 40)
         starButton.addTarget(self, action: #selector(addToFavoutite), for: .touchDown)
+        
+        // Проверка, есть ли уже в избранном.
         if(viewModel.isFavourite()) {
              starButton.setStatus(status: true)
         }
     }
     
+    
+    // Добавление в избранное.
     @objc func addToFavoutite() {
         viewModel.addToFavourite()
     }
     
+    // Настройка ButtonBarView.
     private func setSettings() {
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
@@ -130,9 +131,11 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
             oldCell?.label.font = .boldSystemFont(ofSize: 14)
             newCell?.label.font = .boldSystemFont(ofSize: 17)
         }
+        // Скролл между экранами.
         containerView?.isScrollEnabled = false
     }
     
+    // Все дочерние экраны.
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let mainViewController =  viewModel.getChartViewController()
         let newsViewController = viewModel.getNewsViewController()

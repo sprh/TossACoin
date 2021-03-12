@@ -10,12 +10,11 @@ import Foundation
 protocol NetworkServiceProtocol {
     // Получение всех монет со страницы.
     func getCoins(page: Int, completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void)
-    // Получение 1 монеты по тикету.
-    func getCoin(symbols: [String], completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void)
     // Получение цен в различных валютах.
     func getPrices(symbols: String, completion: @escaping (NetworkServiceResult<CoinPrice>) -> Void)
     
+    // Получение информации о цене за период, указанный в ofType.
     func getPair(symbol: String, ofType: ChartType, completion: @escaping (NetworkServiceResult<CoinPriceForAPeriod>) -> Void)
     
-    func getNews(symbol: String, page: Int, completion: @escaping (NetworkServiceResult<NewsData>) -> Void)
+    func getNews(symbol: String, completion: @escaping (NetworkServiceResult<NewsData>) -> Void)
 }

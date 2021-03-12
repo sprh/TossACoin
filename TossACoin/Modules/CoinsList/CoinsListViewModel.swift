@@ -28,18 +28,36 @@ class CoinsListViewModel {
     
     // Получение информации об акциях.
     func getCoins(completion: @escaping () -> Void) {
-        networkService.getCoins(page: page) { result in
-            switch result {
-            case .Success(let mintedCoins):
-                guard mintedCoins.count > 0 else {
-                    return completion()
+        switch type {
+        case .all:
+            networkService.getCoins(page: page) { result in
+                switch result {
+                case .Success(let mintedCoins):
+                    guard mintedCoins.count > 0 else {
+                        return completion()
+                    }
+                    
+                    mintedCoins.forEach{ self.coins.append($0) }
+                    self.page += 1
+                    completion()
+                case .Error:
+                    print("Error")
                 }
-                
-                mintedCoins.forEach{ self.coins.append($0) }
-                self.page += 1
-                completion()
-            case .Error:
-                print("Error")
+            }
+        case .favourite:
+            let coins = enviroment.favouriteCoins
+            networkService.getFavouriteCoins(coins: coins) { result in
+                switch result {
+                case .Success(let mintedCoins):
+                    guard mintedCoins.count > 0 else {
+                        return completion()
+                    }
+                    
+                    mintedCoins.forEach{ self.coins.append($0) }
+                    completion()
+                case .Error:
+                    print("Error")
+                }
             }
         }
     }

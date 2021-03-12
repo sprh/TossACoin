@@ -157,4 +157,25 @@ public struct NetworkService: NetworkServiceProtocol {
             }
         }
     }
+    
+    func getFavouriteCoins(coins: [Coin], completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void) {
+        let coinSymbols = coins.map({ $0.name }).joined(separator: ",")
+        var mintedCouns = [MintedCoin]()
+        
+        self.getPrices(symbols: coinSymbols, completion: { result in
+            switch result {
+            case .Success(let coinPrices):
+                coins.forEach {
+                    guard let price = coinPrices.display[$0.name] else { return }
+                    // Из forEach берем акцию, затем проверяем цену.
+                    // Если она не имеет информации о валюте, создаем CoinPriceDisplay с помощью безпараметрического конструктора
+                    mintedCouns.append(MintedCoin(coin: $0, price: price["USD"] ?? CoinPriceDisplay()))
+                }
+                // Вызов замыкания.
+                completion(.Success(mintedCouns))
+            case .Error:
+                return
+            }
+        })
+    }
 }

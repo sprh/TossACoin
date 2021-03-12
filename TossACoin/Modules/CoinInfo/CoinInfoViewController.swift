@@ -114,9 +114,11 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     
     // Настройка ButtonBarView.
     private func setSettings() {
-        settings.style.selectedBarBackgroundColor = .orange
-        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
-        settings.style.selectedBarHeight = 2.0
+        containerView?.isScrollEnabled = true
+        settings.style.buttonBarBackgroundColor = .white
+        settings.style.buttonBarItemBackgroundColor = .clear
+        settings.style.selectedBarBackgroundColor = ApplicationColors.orangeColor
+        settings.style.selectedBarHeight = 4.0
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .black
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
@@ -130,8 +132,6 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
             oldCell?.label.font = .boldSystemFont(ofSize: 14)
             newCell?.label.font = .boldSystemFont(ofSize: 17)
         }
-        // Скролл между экранами.
-        containerView?.isScrollEnabled = false
     }
     
     // Все дочерние экраны.

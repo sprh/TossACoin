@@ -103,8 +103,8 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
     
     // Все дочерние экраны.
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let allCoinsViewController =  viewModel.getCoinsListViewController(type: .all)
-        let favouriteCoinsViewController =  viewModel.getCoinsListViewController(type: .favourite)
+        let allCoinsViewController =  viewModel.getAllCoinsViewController()
+        let favouriteCoinsViewController =  viewModel.getFavouriteCoinsViewController()
         return [allCoinsViewController, favouriteCoinsViewController]
     }
 }

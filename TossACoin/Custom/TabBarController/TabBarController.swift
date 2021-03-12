@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: Удалить, если не буду использовать.
 // MARK: - Application's Tab Bar.
 public final class TabBarController: UITabBarController {
     

@@ -1,22 +1,21 @@
 //
-//  CoinsListViewController.swift
+//  FavouriteCoinsViewController.swift
 //  TossACoin
 //
-//  Created by Софья Тимохина on 28.02.2021.
+//  Created by Софья Тимохина on 12.03.2021.
 //
 
 import Foundation
 import UIKit
 import XLPagerTabStrip
 
-// MARK: - View Controller для экрана со всеми акциями.
-class CoinsListViewController: UIViewController {
+class FavouriteCoinsViewController: UIViewController {
     fileprivate let coinsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
-    fileprivate let viewModel: CoinsListViewModel!
+    fileprivate let viewModel: FavouriteCoinsViewModel!
     fileprivate let searchButton = SearchButtonBarItem()
     fileprivate let refreshControl = UIRefreshControl()
     
-    init(viewModel: CoinsListViewModel) {
+    init(viewModel: FavouriteCoinsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -77,7 +76,7 @@ class CoinsListViewController: UIViewController {
     }
 }
 
-extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension FavouriteCoinsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     // Количество ячеек.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.getCoinsCount()
@@ -99,13 +98,6 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
         present(getCoinViewController, animated: true)
     }
     
-    // Догрузка коллекции
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.item >= viewModel.getCoinsCount() - 2){
-            initCoinCollection()
-        }
-    }
-    
     // Обновление. Функция привязана к UIRefreshControl.
     @objc func refreshCoins() {
         viewModel.refresh {
@@ -117,10 +109,8 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
-extension CoinsListViewController: IndicatorInfoProvider {
+extension FavouriteCoinsViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: viewModel.getTitle())
+        return IndicatorInfo(title: "Favourite")
     }
-    
-    
 }

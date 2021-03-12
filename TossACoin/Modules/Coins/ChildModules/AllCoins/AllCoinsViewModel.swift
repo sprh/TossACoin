@@ -8,56 +8,32 @@
 import Foundation
 
 // MARK: - ViewModel для экрана со всеми акциями.
-class CoinsListViewModel {
+class AllCoinsViewModel {
     private let enviroment: Enviroment
     private let networkService: NetworkService
     private var coins = [MintedCoin]()
     private var page: Int = 0
-    private var type: CoinsListType
     
     // Конструктор.
-    init(enviroment: Enviroment, networkService: NetworkService, type: CoinsListType) {
+    init(enviroment: Enviroment, networkService: NetworkService) {
         self.enviroment = enviroment
         self.networkService = networkService
-        self.type = type
-    }
-    
-    func getTitle() -> String{
-        return type == .all ? "All": "Favourite"
     }
     
     // Получение информации об акциях.
     func getCoins(completion: @escaping () -> Void) {
-        switch type {
-        case .all:
-            networkService.getCoins(page: page) { result in
-                switch result {
-                case .Success(let mintedCoins):
-                    guard mintedCoins.count > 0 else {
-                        return completion()
-                    }
-                    
-                    mintedCoins.forEach{ self.coins.append($0) }
-                    self.page += 1
-                    completion()
-                case .Error:
-                    print("Error")
+        networkService.getCoins(page: page) { result in
+            switch result {
+            case .Success(let mintedCoins):
+                guard mintedCoins.count > 0 else {
+                    return completion()
                 }
-            }
-        case .favourite:
-            let coins = enviroment.favouriteCoins
-            networkService.getFavouriteCoins(coins: coins) { result in
-                switch result {
-                case .Success(let mintedCoins):
-                    guard mintedCoins.count > 0 else {
-                        return completion()
-                    }
                     
-                    mintedCoins.forEach{ self.coins.append($0) }
-                    completion()
-                case .Error:
-                    print("Error")
-                }
+                mintedCoins.forEach{ self.coins.append($0) }
+                self.page += 1
+                completion()
+            case .Error:
+                print("Error")
             }
         }
     }

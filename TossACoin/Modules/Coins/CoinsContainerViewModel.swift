@@ -18,9 +18,15 @@ class CoinsContainerViewModel {
         self.networkService = networkService
     }
     
-    func getCoinsListViewController(type: CoinsListType) -> CoinsListViewController {
-        let viewModel = CoinsListViewModel(enviroment: enviroment, networkService: networkService, type: type)
-        let viewConteoller = CoinsListViewController(viewModel: viewModel)
-        return viewConteoller
+    func getAllCoinsViewController() -> AllCoinsViewController {
+        let viewModel = AllCoinsViewModel(enviroment: enviroment, networkService: networkService)
+        let viewController = AllCoinsViewController(viewModel: viewModel)
+        return viewController
+    }
+    
+    func getFavouriteCoinsViewController() -> FavouriteCoinsViewController {
+        let viewModel = FavouriteCoinsViewModel(enviroment: enviroment, networkService: networkService)
+        let viewController = FavouriteCoinsViewController(viewModel: viewModel)
+        return viewController
     }
 }

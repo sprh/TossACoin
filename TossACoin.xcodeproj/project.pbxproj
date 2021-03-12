@@ -39,11 +39,6 @@
 		E3A47A9125EA8C7D002BDE69 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A9025EA8C7D002BDE69 /* NetworkService.swift */; };
 		E3A47A9525EA8CB2002BDE69 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A9425EA8CB2002BDE69 /* APIClient.swift */; };
 		E3A47A9825EA8D5F002BDE69 /* NetworkServiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A9725EA8D5F002BDE69 /* NetworkServiceResult.swift */; };
-		E3A47AA525EA92A8002BDE69 /* DataStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AA425EA92A8002BDE69 /* DataStorageProtocol.swift */; };
-		E3A47AA825EA93FC002BDE69 /* DataStorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AA725EA93FC002BDE69 /* DataStorageKey.swift */; };
-		E3A47AAB25EA9510002BDE69 /* DataStorageOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AAA25EA9510002BDE69 /* DataStorageOptions.swift */; };
-		E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AAE25EA9664002BDE69 /* DataStorageKeys.swift */; };
-		E3A47AB225EA97D2002BDE69 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AB125EA97D2002BDE69 /* DataStorage.swift */; };
 		E3A47AB625EBE5BB002BDE69 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AB525EBE5BB002BDE69 /* Coin.swift */; };
 		E3A47AD125EBEEC4002BDE69 /* ResultCoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AD025EBEEC4002BDE69 /* ResultCoins.swift */; };
 		E3A47AD525EBF924002BDE69 /* CoinsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47AD425EBF924002BDE69 /* CoinsListViewController.swift */; };
@@ -101,11 +96,6 @@
 		E3A47A9025EA8C7D002BDE69 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E3A47A9425EA8CB2002BDE69 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		E3A47A9725EA8D5F002BDE69 /* NetworkServiceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceResult.swift; sourceTree = "<group>"; };
-		E3A47AA425EA92A8002BDE69 /* DataStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageProtocol.swift; sourceTree = "<group>"; };
-		E3A47AA725EA93FC002BDE69 /* DataStorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageKey.swift; sourceTree = "<group>"; };
-		E3A47AAA25EA9510002BDE69 /* DataStorageOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageOptions.swift; sourceTree = "<group>"; };
-		E3A47AAE25EA9664002BDE69 /* DataStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageKeys.swift; sourceTree = "<group>"; };
-		E3A47AB125EA97D2002BDE69 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		E3A47AB525EBE5BB002BDE69 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		E3A47AD025EBEEC4002BDE69 /* ResultCoins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCoins.swift; sourceTree = "<group>"; };
 		E3A47AD425EBF924002BDE69 /* CoinsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListViewController.swift; sourceTree = "<group>"; };
@@ -314,7 +304,6 @@
 		E3A47A4D25EA2D5E002BDE69 /* Enviroment&Service */ = {
 			isa = PBXGroup;
 			children = (
-				E3A47AA325EA9272002BDE69 /* DataStorage */,
 				E3A47A9325EA8C85002BDE69 /* API */,
 				E3A47A8B25EA8C20002BDE69 /* Network */,
 				E3A47A8625EA8B64002BDE69 /* Enviroment */,
@@ -386,18 +375,6 @@
 				E3A47A9425EA8CB2002BDE69 /* APIClient.swift */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		E3A47AA325EA9272002BDE69 /* DataStorage */ = {
-			isa = PBXGroup;
-			children = (
-				E3A47AA425EA92A8002BDE69 /* DataStorageProtocol.swift */,
-				E3A47AA725EA93FC002BDE69 /* DataStorageKey.swift */,
-				E3A47AAA25EA9510002BDE69 /* DataStorageOptions.swift */,
-				E3A47AAE25EA9664002BDE69 /* DataStorageKeys.swift */,
-				E3A47AB125EA97D2002BDE69 /* DataStorage.swift */,
-			);
-			path = DataStorage;
 			sourceTree = "<group>";
 		};
 		E3A47AB425EBE5AE002BDE69 /* Models */ = {
@@ -588,11 +565,9 @@
 				E3F35C4F25F4199400D3B3B0 /* ImageCache.swift in Sources */,
 				E3A47AB625EBE5BB002BDE69 /* Coin.swift in Sources */,
 				E3F35C6725F4FBF000D3B3B0 /* NewsViewController.swift in Sources */,
-				E3A47AAB25EA9510002BDE69 /* DataStorageOptions.swift in Sources */,
 				E3A47A8425EA8B59002BDE69 /* EnviromentProtocol.swift in Sources */,
 				E3A1006525FB5E490040E8C8 /* SuggestionResult.swift in Sources */,
 				E3A1007725FBAC900040E8C8 /* CoinsContainerViewController.swift in Sources */,
-				E3A47AA825EA93FC002BDE69 /* DataStorageKey.swift in Sources */,
 				E3BE2C5425F56567009942DB /* EnumChartType.swift in Sources */,
 				E30BA28925ED475C00CB15E1 /* SearchButtonBarItem.swift in Sources */,
 				E3A47A9525EA8CB2002BDE69 /* APIClient.swift in Sources */,
@@ -604,9 +579,7 @@
 				E3A47A9125EA8C7D002BDE69 /* NetworkService.swift in Sources */,
 				E3734F1125F64C2F00CDF7D5 /* NewsCollectionViewFlowLayout.swift in Sources */,
 				E3F35C4525F3E36900D3B3B0 /* CoinPrice.swift in Sources */,
-				E3A47AA525EA92A8002BDE69 /* DataStorageProtocol.swift in Sources */,
 				E30ECDE325EC498F005B53C6 /* CoinData.swift in Sources */,
-				E3A47AB225EA97D2002BDE69 /* DataStorage.swift in Sources */,
 				E3A47A5025EA2D8C002BDE69 /* TabBarController.swift in Sources */,
 				E3734F0225F63A8500CDF7D5 /* NewsData.swift in Sources */,
 				E3A47AD825EBF934002BDE69 /* CoinsListViewModel.swift in Sources */,
@@ -625,7 +598,6 @@
 				E3A1007F25FBB21B0040E8C8 /* CoinsListType.swift in Sources */,
 				E30BA28225ED45D100CB15E1 /* SearchCoinViewModel.swift in Sources */,
 				E30ECDDE25EC3DC4005B53C6 /* CoinInfoModel.swift in Sources */,
-				E3A47AAF25EA9665002BDE69 /* DataStorageKeys.swift in Sources */,
 				E3A47A7625EA4F3A002BDE69 /* StarButton.swift in Sources */,
 				E3734F0B25F63D6000CDF7D5 /* NewsViewModel.swift in Sources */,
 				E3734F1525F64C7600CDF7D5 /* NewsCollectionViewCell.swift in Sources */,

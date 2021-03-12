@@ -10,31 +10,33 @@ import Foundation
 // MARK: - Среда.
 class Enviroment: EnviromentProtocol {
     // Хранилище.
-    private let dataStorage: DataStorage = DataStorage()
+//    private let dataStorage: DataStorage = DataStorage()
     
     // Сброс хранилища.
     public func reset() {
-        dataStorage.removeValue(forKey: DataStorageKeys.currency)
-        dataStorage.removeValue(forKey: DataStorageKeys.favouriteCoins)
+        
     }
     
-//    var currency: String {
-//        get {
-//            return dataStorage.getValue(forKey: DataStorageKeys.currency)
-//        }
-//        set {
-//            dataStorage.setValue(value: newValue, forKey: DataStorageKeys.currency)
-//        }
-//    }
-    
     // Акции в избранном.
-    var favouriteCoins: [String] {
+    var favouriteCoins: [Coin] {
         get {
-            return dataStorage.getValue(forKey: DataStorageKeys.favouriteCoins)
+            if let objects = UserDefaults.standard.value(forKey: "favouriteCoins") as? Data {
+               let decoder = JSONDecoder()
+               if let objectsDecoded = try? decoder.decode(Array.self, from: objects) as [Coin] {
+                  return objectsDecoded
+               } else {
+                  return []
+               }
+            } else {
+               return []
+            }
         }
         set (newValue) {
-            print(newValue)
-            dataStorage.setValue(value: newValue, forKey: DataStorageKeys.favouriteCoins)
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(newValue){
+               UserDefaults.standard.set(encoded, forKey: "favouriteCoins")
+            }
+            // dataStorage.setValue(value: newValue, forKey: DataStorageKeys.favouriteCoins)
         }
     }
     

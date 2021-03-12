@@ -44,18 +44,18 @@ class CoinInfoViewModel {
     
     // В избранном ли акция.
     func isFavourite() -> Bool {
-        return enviroment.favouriteCoins.contains(mintedCoin.coin.id)
+        return enviroment.favouriteCoins.contains(where: {$0.id == mintedCoin.coin.id})
     }
     
     // Добавляние в избранное или удаление из избранного.
     func addToFavourite() {
         if(isFavourite()) {
-            if let index = enviroment.favouriteCoins.firstIndex(of: mintedCoin.coin.id) {
+            if let index = enviroment.favouriteCoins.firstIndex(where: {$0.id == mintedCoin.coin.id}) {
                 enviroment.favouriteCoins.remove(at: index)
             }
         }
         else {
-            enviroment.favouriteCoins.append(mintedCoin.coin.id)
+            enviroment.favouriteCoins.append(mintedCoin.coin)
         }
     }
 }

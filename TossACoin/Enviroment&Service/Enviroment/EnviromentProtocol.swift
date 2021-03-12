@@ -9,8 +9,7 @@ import Foundation
 
 // MARK: - Протокол среды приложения.
 protocol EnviromentProtocol {
-//    var currency: String { get set }
-    var favouriteCoins: [String] { get set }
+    var favouriteCoins: [Coin] { get set }
     func reset()
 }
 

@@ -89,8 +89,9 @@ class SearchCoinViewController: UIViewController {
 
 extension SearchCoinViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        viewModel.getSuggestions(symbol: searchController.searchBar.text ?? "") {
-            
+        let text = searchController.searchBar.text ?? ""
+        if text == ""  { return }
+        viewModel.getSuggestions(symbol: text) {
         }
     }
 }

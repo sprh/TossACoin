@@ -20,7 +20,14 @@ public struct NetworkService: NetworkServiceProtocol {
             do {
                 let result = try self.decoder.decode(SuggestionResult.self, from: data)
                 completion(.Success(result))
-            } catch let error {print(error)}
+            } catch let error {
+                print(error)
+                // Иногда ошибка выскакивает странная, но подозреваю, что это не моя вина.
+                // Например, для https://www.cryptocompare.com/api/autosuggest/coins/?maxRows=15&q=F все ок.
+                // Для https://www.cryptocompare.com/api/autosuggest/coins/?maxRows=15&q=Ff ошибка.
+                // Для https://www.cryptocompare.com/api/autosuggest/coins/?maxRows=15&q=Fff опять все ок.
+                // А разница в количестве f. Короче непонятно, в консоль иногда ошибку выводит.
+            }
         }
     }
     

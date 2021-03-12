@@ -257,6 +257,7 @@ extension ChartViewController: ChartDelegate {
     
     // Обновление графика.
     func setData(ofType: ChartType) {
+        // TODO: Даты.
         viewModel.getData(ofType: ofType) { (result) -> () in
             let chartSeries = ChartSeries(result)
             chartSeries.color = ApplicationColors.orangeColor

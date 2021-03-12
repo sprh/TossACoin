@@ -55,6 +55,7 @@ public struct APIClient {
     
     // Предложения поиска.
     static func getSuggestions(symbol: String) -> String {
-        return "https://www.cryptocompare.com/api/autosuggest/all/?maxRows=15&q=\(symbol)"
+        return "https://www.cryptocompare.com/api/autosuggest/coins/?maxRows=15&q=\(symbol)"
+        return "https://www.cryptocompare.com/api/autosuggest/coins/?maxRows=15&q=\(symbol)"
     }
 }

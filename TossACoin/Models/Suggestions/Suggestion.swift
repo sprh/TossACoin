@@ -9,15 +9,25 @@
 import Foundation
 
 // Предложения.
+// {"Id":"4581","Symbol":"NYAN","Name":"NyanCoin (NYAN)","ImageUrl":"/media/19842/nyan.png","BaseUrl":"/coins/nyan/"}
 struct  Suggestion: Codable {
-    let nodeName: String
+    let id: String
+    let symbol: String
+    let name: String
+    let imageUrl: String
     
     enum CodingKeys: String, CodingKey {
-        case nodeName = "nodeName"
+        case id = "Id"
+        case symbol = "Symbol"
+        case name = "Name"
+        case imageUrl = "ImageUrl"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.nodeName = try container.decode(String.self, forKey: .nodeName)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.symbol = try container.decode(String.self, forKey: .symbol)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl) ?? ""
     }
 }

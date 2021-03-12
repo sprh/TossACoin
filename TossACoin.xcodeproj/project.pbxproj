@@ -22,6 +22,8 @@
 		E3734F1525F64C7600CDF7D5 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734F1425F64C7600CDF7D5 /* NewsCollectionViewCell.swift */; };
 		E3A1006125FB5D970040E8C8 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A1006025FB5D970040E8C8 /* Suggestion.swift */; };
 		E3A1006525FB5E490040E8C8 /* SuggestionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A1006425FB5E490040E8C8 /* SuggestionResult.swift */; };
+		E3A1006825FB65EC0040E8C8 /* CoinFullData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A1006725FB65EC0040E8C8 /* CoinFullData.swift */; };
+		E3A1006C25FB6DA70040E8C8 /* RegexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A1006B25FB6DA70040E8C8 /* RegexExtension.swift */; };
 		E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */; };
 		E3A47A3C25EA2C53002BDE69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */; };
 		E3A47A3F25EA2C53002BDE69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A47A3D25EA2C53002BDE69 /* LaunchScreen.storyboard */; };
@@ -78,6 +80,8 @@
 		E3734F1425F64C7600CDF7D5 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3A1006025FB5D970040E8C8 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		E3A1006425FB5E490040E8C8 /* SuggestionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionResult.swift; sourceTree = "<group>"; };
+		E3A1006725FB65EC0040E8C8 /* CoinFullData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinFullData.swift; sourceTree = "<group>"; };
+		E3A1006B25FB6DA70040E8C8 /* RegexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexExtension.swift; sourceTree = "<group>"; };
 		E3A47A2F25EA2C51002BDE69 /* TossACoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TossACoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A47A3225EA2C51002BDE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A47A3B25EA2C53002BDE69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				E3A47AB525EBE5BB002BDE69 /* Coin.swift */,
 				E30ECDE225EC498F005B53C6 /* CoinData.swift */,
 				E3F35C4825F3E54200D3B3B0 /* MintedCoin.swift */,
+				E3A1006725FB65EC0040E8C8 /* CoinFullData.swift */,
 			);
 			path = Coin;
 			sourceTree = "<group>";
@@ -222,6 +227,14 @@
 			path = Suggestions;
 			sourceTree = "<group>";
 		};
+		E3A1006A25FB6D910040E8C8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E3A1006B25FB6DA70040E8C8 /* RegexExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E3A47A2625EA2C51002BDE69 = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +256,7 @@
 		E3A47A3125EA2C51002BDE69 /* TossACoin */ = {
 			isa = PBXGroup;
 			children = (
+				E3A1006A25FB6D910040E8C8 /* Extensions */,
 				E35FB60025ECEBCB00DC2DA7 /* Cache */,
 				E3A47AB425EBE5AE002BDE69 /* Models */,
 				E3A47A7425EA4F15002BDE69 /* Custom */,
@@ -582,6 +596,8 @@
 				E3A47AD125EBEEC4002BDE69 /* ResultCoins.swift in Sources */,
 				E3A47AD525EBF924002BDE69 /* CoinsListViewController.swift in Sources */,
 				E3BE2C6925F60086009942DB /* RoundedButtonForDate.swift in Sources */,
+				E3A1006825FB65EC0040E8C8 /* CoinFullData.swift in Sources */,
+				E3A1006C25FB6DA70040E8C8 /* RegexExtension.swift in Sources */,
 				E3A47A8D25EA8C3A002BDE69 /* NetworkServiceProtocol.swift in Sources */,
 				E30BA28225ED45D100CB15E1 /* SearchCoinViewModel.swift in Sources */,
 				E30ECDDE25EC3DC4005B53C6 /* CoinInfoModel.swift in Sources */,

@@ -12,42 +12,48 @@ import Foundation
 struct CoinPriceDisplay: Decodable{
     let price: String
     let changePercent: String
-    let marketCap: String
-    let supply: String
-    let volume24H: String
-    let volume24HTO: String
-    let totalVolume24H: String
-    let totalVolume24HTO: String
-    let priceOpen24Hour: String
-    let priceHigh24Hour: String
-    let priceLow24Hour: String
+//    let marketCap: String
+//    let supply: String
+//    let volume24H: String
+//    let volume24HTO: String
+//    let totalVolume24H: String
+//    let totalVolume24HTO: String
+//    let priceOpen24Hour: String
+//    let priceHigh24Hour: String
+//    let priceLow24Hour: String
     
     // TODO:  Удалить лишнее.
     private enum CodingKeys: String, CodingKey {
         case price = "PRICE"
         case changePercent = "CHANGEPCT24HOUR"
-        case marketCap = "MKTCAP"
-        case supply = "SUPPLY"
-        case volume24H = "VOLUME24HOUR"
-        case volume24HTO = "VOLUME24HOURTO"
-        case totalVolume24H = "TOTALVOLUME24H"
-        case totalVolume24HTO = "TOTALVOLUME24HTO"
-        case priceOpen24Hour = "OPEN24HOUR"
-        case priceHigh24Hour = "HIGH24HOUR"
-        case priceLow24Hour = "LOW24HOUR"
+//        case marketCap = "MKTCAP"
+//        case supply = "SUPPLY"
+//        case volume24H = "VOLUME24HOUR"
+//        case volume24HTO = "VOLUME24HOURTO"
+//        case totalVolume24H = "TOTALVOLUME24H"
+//        case totalVolume24HTO = "TOTALVOLUME24HTO"
+//        case priceOpen24Hour = "OPEN24HOUR"
+//        case priceHigh24Hour = "HIGH24HOUR"
+//        case priceLow24Hour = "LOW24HOUR"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.price = try container.decodeIfPresent(String.self, forKey: .price) ?? "0"
+        self.changePercent = try container.decodeIfPresent(String.self, forKey: .changePercent) ?? "0"
     }
     
     init() {
         self.price = ""
         self.changePercent = ""
-        self.marketCap = ""
-        self.supply = ""
-        self.volume24H = ""
-        self.volume24HTO = ""
-        self.totalVolume24H = ""
-        self.totalVolume24HTO = ""
-        self.priceLow24Hour = ""
-        self.priceOpen24Hour = ""
-        self.priceHigh24Hour = ""
+//        self.marketCap = ""
+//        self.supply = ""
+//        self.volume24H = ""
+//        self.volume24HTO = ""
+//        self.totalVolume24H = ""
+//        self.totalVolume24HTO = ""
+//        self.priceLow24Hour = ""
+//        self.priceOpen24Hour = ""
+//        self.priceHigh24Hour = ""
     }
 }

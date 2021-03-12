@@ -11,7 +11,7 @@ import UIKit
 // Поисковый контроллер.
 class SearchCoinViewController: UIViewController {
     fileprivate var viewModel: SearchCoinViewModel!
-    fileprivate var searchController: UISearchController = UISearchController()
+    fileprivate var searchController: UISearchController = UISearchController(searchResultsController: nil)
 //    fileprivate var popularRequestsLabel: UILabel = { () -> UILabel in
 //        let label = UILabel()
 //        label.text = "Popular requests"
@@ -37,24 +37,26 @@ class SearchCoinViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.largeTitleDisplayMode = .never
         let view = UIView()
         view.backgroundColor = .white
         title = "Search"
         self.view = view
-        super.viewDidLoad()
         setupSearchController()
         setupSubviews()
     }
-
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .automatic
+        self.hidesBottomBarWhenPushed = true
+        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.navigationBar.tintColor = ApplicationColors.orangeColor
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
+    
+    
     
     private func setupSubviews() {
         self.view.addSubview(coinsCollectionView)
@@ -62,6 +64,7 @@ class SearchCoinViewController: UIViewController {
         coinsCollectionView.dataSource = self
         coinsCollectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
         coinsCollectionView.backgroundColor = .white
+        coinsCollectionView.alwaysBounceVertical = true
 //        self.view.addSubview(popularRequestsLabel)
 //        popularRequestsLabel.translatesAutoresizingMaskIntoConstraints = false
 //        [
@@ -74,15 +77,15 @@ class SearchCoinViewController: UIViewController {
     
     // Настройка поля поиска.
     private func setupSearchController() {
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.definesPresentationContext = true
         searchController.searchBar.searchTextField.attributedPlaceholder =  NSAttributedString.init(string: "Find ticker", attributes: nil)
         definesPresentationContext = true
         searchController.searchBar.tintColor = .orange
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
 }
@@ -92,18 +95,27 @@ extension SearchCoinViewController: UISearchBarDelegate, UISearchResultsUpdating
         let text = searchController.searchBar.text ?? ""
         if text == ""  { return }
         viewModel.getSuggestions(symbol: text) {
+            self.coinsCollectionView.reloadData()
         }
     }
 }
 
 extension SearchCoinViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.getSuggestionsCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = coinsCollectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath)
-        cell.backgroundColor = .green
+        let cell = coinsCollectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
+        viewModel.createCell(cell: cell, at: indexPath.item)
         return cell
+    }
+    
+    // Нажатие на одну из ячеек CollectionView.
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
+        getCoinViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.modalPresentationStyle = .fullScreen
+        present(getCoinViewController, animated: true)
     }
 }

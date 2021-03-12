@@ -22,9 +22,7 @@ class CoinsListViewModel {
     
     // Получение информации об акциях.
     func getCoins(completion: @escaping () -> Void) {
-        networkService.getCoins(page: page) { [weak self] result in
-            guard let `self` = self else { return }
-
+        networkService.getCoins(page: page) { result in
             switch result {
             case .Success(let mintedCoins):
                 guard mintedCoins.count > 0 else {

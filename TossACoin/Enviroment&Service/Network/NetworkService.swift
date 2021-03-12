@@ -10,6 +10,8 @@ import Alamofire
 
 // MARK: - Подключение.
 public struct NetworkService: NetworkServiceProtocol {
+    private let decoder = JSONDecoder()
+    
     func getSuggestions(symbol: String, completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void) {
         guard let url = URL(string: APIClient.getSuggestions(symbol: symbol)) else { return }
         
@@ -19,10 +21,10 @@ public struct NetworkService: NetworkServiceProtocol {
             guard let data = dataRespose.data else { return }
             do {
                 let result = try self.decoder.decode(SuggestionResult.self, from: data)
-                let coinSymbols = result.suggestions.map({ $0.symbol }).joined(separator: ",")
                 // Все предложения.
-                let coins = result.suggestions
-
+                var coins = result.suggestions
+                coins.removeAll(where: {$0.symbol == ""})
+                let coinSymbols = coins.map({ $0.symbol }).joined(separator: ",")
                 var mintedCouns = [MintedCoin]()
                 
                 self.getPrices(symbols: coinSymbols, completion: { result in
@@ -31,23 +33,19 @@ public struct NetworkService: NetworkServiceProtocol {
                         coins.forEach {
                             // Запрос цены.
                             guard let price = coinPrices.display[$0.symbol] else { return }
-                            // Переделываем в монеты. Вообще результаты запроса почти одинаковые, надо попробовать указать несколько ключей сразу.
-                            // TODO: !
+                            // Переделываем в монеты.
                             let coin = Coin(id: $0.id, name: $0.symbol, fullName: $0.name, imageUrl: $0.imageUrl)
-                            mintedCouns.append(MintedCoin(coin: coin, price: price["RUB"] ?? CoinPriceDisplay()))
+                            mintedCouns.append(MintedCoin(coin: coin, price: price["USD"] ?? CoinPriceDisplay()))
                         }
                         // Вызов замыкания.
                         completion(.Success(mintedCouns))
-                    case .Error: print("error get coins")
+                    case .Error(let error):
+                        print(error)
+                        completion(.Error(error))
                     }
                 })
             } catch let error {
                 print(error)
-                // Иногда ошибка выскакивает странная, но подозреваю, что это не моя вина.
-                // Например, для https://www.cryptocompare.com/api/autosuggest/coins/?maxRows=15&q=F все ок.
-                // Для https://www.cryptocompare.com/api/autosuggest/coins/?maxRows=15&q=Ff ошибка.
-                // Для https://www.cryptocompare.com/api/autosuggest/coins/?maxRows=15&q=Fff опять все ок.
-                // А разница в количестве f. Короче непонятно, в консоль иногда ошибку выводит.
             }
         }
     }
@@ -60,7 +58,9 @@ public struct NetworkService: NetworkServiceProtocol {
             do {
                 let result = try self.decoder.decode(NewsData.self, from: data)
                 completion(.Success(result))
-            }catch let error {print(error)}
+            } catch let error {
+                print(error)
+            }
         }
     }
     
@@ -90,7 +90,9 @@ public struct NetworkService: NetworkServiceProtocol {
                 // Вызов замыкания.
                 completion(.Success(result))
             }
-            catch let error { print(error) }
+            catch let error {
+                print(error)
+            }
         }
     }
     
@@ -109,15 +111,11 @@ public struct NetworkService: NetworkServiceProtocol {
                 completion(.Success(result))
             }
             catch let error {
-                print(error)
-                print(url.absoluteString)
+                completion(.Error(error))
             }
         }
 
     }
-    
-    private let decoder = JSONDecoder()
-    
     
     func getCoins(page: Int, completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void) {
         guard let url = URL(string: APIClient.getCoins(page: page)) else { print("Get coins url error"); return }
@@ -131,10 +129,10 @@ public struct NetworkService: NetworkServiceProtocol {
 
             do {
                 let result = try self.decoder.decode(ResultCoins.self, from: data)
-                // Все тикеты.
-                let coinSymbols = result.data.map({ $0.coin.name }).joined(separator: ",")
                 // Все монеты.
                 let coins = result.data.map({ $0.coin })
+                // Все тикеты.
+                let coinSymbols = coins.map({ $0.name }).joined(separator: ",")
 
                 var mintedCouns = [MintedCoin]()
                 
@@ -145,11 +143,12 @@ public struct NetworkService: NetworkServiceProtocol {
                             guard let price = coinPrices.display[$0.name] else { return }
                             // Из forEach берем акцию, затем проверяем цену.
                             // Если она не имеет информации о валюте, создаем CoinPriceDisplay с помощью безпараметрического конструктора
-                            mintedCouns.append(MintedCoin(coin: $0, price: price["RUB"] ?? CoinPriceDisplay()))
+                            mintedCouns.append(MintedCoin(coin: $0, price: price["USD"] ?? CoinPriceDisplay()))
                         }
                         // Вызов замыкания.
                         completion(.Success(mintedCouns))
-                    case .Error: print("error get coins")
+                    case .Error:
+                        return
                     }
                 })
             }
@@ -157,6 +156,5 @@ public struct NetworkService: NetworkServiceProtocol {
                 print(error)
             }
         }
-        
     }
 }

@@ -27,20 +27,17 @@ class CoinsListViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         let view = UIView()
-        view.backgroundColor = .green
+        view.backgroundColor = .white
         self.view = view
         setupCollectionView()
         addSearchButton()
         initCoinCollection()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        self.navigationItem.largeTitleDisplayMode = .always
     }
     
     // Кнопка поиска.
@@ -53,8 +50,8 @@ class CoinsListViewController: UIViewController {
     
     // Нажатие на кнопку поиска.
     @objc func startSearch() {
+//        UIAppearance.view.backgroundColor = UIColor.white
         let searchCoinViewController = viewModel.prepareSearchViewController()
-        searchCoinViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(searchCoinViewController, animated: true)
     }
     
@@ -73,8 +70,7 @@ class CoinsListViewController: UIViewController {
     
     // Загрузка коллекции акций.
     func initCoinCollection() {
-        viewModel.getCoins { [weak self] in
-            guard let `self` = self else { return }
+        viewModel.getCoins {
             self.coinsCollectionView.reloadData()
         }
     }
@@ -100,13 +96,11 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
         getCoinViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.modalPresentationStyle = .fullScreen
         present(getCoinViewController, animated: true)
-        
     }
     
     // Догрузка коллекции
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        // Сделала больше, а не больше или равно, чтобы не отправлять постоянно get'ы.
-        if (indexPath.item > viewModel.getCoinsCount() - 2){
+        if (indexPath.item >= viewModel.getCoinsCount() - 2){
             initCoinCollection()
         }
     }
@@ -121,4 +115,3 @@ extension CoinsListViewController: UICollectionViewDelegate, UICollectionViewDat
         }
     }
 }
-

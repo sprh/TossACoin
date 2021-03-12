@@ -52,4 +52,9 @@ public struct APIClient {
     static func getNews(symbol: String) -> String {
         return "\(apiUrlForCoins)data/v2/news/?categories=\(symbol)"
     }
+    
+    // Предложения поиска.
+    static func getSuggestions(symbol: String) -> String {
+        return "https://www.cryptocompare.com/api/autosuggest/all/?maxRows=15&q=\(symbol)"
+    }
 }

@@ -83,13 +83,15 @@ class SearchCoinViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = true
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 }
 
 extension SearchCoinViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        viewModel.getSuggestions(symbol: searchController.searchBar.text ?? "") {
+            
+        }
     }
 }
 

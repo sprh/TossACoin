@@ -16,4 +16,15 @@ class SearchCoinViewModel {
         self.enviroment = enviroment
         self.networkService = networkService
     }
+    
+    func getSuggestions(symbol: String, completion: @escaping () -> Void) {
+        networkService.getSuggestions(symbol: symbol) { (result) in
+            switch result {
+            case .Success(let suggestions):
+                print(suggestions)
+            case .Error:
+                print("Error")
+            }
+        }
+    }
 }

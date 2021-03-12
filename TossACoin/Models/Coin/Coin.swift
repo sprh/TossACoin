@@ -27,5 +27,12 @@ public struct Coin: Codable {
         self.name = try container.decode(String.self, forKey: .name)
         self.fullName = try container.decode(String.self, forKey: .fullName)
         self.imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl) ?? ""
-        }
+    }
+    
+    public init(id: String, name: String, fullName: String, imageUrl: String) {
+        self.id = id
+        self.name = name
+        self.fullName = fullName
+        self.imageUrl = imageUrl
+    }
 }

@@ -10,7 +10,7 @@ import Alamofire
 
 // MARK: - Подключение.
 public struct NetworkService: NetworkServiceProtocol {
-    func getSuggestions(symbol: String, completion: @escaping (NetworkServiceResult<SuggestionResult>) -> Void) {
+    func getSuggestions(symbol: String, completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void) {
         guard let url = URL(string: APIClient.getSuggestions(symbol: symbol)) else { return }
         
         AF.request(url).responseData { (dataRespose) in
@@ -19,7 +19,28 @@ public struct NetworkService: NetworkServiceProtocol {
             guard let data = dataRespose.data else { return }
             do {
                 let result = try self.decoder.decode(SuggestionResult.self, from: data)
-                completion(.Success(result))
+                let coinSymbols = result.suggestions.map({ $0.symbol }).joined(separator: ",")
+                // Все предложения.
+                let coins = result.suggestions
+
+                var mintedCouns = [MintedCoin]()
+                
+                self.getPrices(symbols: coinSymbols, completion: { result in
+                    switch result {
+                    case .Success(let coinPrices):
+                        coins.forEach {
+                            // Запрос цены.
+                            guard let price = coinPrices.display[$0.symbol] else { return }
+                            // Переделываем в монеты. Вообще результаты запроса почти одинаковые, надо попробовать указать несколько ключей сразу.
+                            // TODO: !
+                            let coin = Coin(id: $0.id, name: $0.symbol, fullName: $0.name, imageUrl: $0.imageUrl)
+                            mintedCouns.append(MintedCoin(coin: coin, price: price["RUB"] ?? CoinPriceDisplay()))
+                        }
+                        // Вызов замыкания.
+                        completion(.Success(mintedCouns))
+                    case .Error: print("error get coins")
+                    }
+                })
             } catch let error {
                 print(error)
                 // Иногда ошибка выскакивает странная, но подозреваю, что это не моя вина.
@@ -87,7 +108,10 @@ public struct NetworkService: NetworkServiceProtocol {
                 // Вызов замыкания.
                 completion(.Success(result))
             }
-            catch let error { print(error) }
+            catch let error {
+                print(error)
+                print(url.absoluteString)
+            }
         }
 
     }

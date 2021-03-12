@@ -22,6 +22,7 @@ struct CoinPriceDisplay: Decodable{
     let priceHigh24Hour: String
     let priceLow24Hour: String
     
+    // TODO:  Удалить лишнее.
     private enum CodingKeys: String, CodingKey {
         case price = "PRICE"
         case changePercent = "CHANGEPCT24HOUR"

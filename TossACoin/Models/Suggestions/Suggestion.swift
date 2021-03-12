@@ -27,7 +27,10 @@ struct  Suggestion: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
         self.symbol = try container.decode(String.self, forKey: .symbol)
-        self.name = try container.decode(String.self, forKey: .name)
+        var name = try container.decode(String.self, forKey: .name)
+        let regex = try! NSRegularExpression(pattern: "\\(.*\\)", options: [])
+        name = regex.stringByReplacingMatches(in: name, options: [], range: NSRange(0..<name.utf16.count), withTemplate: "")
+        self.name = name
         self.imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl) ?? ""
     }
 }

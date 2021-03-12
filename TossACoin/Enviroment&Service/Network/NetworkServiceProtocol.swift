@@ -17,5 +17,5 @@ protocol NetworkServiceProtocol {
     // Получение новостей.
     func getNews(symbol: String, completion: @escaping (NetworkServiceResult<NewsData>) -> Void)
     // Получение предложений поиска.
-    func getSuggestions(symbol: String, completion: @escaping (NetworkServiceResult<SuggestionResult>) -> Void)
+    func getSuggestions(symbol: String, completion: @escaping (NetworkServiceResult<[MintedCoin]>) -> Void)
 }

@@ -3,14 +3,12 @@ PODS:
   - Alamofire (5.4.1)
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
-  - SwiftChart (1.0.1)
   - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
   - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
   - Alamofire
   - AlamofireImage
-  - SwiftChart (from `https://github.com/gpbl/SwiftChart`, branch `master`)
   - XLPagerTabStrip (~> 9.0)
 
 SPEC REPOS:
@@ -22,25 +20,18 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   AAInfographics:
     :git: https://github.com/AAChartModel/AAChartKit-Swift.git
-  SwiftChart:
-    :branch: master
-    :git: https://github.com/gpbl/SwiftChart
 
 CHECKOUT OPTIONS:
   AAInfographics:
     :commit: 6c85c5221addb8d1d46822b3e8e9f479d7a21248
     :git: https://github.com/AAChartModel/AAChartKit-Swift.git
-  SwiftChart:
-    :commit: 4949a94090641ca85b8133129f7a7b2230694788
-    :git: https://github.com/gpbl/SwiftChart
 
 SPEC CHECKSUMS:
   AAInfographics: e57c6cc15ddc17df3555db6f586fb0e1b911a0b7
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
-  SwiftChart: 6ed8c61f3731cc32e3cb92858dba339d08ddac87
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: c372cedbb4823c19b00bbcb1991baccd7c4c989d
+PODFILE CHECKSUM: 76e60010fb1744176bc67c3535caa12f5582d6a2
 
 COCOAPODS: 1.10.1

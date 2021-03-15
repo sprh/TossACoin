@@ -2,5 +2,4 @@ ${PODS_ROOT}/Target Support Files/Pods-TossACoin/Pods-TossACoin-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AAInfographics/AAInfographics.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework
-${BUILT_PRODUCTS_DIR}/SwiftChart/SwiftChart.framework
 ${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework

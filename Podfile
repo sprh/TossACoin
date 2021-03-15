@@ -7,7 +7,6 @@ target 'TossACoin' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'XLPagerTabStrip', '~> 9.0'
-  pod "SwiftChart", :git => 'https://github.com/gpbl/SwiftChart', :branch => 'master'
   pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
   # Pods for TossACoin
 

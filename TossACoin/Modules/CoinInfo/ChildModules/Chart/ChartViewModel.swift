@@ -20,6 +20,9 @@ class ChartViewModel {
         self.mintedCoin = mintedCoin
     }
     
+    public func getName() -> String {
+        return mintedCoin.coin.name;
+    }
     public func getLastPrice() -> String {
         return mintedCoin.price.price
     }
@@ -28,6 +31,7 @@ class ChartViewModel {
         return mintedCoin.price.changePercent
     }
     
+    // Получение данных с сервера.
     private func getPair(ofType: ChartType, complection: @escaping () -> Void) {
         networkService.getPair(symbol: mintedCoin.coin.name, ofType: ofType) {
             [weak self] result in
@@ -43,11 +47,24 @@ class ChartViewModel {
         }
     }
     
-    public func getData(ofType: ChartType, completion: @escaping ([Double])  -> ()) {
+    // Получение данных по типу графика.
+    public func getData(ofType: ChartType, completion: @escaping ([Double], [String])  -> ()) {
         getPair(ofType: ofType) {
             var seriesData: [Double] = []
-            self.coinPriceForAPeriod.data.data.forEach({ seriesData.append($0.close) })
-            completion(seriesData)
+            var seriesTime: [String] = []
+            // Настройка лейблов и получение значений цены.
+            switch ofType {
+            // В зависимости от типа выставляется дата.
+            case .daily:
+                self.coinPriceForAPeriod.data.data.forEach({
+                    seriesData.append($0.close); seriesTime.append(Date.getDateFormUnixForDaily(unixTime: Double($0.time)));
+                })
+            case .hourly, .minute:
+                self.coinPriceForAPeriod.data.data.forEach({
+                    seriesData.append($0.close); seriesTime.append(Date.getDateFormUnixForMinuteAndHour(unixTime: Double($0.time)));
+                })
+            }
+            completion(seriesData, seriesTime)
         }
     }
     

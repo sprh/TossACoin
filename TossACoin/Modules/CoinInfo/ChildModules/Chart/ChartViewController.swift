@@ -8,21 +8,17 @@
 import Foundation
 import UIKit
 import XLPagerTabStrip
-import SwiftChart
+import AAInfographics
 
 class ChartViewController: UIViewController {
-    // График.
-    fileprivate let chart = Chart()
-    // Label для информации о том, какая величина соответствует точке на графике.
-    fileprivate lazy var labelWithPrice = UILabel()
-    // Конструкции для labelWithPrice.
-    fileprivate lazy var labelLeadingMarginConstraint = NSLayoutConstraint()
-    fileprivate var labelLeadingMarginInitialConstant: CGFloat! = 0
-    
+    // График
+    fileprivate let chart = AAChartView()
     // Кнопки для изменения типа графика.
     fileprivate let dailyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     fileprivate let hourlyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     fileprivate let minuteButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    
+    fileprivate var times: [String] = []
     // Стэк для кнопок.
     fileprivate var stackForButtons: UIStackView = {
         let stackView = UIStackView()
@@ -106,7 +102,7 @@ class ChartViewController: UIViewController {
         // MARK: - BuyButton.
         view.addSubview(buyButton)
         [
-            buyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            buyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             buyButton.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIScreen.main.bounds.width - 20),
             buyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25),
             buyButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -75)
@@ -129,9 +125,9 @@ class ChartViewController: UIViewController {
         ].forEach({$0.isActive = true})
         labelChangePercent.text = "\(viewModel.getChangePercent())%"
         labelChangePercent.textColor = labelChangePercent.text!.contains("-") ? ApplicationColors.redPercent : ApplicationColors.greenPercent
-
+        
         // MARK: - Chart.
-        scrollView.addSubview(chart)
+        view.addSubview(chart)
         chart.translatesAutoresizingMaskIntoConstraints = false
         [
             chart.topAnchor.constraint(equalTo: labelChangePercent.bottomAnchor, constant: 40),
@@ -139,22 +135,8 @@ class ChartViewController: UIViewController {
             chart.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             chart.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ].forEach({$0.isActive = true})
-        chart.showXLabelsAndGrid = false
-        chart.gridColor = .clear
-        chart.delegate = self
         chart.clearsContextBeforeDrawing = true
         setData(ofType: .daily)
-        
-        // MARK: - LabelWithPrice.
-        scrollView.addSubview(labelWithPrice)
-        labelWithPrice.translatesAutoresizingMaskIntoConstraints = false
-        labelLeadingMarginConstraint = NSLayoutConstraint(item: labelWithPrice, attribute: NSLayoutConstraint.Attribute.leadingMargin, relatedBy: NSLayoutConstraint.Relation.equal, toItem: scrollView, attribute: NSLayoutConstraint.Attribute.leadingMargin, multiplier: 1, constant: 0)
-        [
-            labelWithPrice.bottomAnchor.constraint(equalTo: chart.topAnchor, constant: -10),
-            labelLeadingMarginConstraint
-        ].forEach({$0.isActive = true})
-        labelLeadingMarginInitialConstant = labelLeadingMarginConstraint.constant
-    
     // MARK: - StackForButtons.
         scrollView.addSubview(stackForButtons)
         [
@@ -167,7 +149,7 @@ class ChartViewController: UIViewController {
         
         stackForButtons.addSubview(dailyButton)
         [
-            dailyButton.centerXAnchor.constraint(equalTo: stackForButtons.centerXAnchor, constant: 10),
+            dailyButton.centerXAnchor.constraint(equalTo: stackForButtons.centerXAnchor, constant: 0),
             dailyButton.centerYAnchor.constraint(equalTo: stackForButtons.centerYAnchor)
         ].forEach({$0.isActive = true})
         dailyButton.addTarget(self, action: #selector(dailyButtonTap), for: .touchDown)
@@ -218,51 +200,36 @@ extension ChartViewController {
     @objc func buyButtonTap() {
         viewModel.openBuyCoin()
     }
-}
-
-extension ChartViewController: ChartDelegate {
-    func didEndTouchingChart(_ chart: Chart) {
-    }
-    
-    // Нажатие на Chart.
-    func didTouchChart(_ chart: Chart, indexes: [Int?], x: Double, left: CGFloat) {
-        guard let value = chart.valueForSeries(0, atIndex: indexes[0]) else {
-            return}
-            
-        let numberFormatter = NumberFormatter()
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits = 2
-        labelWithPrice.text = numberFormatter.string(from: NSNumber(value: value))
-        var constant = labelLeadingMarginInitialConstant + left - (labelWithPrice.frame.width / 2)
-            
-        // Проверка, что все ок и не было выходв за пределы графика.
-        if constant < labelLeadingMarginInitialConstant {
-            constant = labelLeadingMarginInitialConstant
-        }
-            
-        let rightMargin = chart.frame.width - labelWithPrice.frame.width
-        if constant > rightMargin {
-            constant = rightMargin
-        }
-            
-        // Изменение положения labelWithPrice.
-        labelLeadingMarginConstraint.constant = constant
-            
-    }
-    
-    func didFinishTouchingChart(_ chart: Chart) {
-        // Обновление конструкции.
-        labelLeadingMarginConstraint.constant = labelLeadingMarginInitialConstant
-    }
     
     // Обновление графика.
     func setData(ofType: ChartType) {
-        // TODO: Даты.
-        viewModel.getData(ofType: ofType) { (result) -> () in
-            let chartSeries = ChartSeries(result)
-            chartSeries.color = ApplicationColors.orangeColor
-            chartSeries.area = true
-            self.chart.series = [chartSeries]
+        // Получение данных из модели.
+        viewModel.getData(ofType: ofType) { [self] (values, times) -> () in
+            let gradientColor = AAGradientColor.linearGradient(
+                direction: .toBottom,
+                startColor: ApplicationColors.orangeColorRgb,
+                endColor: "rgb(255, 255, 255)"
+            )
+            // Настройка графика.
+            let chartModel = AAChartModel()
+                .chartType(.areaspline)
+                .categories(times)
+                .yAxisTitle("")
+                .markerRadius(0)
+                .legendEnabled(false)
+                .dataLabelsEnabled(false)
+                .xAxisVisible(false)
+                .yAxisVisible(false)
+                .series([
+                    AASeriesElement()
+                        .name(self.viewModel.getName())
+                        .lineWidth(0.1)
+                        .color(ApplicationColors.orangeColorAAColor)
+                        .fillColor(gradientColor)
+                        .data(values),
+                    ])
+            // Отрисовка.
+            self.chart.aa_drawChartWithChartModel(chartModel)
         }
     }
 }

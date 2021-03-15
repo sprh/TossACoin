@@ -18,6 +18,7 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
         label.font = .boldSystemFont(ofSize: 35)
         return label
     }()
+    fileprivate let searchButton = SearchButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     
     init(viewModel: CoinsContainerViewModel) {
         self.viewModel = viewModel
@@ -73,6 +74,14 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
             viewName.centerYAnchor.constraint(equalTo: headerView.centerYAnchor, constant: view.safeAreaInsets.top + 20),
             viewName.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 20)
         ].forEach({$0.isActive = true})
+        headerView.addSubview(searchButton)
+        [
+            searchButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor, constant: 15),
+            searchButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15)
+        ].forEach({$0.isActive = true})
+        searchButton.tintColor = ApplicationColors.orangeColor
+        searchButton.imageEdgeInsets = UIEdgeInsets(top: 40, left: 20, bottom: 30, right: 30)
+        searchButton.addTarget(self, action: #selector(startSearch), for: .touchDown)
         viewName.text = "Coins"
     }
     
@@ -106,5 +115,13 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
         let allCoinsViewController =  viewModel.getAllCoinsViewController()
         let favouriteCoinsViewController =  viewModel.getFavouriteCoinsViewController()
         return [allCoinsViewController, favouriteCoinsViewController]
+    }
+}
+
+extension CoinsContainerViewController {
+    @objc func startSearch() {
+        // TODO: не работает..
+        let searchCoinViewController = viewModel.prepareSearchViewController()
+        navigationController?.pushViewController(searchCoinViewController, animated: true)
     }
 }

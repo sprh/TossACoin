@@ -46,14 +46,6 @@ class AllCoinsViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = searchButton
         searchButton.target = self
         searchButton.tintColor = .orange
-        searchButton.action = #selector(startSearch)
-    }
-    
-    // Нажатие на кнопку поиска.
-    @objc func startSearch() {
-//        UIAppearance.view.backgroundColor = UIColor.white
-        let searchCoinViewController = viewModel.prepareSearchViewController()
-        navigationController?.pushViewController(searchCoinViewController, animated: true)
     }
     
     // Настройка CollectionView.

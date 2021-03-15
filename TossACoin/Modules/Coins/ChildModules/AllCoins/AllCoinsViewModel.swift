@@ -59,13 +59,6 @@ class AllCoinsViewModel {
         return viewController
     }
     
-    // Поисковый экран.
-    func prepareSearchViewController() -> SearchCoinViewController {
-        let searchCoinViewModel = SearchCoinViewModel(enviroment: enviroment, networkService: networkService)
-        let searchCoinViewController = SearchCoinViewController(viewModel: searchCoinViewModel)
-        return searchCoinViewController
-    }
-    
     // Для обновления очищается массив полученных ранее монет и подгружаются новые.
     func refresh(completion: @escaping () -> Void) {
         coins = []

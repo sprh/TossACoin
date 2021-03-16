@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftChart
+import UIKit
 
 class ChartViewModel {
     let enviroment: Enviroment

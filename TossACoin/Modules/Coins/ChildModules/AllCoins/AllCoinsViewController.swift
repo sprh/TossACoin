@@ -13,7 +13,6 @@ import XLPagerTabStrip
 class AllCoinsViewController: UIViewController {
     fileprivate let coinsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
     fileprivate let viewModel: AllCoinsViewModel!
-    fileprivate let searchButton = SearchButtonBarItem()
     fileprivate let refreshControl = UIRefreshControl()
     
     init(viewModel: AllCoinsViewModel) {
@@ -31,21 +30,12 @@ class AllCoinsViewController: UIViewController {
         view.backgroundColor = .white
         self.view = view
         setupCollectionView()
-        addSearchButton()
         initCoinCollection()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
-    }
     
-    // Кнопка поиска.
-    private func addSearchButton() {
-        self.navigationItem.rightBarButtonItem = searchButton
-        searchButton.target = self
-        searchButton.tintColor = .orange
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 150)
     }
     
     // Настройка CollectionView.
@@ -87,7 +77,6 @@ extension AllCoinsViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
         getCoinViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.modalPresentationStyle = .fullScreen
         present(getCoinViewController, animated: true)
     }
     

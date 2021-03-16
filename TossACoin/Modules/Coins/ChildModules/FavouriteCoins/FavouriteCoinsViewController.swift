@@ -12,7 +12,6 @@ import XLPagerTabStrip
 class FavouriteCoinsViewController: UIViewController {
     fileprivate let coinsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
     fileprivate let viewModel: FavouriteCoinsViewModel!
-    fileprivate let searchButton = SearchButtonBarItem()
     fileprivate let refreshControl = UIRefreshControl()
     
     init(viewModel: FavouriteCoinsViewModel) {
@@ -30,29 +29,17 @@ class FavouriteCoinsViewController: UIViewController {
         view.backgroundColor = .white
         self.view = view
         setupCollectionView()
-        addSearchButton()
         initCoinCollection()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        initCoinCollection()
     }
     
-    // Кнопка поиска.
-    private func addSearchButton() {
-        self.navigationItem.rightBarButtonItem = searchButton
-        searchButton.target = self
-        searchButton.tintColor = .orange
-        searchButton.action = #selector(startSearch)
-    }
-    
-    // Нажатие на кнопку поиска.
-    @objc func startSearch() {
-//        UIAppearance.view.backgroundColor = UIColor.white
-        let searchCoinViewController = viewModel.prepareSearchViewController()
-        navigationController?.pushViewController(searchCoinViewController, animated: true)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 150)
     }
     
     // Настройка CollectionView.
@@ -94,7 +81,6 @@ extension FavouriteCoinsViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
         getCoinViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.modalPresentationStyle = .fullScreen
         present(getCoinViewController, animated: true)
     }
     

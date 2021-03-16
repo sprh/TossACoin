@@ -15,11 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
                         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let enviroment = Enviroment()
-        let networkService = NetworkService()
-        let viewModel = CoinsContainerViewModel(enviroment: enviroment, networkService: networkService)
-        let viewController = CoinsContainerViewController(viewModel: viewModel)
-        window?.rootViewController = viewController
+        let tabBar = TabBarController()
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
         return true
     }

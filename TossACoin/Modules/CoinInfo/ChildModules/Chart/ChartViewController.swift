@@ -69,6 +69,7 @@ class ChartViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .white
         self.view = view
+        view.exerciseAmbiguityInLayout()
         super.viewDidLoad()
         setupSubviews()
     }
@@ -77,9 +78,7 @@ class ChartViewController: UIViewController {
         // Изменение contentSize для scrollView.
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width,
                                         height: UIScreen.main.bounds.height -
-                                            view.safeAreaInsets.bottom +
-                                            // Т к Buy привязана не к scrollView, а к view, высчитывается оптимальное расстояние.
-                                            scrollView.convert(stackForButtons.frame.origin, to: buyButton).y - 120)
+                                            view.safeAreaInsets.bottom - 120)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,16 +97,6 @@ class ChartViewController: UIViewController {
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ].forEach({$0.isActive = true})
-        
-        // MARK: - BuyButton.
-        view.addSubview(buyButton)
-        [
-            buyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            buyButton.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIScreen.main.bounds.width - 20),
-            buyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25),
-            buyButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -75)
-        ].forEach({$0.isActive = true})
-        buyButton.addTarget(self, action: #selector(buyButtonTap), for: .touchDown)
         
         // MARK: - LabelWithLastPrice.
         scrollView.addSubview(labelWithLastPrice)
@@ -205,14 +194,9 @@ extension ChartViewController {
     func setData(ofType: ChartType) {
         // Получение данных из модели.
         viewModel.getData(ofType: ofType) { [self] (values, times) -> () in
-            let gradientColor = AAGradientColor.linearGradient(
-                direction: .toBottom,
-                startColor: ApplicationColors.orangeColorRgb,
-                endColor: "rgb(255, 255, 255)"
-            )
             // Настройка графика.
             let chartModel = AAChartModel()
-                .chartType(.areaspline)
+                .chartType(.spline)
                 .categories(times)
                 .yAxisTitle("")
                 .markerRadius(0)
@@ -223,9 +207,8 @@ extension ChartViewController {
                 .series([
                     AASeriesElement()
                         .name(self.viewModel.getName())
-                        .lineWidth(0.1)
+                        .lineWidth(4)
                         .color(ApplicationColors.orangeColorAAColor)
-                        .fillColor(gradientColor)
                         .data(values),
                     ])
             // Отрисовка.

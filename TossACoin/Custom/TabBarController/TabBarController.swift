@@ -32,7 +32,7 @@ public final class TabBarController: UITabBarController {
         let networkService = NetworkService()
         let coinsContainerVC = createCoinsContainerViewController(enviroment: enviroment, networkService: networkService)
         let searchCoinVC = createSearchCoinViewController(enviroment: enviroment, networkService: networkService)
-        viewControllers = [searchCoinVC, coinsContainerVC]
+        viewControllers = [coinsContainerVC, searchCoinVC]
     }
     
     private func createCoinsContainerViewController(enviroment: Enviroment, networkService: NetworkService) -> CoinsContainerViewController{

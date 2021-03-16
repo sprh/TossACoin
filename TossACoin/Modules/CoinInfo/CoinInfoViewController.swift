@@ -34,7 +34,6 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         setSettings()
         super.viewDidLoad()
         definesPresentationContext = true
-        super.viewDidLoad()
         setupView()
     }
     
@@ -76,7 +75,6 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         ].forEach({$0.isActive = true})
         coinName.text = self.viewModel.getCoinName()
         coinName.font = .boldSystemFont(ofSize: 26)
-        coinName.text = self.viewModel.getCoinName()
         
         // MARK: - Название компании.
         let companyName = UILabel()

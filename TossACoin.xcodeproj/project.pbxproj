@@ -10,7 +10,6 @@
 		0895169995C24CEDC3FAC0D9 /* Pods_TossACoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AB1A3BCC7CCC71086AF557 /* Pods_TossACoin.framework */; };
 		E30BA28225ED45D100CB15E1 /* SearchCoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30BA28125ED45D100CB15E1 /* SearchCoinViewModel.swift */; };
 		E30BA28625ED463500CB15E1 /* SearchCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30BA28525ED463500CB15E1 /* SearchCoinViewController.swift */; };
-		E30BA28925ED475C00CB15E1 /* SearchButtonBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30BA28825ED475C00CB15E1 /* SearchButtonBarItem.swift */; };
 		E30BA28C25ED4A7B00CB15E1 /* StarButtonBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30BA28B25ED4A7B00CB15E1 /* StarButtonBarItem.swift */; };
 		E30ECDD925EC3D76005B53C6 /* CoinInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDD825EC3D76005B53C6 /* CoinInfoViewController.swift */; };
 		E30ECDDE25EC3DC4005B53C6 /* CoinInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDDD25EC3DC4005B53C6 /* CoinInfoModel.swift */; };
@@ -20,7 +19,6 @@
 		E3734F0B25F63D6000CDF7D5 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734F0A25F63D6000CDF7D5 /* NewsViewModel.swift */; };
 		E3734F1125F64C2F00CDF7D5 /* NewsCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734F1025F64C2F00CDF7D5 /* NewsCollectionViewFlowLayout.swift */; };
 		E3734F1525F64C7600CDF7D5 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3734F1425F64C7600CDF7D5 /* NewsCollectionViewCell.swift */; };
-		E39C7E4325FFE95E00B1E209 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C7E4225FFE95E00B1E209 /* SearchButton.swift */; };
 		E39C7E532600010E00B1E209 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C7E522600010E00B1E209 /* DateExtension.swift */; };
 		E3A1006125FB5D970040E8C8 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A1006025FB5D970040E8C8 /* Suggestion.swift */; };
 		E3A1006525FB5E490040E8C8 /* SuggestionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A1006425FB5E490040E8C8 /* SuggestionResult.swift */; };
@@ -68,7 +66,6 @@
 		60AB1A3BCC7CCC71086AF557 /* Pods_TossACoin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TossACoin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E30BA28125ED45D100CB15E1 /* SearchCoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoinViewModel.swift; sourceTree = "<group>"; };
 		E30BA28525ED463500CB15E1 /* SearchCoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoinViewController.swift; sourceTree = "<group>"; };
-		E30BA28825ED475C00CB15E1 /* SearchButtonBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonBarItem.swift; sourceTree = "<group>"; };
 		E30BA28B25ED4A7B00CB15E1 /* StarButtonBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarButtonBarItem.swift; sourceTree = "<group>"; };
 		E30ECDD825EC3D76005B53C6 /* CoinInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoViewController.swift; sourceTree = "<group>"; };
 		E30ECDDD25EC3DC4005B53C6 /* CoinInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoModel.swift; sourceTree = "<group>"; };
@@ -78,7 +75,6 @@
 		E3734F0A25F63D6000CDF7D5 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		E3734F1025F64C2F00CDF7D5 /* NewsCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		E3734F1425F64C7600CDF7D5 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
-		E39C7E4225FFE95E00B1E209 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		E39C7E522600010E00B1E209 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		E3A1006025FB5D970040E8C8 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		E3A1006425FB5E490040E8C8 /* SuggestionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionResult.swift; sourceTree = "<group>"; };
@@ -202,7 +198,6 @@
 		E3734F0925F63D3A00CDF7D5 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				E3734F0F25F64C1B00CDF7D5 /* NewsCollectionView */,
 				E3F35C6625F4FBF000D3B3B0 /* NewsViewController.swift */,
 				E3734F0A25F63D6000CDF7D5 /* NewsViewModel.swift */,
 			);
@@ -355,14 +350,13 @@
 		E3A47A7425EA4F15002BDE69 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				E3734F0F25F64C1B00CDF7D5 /* NewsCollectionView */,
 				E3A47A6C25EA4D26002BDE69 /* CoinCollectionView */,
 				E3A47A4E25EA2D70002BDE69 /* TabBarController */,
 				E3A47A7525EA4F3A002BDE69 /* StarButton.swift */,
-				E30BA28825ED475C00CB15E1 /* SearchButtonBarItem.swift */,
 				E30BA28B25ED4A7B00CB15E1 /* StarButtonBarItem.swift */,
 				E3BE2C6825F60086009942DB /* RoundedButtonForDate.swift */,
 				E3BE2C6B25F60B52009942DB /* ApplicationColors.swift */,
-				E39C7E4225FFE95E00B1E209 /* SearchButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -583,12 +577,10 @@
 				E3A47AB625EBE5BB002BDE69 /* Coin.swift in Sources */,
 				E3F35C6725F4FBF000D3B3B0 /* NewsViewController.swift in Sources */,
 				E3A47A8425EA8B59002BDE69 /* EnviromentProtocol.swift in Sources */,
-				E39C7E4325FFE95E00B1E209 /* SearchButton.swift in Sources */,
 				E3A1006525FB5E490040E8C8 /* SuggestionResult.swift in Sources */,
 				E3A1007725FBAC900040E8C8 /* CoinsContainerViewController.swift in Sources */,
 				E3BE2C5425F56567009942DB /* EnumChartType.swift in Sources */,
 				E39C7E532600010E00B1E209 /* DateExtension.swift in Sources */,
-				E30BA28925ED475C00CB15E1 /* SearchButtonBarItem.swift in Sources */,
 				E3A47A9525EA8CB2002BDE69 /* APIClient.swift in Sources */,
 				E3F35C6425F4FB7000D3B3B0 /* ChartViewController.swift in Sources */,
 				E3A47A3325EA2C51002BDE69 /* AppDelegate.swift in Sources */,

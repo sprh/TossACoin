@@ -32,7 +32,7 @@ public final class TabBarController: UITabBarController {
         let networkService = NetworkService()
         let coinsContainerVC = createCoinsContainerViewController(enviroment: enviroment, networkService: networkService)
         let searchCoinVC = createSearchCoinViewController(enviroment: enviroment, networkService: networkService)
-        viewControllers = [coinsContainerVC, searchCoinVC]
+        viewControllers = [searchCoinVC, coinsContainerVC]
     }
     
     private func createCoinsContainerViewController(enviroment: Enviroment, networkService: NetworkService) -> CoinsContainerViewController{
@@ -44,25 +44,13 @@ public final class TabBarController: UITabBarController {
         return viewController
     }
     
-    private func createSearchCoinViewController(enviroment: Enviroment, networkService: NetworkService) -> SearchCoinViewController {
+    private func createSearchCoinViewController(enviroment: Enviroment, networkService: NetworkService) -> UINavigationController {
         let viewModel = SearchCoinViewModel(enviroment: enviroment, networkService: networkService)
         let viewController = SearchCoinViewController(viewModel: viewModel)
+        let navigationController = UINavigationController(rootViewController: viewController)
         viewController.tabBarItem.title = "Search"
         viewController.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")?.withTintColor(ApplicationColors.orangeColor)
         viewController.tabBarItem.image = UIImage(systemName: "magnifyingglass.circle")
-        return viewController
-    }
-    
-    // MARK: - Настройка контроллеров.
-    private func setupViewController(title: String, unselectedImage: UIImage, selectedImage: UIImage, viewController: UIViewController) -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: viewController)
-        viewController.title = title
-        navigationController.navigationItem.title = title
-        navigationController.tabBarItem.title = title
-        navigationController.tabBarItem.image = unselectedImage
-        navigationController.tabBarItem.selectedImage = selectedImage
-        // navigationController.navigationBar.prefersLargeTitles = true
         return navigationController
     }
-    
 }

@@ -20,7 +20,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
     fileprivate let title: UILabel = { () -> UILabel in
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 22)
+        label.font = .systemFont(ofSize: 18)
         label.numberOfLines = 3
         label.textColor = .black
         label.textAlignment = .center

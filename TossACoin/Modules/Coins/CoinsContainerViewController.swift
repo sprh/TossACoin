@@ -11,13 +11,6 @@ import XLPagerTabStrip
 
 class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
     var viewModel: CoinsContainerViewModel!
-    fileprivate var headerView = UIView()
-    fileprivate let viewName: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 35)
-        return label
-    }()
     
     init(viewModel: CoinsContainerViewModel) {
         self.viewModel = viewModel
@@ -35,54 +28,17 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupView()
         setSettings()
     }
     
-    
-    // Настройка вью.
-    private func setupView() {
-        self.view.backgroundColor = .white
-        view.addSubview(headerView)
-        // Изменяем конструкции.
-        headerView.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: self.view.bounds.width,
-            height: 100.0)
-
-        buttonBarView.frame = CGRect(
-            x: 0,
-            y: 100,
-            width: self.view.bounds.width * 2/3,
-            height: 50.0)
-
-        containerView.frame = CGRect(
-            x: 0,
-            y: 100 + buttonBarView.frame.height,
-            width: self.view.bounds.width,
-            height: self.view.bounds.height - (100 + buttonBarView.frame.height))
-        containerView.largeContentTitle = "AAA"
-//        // Настройка header view.
-        setupHeaderView()
-    }
-    
-    private func setupHeaderView() {
-        headerView.addSubview(viewName)
-        [
-            viewName.centerYAnchor.constraint(equalTo: headerView.centerYAnchor, constant: view.safeAreaInsets.top + 20),
-            viewName.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 20)
-        ].forEach({$0.isActive = true})
-        viewName.text = "Coins"
-    }
-    
-    // Настройка ButtonBarView.
+    // Настройка экрана.
     private func setSettings() {
+        // MARK: - Настройки для buttonBarView.
         containerView?.isScrollEnabled = true
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .clear
         settings.style.selectedBarBackgroundColor = ApplicationColors.orangeColor
-        settings.style.selectedBarHeight = 4.0
+        settings.style.selectedBarHeight = 3.0
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .black
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
@@ -94,14 +50,21 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
             newCell?.label.textColor = ApplicationColors.orangeColor
             oldCell?.label.textColor = .gray
             oldCell?.label.font = .boldSystemFont(ofSize: 20)
-            newCell?.label.font = .boldSystemFont(ofSize: 33)
+            newCell?.label.font = .boldSystemFont(ofSize: 27)
         }
-        super.viewDidLoad()
+        
+        // MARK: - Настройки для navigationBar.
         navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.sizeToFit()
+        navigationController?.navigationBar.addSubview(buttonBarView!)
+        super.viewDidLoad()
     }
     
-    // Все дочерние экраны.
+    // MARK: - Все дочерние экраны.
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let allCoinsViewController =  viewModel.getAllCoinsViewController()
         let favouriteCoinsViewController =  viewModel.getFavouriteCoinsViewController()

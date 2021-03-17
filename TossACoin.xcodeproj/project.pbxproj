@@ -10,7 +10,6 @@
 		0895169995C24CEDC3FAC0D9 /* Pods_TossACoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AB1A3BCC7CCC71086AF557 /* Pods_TossACoin.framework */; };
 		E30BA28225ED45D100CB15E1 /* SearchCoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30BA28125ED45D100CB15E1 /* SearchCoinViewModel.swift */; };
 		E30BA28625ED463500CB15E1 /* SearchCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30BA28525ED463500CB15E1 /* SearchCoinViewController.swift */; };
-		E30BA28C25ED4A7B00CB15E1 /* StarButtonBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30BA28B25ED4A7B00CB15E1 /* StarButtonBarItem.swift */; };
 		E30ECDD925EC3D76005B53C6 /* CoinInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDD825EC3D76005B53C6 /* CoinInfoViewController.swift */; };
 		E30ECDDE25EC3DC4005B53C6 /* CoinInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDDD25EC3DC4005B53C6 /* CoinInfoModel.swift */; };
 		E30ECDE325EC498F005B53C6 /* CoinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ECDE225EC498F005B53C6 /* CoinData.swift */; };
@@ -66,7 +65,6 @@
 		60AB1A3BCC7CCC71086AF557 /* Pods_TossACoin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TossACoin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E30BA28125ED45D100CB15E1 /* SearchCoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoinViewModel.swift; sourceTree = "<group>"; };
 		E30BA28525ED463500CB15E1 /* SearchCoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoinViewController.swift; sourceTree = "<group>"; };
-		E30BA28B25ED4A7B00CB15E1 /* StarButtonBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarButtonBarItem.swift; sourceTree = "<group>"; };
 		E30ECDD825EC3D76005B53C6 /* CoinInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoViewController.swift; sourceTree = "<group>"; };
 		E30ECDDD25EC3DC4005B53C6 /* CoinInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoModel.swift; sourceTree = "<group>"; };
 		E30ECDE225EC498F005B53C6 /* CoinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinData.swift; sourceTree = "<group>"; };
@@ -354,7 +352,6 @@
 				E3A47A6C25EA4D26002BDE69 /* CoinCollectionView */,
 				E3A47A4E25EA2D70002BDE69 /* TabBarController */,
 				E3A47A7525EA4F3A002BDE69 /* StarButton.swift */,
-				E30BA28B25ED4A7B00CB15E1 /* StarButtonBarItem.swift */,
 				E3BE2C6825F60086009942DB /* RoundedButtonForDate.swift */,
 				E3BE2C6B25F60B52009942DB /* ApplicationColors.swift */,
 			);
@@ -616,7 +613,6 @@
 				E3A1009025FBD14A0040E8C8 /* FavouriteCoinsViewController.swift in Sources */,
 				E3A47A9825EA8D5F002BDE69 /* NetworkServiceResult.swift in Sources */,
 				E3A47A8925EA8C1C002BDE69 /* Enviroment.swift in Sources */,
-				E30BA28C25ED4A7B00CB15E1 /* StarButtonBarItem.swift in Sources */,
 				E3BE2C4625F55842009942DB /* CoinPriceForAPeriodData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

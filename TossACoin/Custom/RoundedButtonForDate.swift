@@ -25,13 +25,23 @@ class RoundedButtonForDate: UIButton {
     func didSelect() {
         backgroundColor = .black
         setTitleColor(.white, for: .normal)
-//        titleLabel?.font = .systemFont(ofSize: 22)
     }
     
     // Изменение цвета фона и текста.
     func didUnselect() {
         backgroundColor = ApplicationColors.lightOrangeColor
         setTitleColor(.black, for: .normal)
-//        titleLabel?.font = .systemFont(ofSize: 20)
+    }
+    
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        self.sendHapticFeedback()
+    }
+    
+    func sendHapticFeedback() {
+        let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .light)
+        impactFeedbackgenerator.prepare()
+        impactFeedbackgenerator.impactOccurred()
     }
 }

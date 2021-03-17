@@ -7,7 +7,6 @@
 
 import UIKit
 
-// TODO: Удалить, если не буду использовать.
 // MARK: - Application's Tab Bar.
 public final class TabBarController: UITabBarController {
     
@@ -35,13 +34,14 @@ public final class TabBarController: UITabBarController {
         viewControllers = [coinsContainerVC, searchCoinVC]
     }
     
-    private func createCoinsContainerViewController(enviroment: Enviroment, networkService: NetworkService) -> CoinsContainerViewController{
+    private func createCoinsContainerViewController(enviroment: Enviroment, networkService: NetworkService) -> UINavigationController {
         let viewModel = CoinsContainerViewModel(enviroment: enviroment, networkService: networkService)
         let viewController = CoinsContainerViewController(viewModel: viewModel)
         viewController.tabBarItem.title = "Coins"
         viewController.tabBarItem.image = UIImage(systemName: "bitcoinsign.circle")?.withTintColor(ApplicationColors.orangeColor)
         viewController.tabBarItem.selectedImage = UIImage(systemName: "bitcoinsign.circle.fill")?.withTintColor(ApplicationColors.lightOrangeColor)
-        return viewController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        return navigationController
     }
     
     private func createSearchCoinViewController(enviroment: Enviroment, networkService: NetworkService) -> UINavigationController {

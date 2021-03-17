@@ -27,7 +27,7 @@ class SearchCoinViewController: UIViewController {
         super.viewDidLoad()
         let view = UIView()
         view.backgroundColor = .white
-        definesPresentationContext = false
+        definesPresentationContext = true
         self.view = view
         setupSearchController()
         setupCollectionView()
@@ -60,7 +60,6 @@ class SearchCoinViewController: UIViewController {
 extension SearchCoinViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if (searchController.searchBar.text == "" || searchController.searchBar.text == nil) {
-            print("searchcontroller is nil")
             return
         } // TODO: Сделать отображение предложений поиска?
         viewModel.getSuggestions(symbol: searchController.searchBar.text!) {

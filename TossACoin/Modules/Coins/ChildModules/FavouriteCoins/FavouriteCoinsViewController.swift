@@ -30,6 +30,7 @@ class FavouriteCoinsViewController: UIViewController {
         self.view = view
         setupCollectionView()
         initCoinCollection()
+        setupRefreshControl()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +54,13 @@ class FavouriteCoinsViewController: UIViewController {
                                                     #selector(refreshCoins),
                                                     for: .valueChanged)
         self.view.addSubview(coinsCollectionView)
+    }
+    
+    private func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = ApplicationColors.orangeColor
+        refreshControl.addTarget(self, action: #selector(refreshCoins), for: .valueChanged)
+        coinsCollectionView.refreshControl = refreshControl
     }
     
     // Загрузка коллекции акций.
@@ -88,9 +96,9 @@ extension FavouriteCoinsViewController: UICollectionViewDelegate, UICollectionVi
     @objc func refreshCoins() {
         viewModel.refresh {
             self.initCoinCollection()
-        }
-        DispatchQueue.main.async {
-           self.coinsCollectionView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+               self.coinsCollectionView.refreshControl?.endRefreshing()
+            }
         }
     }
 }

@@ -58,7 +58,7 @@ public struct APIClient {
         return "https://www.cryptocompare.com/api/autosuggest/coins/?maxRows=15&q=\(symbol)"
     }
     
-    static func grtPopularRequests() -> String {
-        return "https://www.cryptocompare.com/api/autosuggest/coins"
-    }
+//    static func getPopularRequests() -> String {
+//        return "https://www.cryptocompare.com/api/autosuggest/coins"
+//    }
 }

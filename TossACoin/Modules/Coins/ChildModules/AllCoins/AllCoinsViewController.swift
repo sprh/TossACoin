@@ -13,7 +13,6 @@ import XLPagerTabStrip
 class AllCoinsViewController: UIViewController {
     fileprivate let coinsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
     fileprivate let viewModel: AllCoinsViewModel!
-    fileprivate let refreshControl = UIRefreshControl()
     
     init(viewModel: AllCoinsViewModel) {
         self.viewModel = viewModel
@@ -31,6 +30,7 @@ class AllCoinsViewController: UIViewController {
         self.view = view
         setupCollectionView()
         initCoinCollection()
+        setupRefreshControl()
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,20 +40,23 @@ class AllCoinsViewController: UIViewController {
     
     // Настройка CollectionView.
     private func setupCollectionView() {
+        self.view.addSubview(coinsCollectionView)
         coinsCollectionView.delegate = self
         coinsCollectionView.dataSource = self
         coinsCollectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
         coinsCollectionView.backgroundColor = .white
+    }
+    
+    private func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = ApplicationColors.orangeColor
+        refreshControl.addTarget(self, action: #selector(refreshCoins), for: .valueChanged)
         coinsCollectionView.refreshControl = refreshControl
-        coinsCollectionView.refreshControl?.addTarget(self, action:
-                                                    #selector(refreshCoins),
-                                                    for: .valueChanged)
-        self.view.addSubview(coinsCollectionView)
     }
     
     // Загрузка коллекции акций.
     func initCoinCollection() {
-        viewModel.getCoins {
+        viewModel.getCoins { [self] in
             self.coinsCollectionView.reloadData()
         }
     }
@@ -91,15 +94,15 @@ extension AllCoinsViewController: UICollectionViewDelegate, UICollectionViewData
     @objc func refreshCoins() {
         viewModel.refresh {
             self.initCoinCollection()
-        }
-        DispatchQueue.main.async {
-           self.coinsCollectionView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+               self.coinsCollectionView.refreshControl?.endRefreshing()
+            }
         }
     }
 }
 
 extension AllCoinsViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "All")
+        return IndicatorInfo(title: "All stocks")
     }
 }

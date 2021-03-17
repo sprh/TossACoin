@@ -9,12 +9,9 @@ import Foundation
 
 // MARK: - Среда.
 class Enviroment: EnviromentProtocol {
-    // Хранилище.
-//    private let dataStorage: DataStorage = DataStorage()
-    
     // Сброс хранилища.
     public func reset() {
-        
+        favouriteCoins = []
     }
     
     // Акции в избранном.

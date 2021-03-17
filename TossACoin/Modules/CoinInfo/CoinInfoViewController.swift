@@ -34,6 +34,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         setSettings()
         super.viewDidLoad()
         definesPresentationContext = true
+        view.backgroundColor = UIColor(named: "navigationAndTopColor")
         setupView()
     }
     
@@ -65,6 +66,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     }
     
     private func setupHeaderView() {
+        headerView.backgroundColor = UIColor(named: "backgroundColor")
         // MARK: - Название акции.
         let coinName = UILabel()
         headerView.addSubview(coinName)
@@ -113,7 +115,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     // Настройка ButtonBarView.
     private func setSettings() {
         containerView?.isScrollEnabled = true
-        settings.style.buttonBarBackgroundColor = .white
+        settings.style.buttonBarBackgroundColor = UIColor(named: "backgroundColor")
         settings.style.buttonBarItemBackgroundColor = .clear
         settings.style.selectedBarBackgroundColor = ApplicationColors.orangeColor
         settings.style.selectedBarHeight = 4.0

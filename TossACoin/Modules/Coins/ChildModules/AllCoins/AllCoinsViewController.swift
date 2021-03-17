@@ -26,7 +26,7 @@ class AllCoinsViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backgroundColor")
         self.view = view
         setupCollectionView()
         initCoinCollection()
@@ -44,7 +44,7 @@ class AllCoinsViewController: UIViewController {
         coinsCollectionView.delegate = self
         coinsCollectionView.dataSource = self
         coinsCollectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
-        coinsCollectionView.backgroundColor = .white
+        coinsCollectionView.backgroundColor = UIColor(named: "backgroundColor")
     }
     
     private func setupRefreshControl() {

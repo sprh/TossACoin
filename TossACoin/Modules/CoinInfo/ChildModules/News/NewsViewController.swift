@@ -23,7 +23,7 @@ class NewsViewController: UIViewController {
     
     override func viewDidLoad() {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backgroundColor")
         self.view = view
         super.viewDidLoad()
         setupSubviews()
@@ -35,7 +35,7 @@ class NewsViewController: UIViewController {
         newsCollectionView.delegate = self
         newsCollectionView.dataSource = self
         newsCollectionView.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "NewsCollectionViewCell")
-        newsCollectionView.backgroundColor = .white
+        newsCollectionView.backgroundColor = UIColor(named: "backgroundColor")
         view.addSubview(newsCollectionView)
     }
     

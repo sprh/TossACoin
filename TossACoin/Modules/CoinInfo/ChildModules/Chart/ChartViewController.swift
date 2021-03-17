@@ -67,7 +67,7 @@ class ChartViewController: UIViewController {
     
     override func viewDidLoad() {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backgroundColor")
         self.view = view
         view.exerciseAmbiguityInLayout()
         super.viewDidLoad()
@@ -204,6 +204,7 @@ extension ChartViewController {
                 .dataLabelsEnabled(false)
                 .xAxisVisible(false)
                 .yAxisVisible(false)
+                .backgroundColor(AAColor.clear)
                 .series([
                     AASeriesElement()
                         .name(self.viewModel.getName())

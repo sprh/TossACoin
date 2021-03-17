@@ -26,6 +26,7 @@ public final class TabBarController: UITabBarController {
     // MARK: - Инициализация контроллеров.
     private func setup() {
         tabBar.tintColor = .orange
+        tabBar.barTintColor = UIColor(named: "navigationAndTopColor")
         
         let enviroment = Enviroment()
         let networkService = NetworkService()

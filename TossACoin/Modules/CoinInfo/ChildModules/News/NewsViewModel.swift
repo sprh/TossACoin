@@ -46,7 +46,7 @@ class NewsViewModel {
         if (articles.count <= indexPath) { return }
         let article = articles[indexPath]
         cell.loadData(title: article.title, imageUrl: article.imageUrl)
-        cell.backgroundColor = indexPath % 2 == 0 ? #colorLiteral(red: 0.989908874, green: 1, blue: 0.9611904025, alpha: 1) : #colorLiteral(red: 0.9994921088, green: 0.9913042188, blue: 0.7818924785, alpha: 1)
+        cell.backgroundColor = indexPath % 2 == 0 ? UIColor(named: "evenCellColorColor") : UIColor(named: "backgroundColor")
     }
     
     // Количество новостей.

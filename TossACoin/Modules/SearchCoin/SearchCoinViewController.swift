@@ -50,7 +50,7 @@ class SearchCoinViewController: UIViewController {
     func setupCollectionView() {
         view.addSubview(suggestionsCollectionView)
         suggestionsCollectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
-        suggestionsCollectionView.backgroundColor = .white
+        suggestionsCollectionView.backgroundColor = UIColor(named: "backgroundColor")
         suggestionsCollectionView.delegate = self
         suggestionsCollectionView.dataSource = self
         suggestionsCollectionView.alwaysBounceVertical = true

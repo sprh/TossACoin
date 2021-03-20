@@ -37,7 +37,7 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
         containerView?.isScrollEnabled = true
         settings.style.buttonBarBackgroundColor = UIColor(named: "backgroundColor")
         settings.style.buttonBarItemBackgroundColor = .clear
-        settings.style.selectedBarBackgroundColor = ApplicationColors.orangeColor
+        settings.style.selectedBarBackgroundColor = .orangeColor
         settings.style.selectedBarHeight = 3.0
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .black
@@ -47,7 +47,7 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
 
         changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
-            newCell?.label.textColor = ApplicationColors.orangeColor
+            newCell?.label.textColor = .orangeColor
             oldCell?.label.textColor = .gray
             oldCell?.label.font = .boldSystemFont(ofSize: 20)
             newCell?.label.font = .boldSystemFont(ofSize: 27)

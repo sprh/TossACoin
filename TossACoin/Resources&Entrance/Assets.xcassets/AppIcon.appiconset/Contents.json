@@ -1,41 +1,55 @@
 {
   "images" : [
     {
+      "filename" : "Снимок экрана 2021-03-20 в 21.08.29-20@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "Снимок экрана 2021-03-20 в 21.08.29-20@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
+      "filename" : "Снимок экрана 2021-03-20 в 21.08.29-29.png",
+      "idiom" : "iphone",
+      "scale" : "1x",
+      "size" : "29x29"
+    },
+    {
+      "filename" : "Снимок экрана 2021-03-20 в 21.08.29-29@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "Снимок экрана 2021-03-20 в 21.08.29-29@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
+      "filename" : "Снимок экрана 2021-03-20 в 21.08.29-40@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
+      "filename" : "Снимок экрана 2021-03-20 в 21.08.29-40@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
+      "filename" : "Снимок экрана 2021-03-20 в 21.08.29-60@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
+      "filename" : "Снимок экрана 2021-03-20 в 21.08.29-60@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"

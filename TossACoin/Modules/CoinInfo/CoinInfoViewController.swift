@@ -34,13 +34,13 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         setSettings()
         super.viewDidLoad()
         definesPresentationContext = true
-        view.backgroundColor = UIColor(named: "navigationAndTopColor")
+        view.backgroundColor = .navigationAndTopColor
         setupView()
     }
     
     // Настройка вью.
     private func setupView() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .backgroundColor
         view.addSubview(headerView)
         
         // Изменяем конструкции.
@@ -77,6 +77,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         ].forEach({$0.isActive = true})
         coinName.text = self.viewModel.getCoinName()
         coinName.font = .boldSystemFont(ofSize: 26)
+        coinName.textColor = .black
         
         // MARK: - Название компании.
         let companyName = UILabel()
@@ -89,6 +90,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         companyName.font = .systemFont(ofSize: 20)
         companyName.textColor = .gray
         companyName.text = self.viewModel.getCompanyName()
+        companyName.textColor = .gray
         
         // MARK: - Кнопка добавления в избранное.
         let starButton = StarButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
@@ -117,7 +119,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         containerView?.isScrollEnabled = true
         settings.style.buttonBarBackgroundColor = UIColor(named: "backgroundColor")
         settings.style.buttonBarItemBackgroundColor = .clear
-        settings.style.selectedBarBackgroundColor = ApplicationColors.orangeColor
+        settings.style.selectedBarBackgroundColor = .orangeColor
         settings.style.selectedBarHeight = 4.0
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .black
@@ -126,9 +128,9 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarRightContentInset = 0
         changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
-            oldCell?.imageView.tintColor = .orange
+            oldCell?.imageView.tintColor = .orangeColor
             oldCell?.label.textColor = .black
-            newCell?.label.textColor = ApplicationColors.orangeColor
+            newCell?.label.textColor = .black
             oldCell?.label.font = .boldSystemFont(ofSize: 14)
             newCell?.label.font = .boldSystemFont(ofSize: 17)
         }

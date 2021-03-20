@@ -58,7 +58,7 @@ class FavouriteCoinsViewController: UIViewController {
     
     private func setupRefreshControl() {
         let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = ApplicationColors.orangeColor
+        refreshControl.tintColor = .orangeColor
         refreshControl.addTarget(self, action: #selector(refreshCoins), for: .valueChanged)
         coinsCollectionView.refreshControl = refreshControl
     }

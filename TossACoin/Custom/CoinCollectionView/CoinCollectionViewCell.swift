@@ -79,7 +79,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         self.companyName.text = model.fullName
         self.price.text = model.price
         self.regularMarketChangePercent.textColor =
-            model.changePercent.contains("-") ? ApplicationColors.redPercent : ApplicationColors.greenPercent
+            model.changePercent.contains("-") ? .redPercent : .greenPercent
         self.regularMarketChangePercent.text = "\(model.changePercent)%"
         setImage(imageUrl: model.imageUrl)
     }

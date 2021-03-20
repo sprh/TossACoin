@@ -26,7 +26,7 @@ class SearchCoinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundColor
         definesPresentationContext = true
         self.view = view
         setupSearchController()

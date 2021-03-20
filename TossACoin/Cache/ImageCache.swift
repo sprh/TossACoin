@@ -25,7 +25,7 @@ class ImageCache {
                     completion(image)
                 }
                 else {
-                    completion(UIImage(systemName: placeholderName)?.withTintColor(ApplicationColors.orangeColor))
+                    completion(UIImage(systemName: placeholderName)?.withTintColor(.orangeColor))
                 }
             }
         }

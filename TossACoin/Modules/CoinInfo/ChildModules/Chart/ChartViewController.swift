@@ -66,8 +66,9 @@ class ChartViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        chart.isClearBackgroundColor = true
         let view = UIView()
-        view.backgroundColor = UIColor(named: "backgroundColor")
+        view.backgroundColor = .backgroundColor
         self.view = view
         view.exerciseAmbiguityInLayout()
         super.viewDidLoad()
@@ -78,7 +79,7 @@ class ChartViewController: UIViewController {
         // Изменение contentSize для scrollView.
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width,
                                         height: UIScreen.main.bounds.height -
-                                            view.safeAreaInsets.bottom - 120)
+                                            view.safeAreaInsets.bottom - 150)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -105,6 +106,7 @@ class ChartViewController: UIViewController {
             labelWithLastPrice.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20)
         ].forEach({$0.isActive = true})
         labelWithLastPrice.text = viewModel.getLastPrice()
+        labelWithLastPrice.textColor = .backgroundColor
         
         // MARK: - LabelChangePercent.
         scrollView.addSubview(labelChangePercent)
@@ -113,7 +115,7 @@ class ChartViewController: UIViewController {
             labelChangePercent.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
         ].forEach({$0.isActive = true})
         labelChangePercent.text = "\(viewModel.getChangePercent())%"
-        labelChangePercent.textColor = labelChangePercent.text!.contains("-") ? ApplicationColors.redPercent : ApplicationColors.greenPercent
+        labelChangePercent.textColor = labelChangePercent.text!.contains("-") ? .redPercent : .greenPercent
         
         // MARK: - Chart.
         view.addSubview(chart)
@@ -209,7 +211,7 @@ extension ChartViewController {
                     AASeriesElement()
                         .name(self.viewModel.getName())
                         .lineWidth(4)
-                        .color(ApplicationColors.orangeColorAAColor)
+                        .color(AAColor.orange)
                         .data(values),
                     ])
             // Отрисовка.

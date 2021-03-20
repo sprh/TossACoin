@@ -29,7 +29,7 @@ class RoundedButtonForDate: UIButton {
     
     // Изменение цвета фона и текста.
     func didUnselect() {
-        backgroundColor = ApplicationColors.lightOrangeColor
+        backgroundColor = .lightOrangeColor
         setTitleColor(.black, for: .normal)
     }
     

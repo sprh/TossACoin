@@ -39,8 +39,8 @@ public final class TabBarController: UITabBarController {
         let viewModel = CoinsContainerViewModel(enviroment: enviroment, networkService: networkService)
         let viewController = CoinsContainerViewController(viewModel: viewModel)
         viewController.tabBarItem.title = "Coins"
-        viewController.tabBarItem.image = UIImage(systemName: "bitcoinsign.circle")?.withTintColor(ApplicationColors.orangeColor)
-        viewController.tabBarItem.selectedImage = UIImage(systemName: "bitcoinsign.circle.fill")?.withTintColor(ApplicationColors.lightOrangeColor)
+        viewController.tabBarItem.image = UIImage(systemName: "bitcoinsign.circle")?.withTintColor(.orangeColor)
+        viewController.tabBarItem.selectedImage = UIImage(systemName: "bitcoinsign.circle.fill")?.withTintColor(.lightOrangeColor)
         let navigationController = UINavigationController(rootViewController: viewController)
         return navigationController
     }
@@ -50,7 +50,7 @@ public final class TabBarController: UITabBarController {
         let viewController = SearchCoinViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         viewController.tabBarItem.title = "Search"
-        viewController.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")?.withTintColor(ApplicationColors.orangeColor)
+        viewController.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")?.withTintColor(.orangeColor)
         viewController.tabBarItem.image = UIImage(systemName: "magnifyingglass.circle")
         return navigationController
     }

@@ -86,4 +86,16 @@ class NewsCollectionViewCell: UICollectionViewCell {
         self.title.text = title
         setImage(imageUrl: imageUrl)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.sendHapticFeedback()
+    }
+    
+    // Обратная связь.
+    func sendHapticFeedback() {
+        let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .light)
+        impactFeedbackgenerator.prepare()
+        impactFeedbackgenerator.impactOccurred()
+    }
 }

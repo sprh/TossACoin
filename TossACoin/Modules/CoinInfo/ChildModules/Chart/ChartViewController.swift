@@ -28,6 +28,7 @@ class ChartViewController: UIViewController {
     
     
     fileprivate let scrollView = UIScrollView()
+    
     // Кнопка, которая на самом деле просто открывает браузер.
     fileprivate var buyButton: UIButton = {
         let button = UIButton()
@@ -76,10 +77,9 @@ class ChartViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // Изменение contentSize для scrollView.
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width,
-                                        height: UIScreen.main.bounds.height -
-                                            view.safeAreaInsets.bottom - 150)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height:
+                                        // Высчитывается, исходя из расстояния от stackForButtons до buyButton.
+        UIScreen.main.bounds.height - view.safeAreaInsets.bottom + scrollView.convert(stackForButtons.frame.origin, to: buyButton).y - buyButton.frame.height - 70)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -106,8 +106,8 @@ class ChartViewController: UIViewController {
             labelWithLastPrice.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20)
         ].forEach({$0.isActive = true})
         labelWithLastPrice.text = viewModel.getLastPrice()
-        labelWithLastPrice.textColor = .backgroundColor
-        
+        labelWithLastPrice.textColor = .black
+
         // MARK: - LabelChangePercent.
         scrollView.addSubview(labelChangePercent)
         [
@@ -116,7 +116,7 @@ class ChartViewController: UIViewController {
         ].forEach({$0.isActive = true})
         labelChangePercent.text = "\(viewModel.getChangePercent())%"
         labelChangePercent.textColor = labelChangePercent.text!.contains("-") ? .redPercent : .greenPercent
-        
+
         // MARK: - Chart.
         view.addSubview(chart)
         chart.translatesAutoresizingMaskIntoConstraints = false
@@ -127,6 +127,7 @@ class ChartViewController: UIViewController {
             chart.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ].forEach({$0.isActive = true})
         chart.clearsContextBeforeDrawing = true
+        chart.scrollEnabled = false
         setData(ofType: .daily)
     // MARK: - StackForButtons.
         scrollView.addSubview(stackForButtons)
@@ -137,7 +138,7 @@ class ChartViewController: UIViewController {
             stackForButtons.bottomAnchor.constraint(equalTo: chart.bottomAnchor, constant: 60)
         ].forEach({$0.isActive = true})
         dailyButton.setTitle(" Daily ", for: .normal)
-        
+
         stackForButtons.addSubview(dailyButton)
         [
             dailyButton.centerXAnchor.constraint(equalTo: stackForButtons.centerXAnchor, constant: 0),
@@ -145,7 +146,7 @@ class ChartViewController: UIViewController {
         ].forEach({$0.isActive = true})
         dailyButton.addTarget(self, action: #selector(dailyButtonTap), for: .touchDown)
         dailyButton.didSelect()
-        
+
         hourlyButton.setTitle(" Hourly ", for: .normal)
         stackForButtons.addSubview(hourlyButton)
         [
@@ -153,7 +154,7 @@ class ChartViewController: UIViewController {
             hourlyButton.centerYAnchor.constraint(equalTo: stackForButtons.centerYAnchor)
         ].forEach({$0.isActive = true})
         hourlyButton.addTarget(self, action: #selector(hourlyButtonTap), for: .touchDown)
-        
+
         minuteButton.setTitle(" Minute ", for: .normal)
         stackForButtons.addSubview(minuteButton)
         [
@@ -161,6 +162,17 @@ class ChartViewController: UIViewController {
             minuteButton.centerYAnchor.constraint(equalTo: stackForButtons.centerYAnchor)
         ].forEach({$0.isActive = true})
         minuteButton.addTarget(self, action: #selector(minuteButtonTap), for: .touchDown)
+        
+        // MARK: - buyButton
+         view.addSubview(buyButton)
+         [
+ //            buyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            buyButton.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIScreen.main.bounds.width - 20),
+            buyButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
+            buyButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70)
+         ].forEach({$0.isActive = true})
+         buyButton.addTarget(self, action: #selector(buyButtonTap), for: .touchUpInside)
     }
 }
 
@@ -170,7 +182,6 @@ extension ChartViewController {
         dailyButton.didSelect()
         hourlyButton.didUnselect()
         minuteButton.didUnselect()
-        // Используется enum.
         setData(ofType: .daily)
     }
     
@@ -214,7 +225,6 @@ extension ChartViewController {
                         .color(AAColor.orange)
                         .data(values),
                     ])
-            // Отрисовка.
             self.chart.aa_drawChartWithChartModel(chartModel)
         }
     }

@@ -11,9 +11,9 @@ import UIKit
 class RoundedButtonForDate: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = 17
         translatesAutoresizingMaskIntoConstraints = false
-        titleLabel?.font = .systemFont(ofSize: 20)
+        titleLabel?.font = .systemFont(ofSize: 22)
         didUnselect()
     }
     

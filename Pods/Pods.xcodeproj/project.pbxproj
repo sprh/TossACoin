@@ -172,7 +172,7 @@
 		03DD5C24A6D9700E958387B2C96F4DE0 /* Request+AlamofireImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Request+AlamofireImage.swift"; path = "Source/Request+AlamofireImage.swift"; sourceTree = "<group>"; };
 		05E3B2B24CCEB90E3A17A8E3C68DA0DD /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		08B2C59F98FB3E14271139BBD9F3B971 /* AAScrollablePlotArea.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AAScrollablePlotArea.swift; path = AAInfographics/AAOptionsModel/AAScrollablePlotArea.swift; sourceTree = "<group>"; };
-		0A020F6530E6267339AA5395B32163EF /* Pods_TossACoin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TossACoin.framework; path = "Pods-TossACoin.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A020F6530E6267339AA5395B32163EF /* Pods_TossACoin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TossACoin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C416BEF0D8825CC48502D186B018633 /* AAChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AAChart.swift; path = AAInfographics/AAOptionsModel/AAChart.swift; sourceTree = "<group>"; };
 		0C9F796484B3E08450F5C3DFD7A902F5 /* AAYAxis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AAYAxis.swift; path = AAInfographics/AAOptionsModel/AAYAxis.swift; sourceTree = "<group>"; };
 		0ECDDA96E7E22807CA36709729476175 /* XLPagerTabStrip-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XLPagerTabStrip-umbrella.h"; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 		59FFCCA47F3C2FDB058F13F533B90341 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B080D23A612B371CB3D359894ED7FE5 /* Pods-TossACoin-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TossACoin-umbrella.h"; sourceTree = "<group>"; };
 		5C09AC84E28FB064A2A49DEA0CDB2CDA /* ResourceBundle-XLPagerTabStrip-XLPagerTabStrip-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-XLPagerTabStrip-XLPagerTabStrip-Info.plist"; sourceTree = "<group>"; };
-		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0DCA8A32166A7708CD391C324C3B8F /* RedirectHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RedirectHandler.swift; path = Source/RedirectHandler.swift; sourceTree = "<group>"; };
 		613C05EBEB843F9C86C259265C3D346F /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		615A644A43C304E9A0F60F4F189E72DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -230,7 +230,7 @@
 		71F82168B0BB029C3E82A6BA478602FC /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Source/Image.swift; sourceTree = "<group>"; };
 		74E27FEE608751548328F3960864B1B4 /* BaseButtonBarPagerTabStripViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseButtonBarPagerTabStripViewController.swift; path = Sources/BaseButtonBarPagerTabStripViewController.swift; sourceTree = "<group>"; };
 		77ADECAF628ED5C51ECBF16A13F5E9BB /* AASerializable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AASerializable.swift; path = AAInfographics/AAChartCreator/AASerializable.swift; sourceTree = "<group>"; };
-		78BA4BB1A553AB4136F879792D99C87D /* XLPagerTabStrip.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = XLPagerTabStrip.bundle; path = "XLPagerTabStrip-XLPagerTabStrip.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78BA4BB1A553AB4136F879792D99C87D /* XLPagerTabStrip.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XLPagerTabStrip.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDBBBE5B9EF26E70458B319BE61A309 /* AAStates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AAStates.swift; path = AAInfographics/AAOptionsModel/AAStates.swift; sourceTree = "<group>"; };
 		7DE509EC4294BC974351D0FAC1BFE570 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		7F8222FA92E5958DAC52DB571F82C081 /* Pods-TossACoin.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TossACoin.modulemap"; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 		9991EAE0B79C51C2AE246C52BC126D31 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		9A12F899B58C3C5DFA2EDD3307C7AFA8 /* AFIError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFIError.swift; path = Source/AFIError.swift; sourceTree = "<group>"; };
 		9B9003BC4A368BA59EC4DCEA8B5116E9 /* URLEncodedFormEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLEncodedFormEncoder.swift; path = Source/URLEncodedFormEncoder.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E75609DF608EA1CDC451D10508832BC /* AAInfographics-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AAInfographics-Info.plist"; sourceTree = "<group>"; };
 		9F2F07AF70F3BB666183D523287D9199 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		9F3F3DF12E754C17B08C774817825941 /* BarPagerTabStripViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarPagerTabStripViewController.swift; path = Sources/BarPagerTabStripViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 		C46C8CBD6BDC7986FEE4DB0653831722 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		C4CFB4CDF6B5E40DA785BD18C8489EB9 /* AASubtitle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AASubtitle.swift; path = AAInfographics/AAOptionsModel/AASubtitle.swift; sourceTree = "<group>"; };
 		C72F2B15A6EEBE7E1213E8DEFE9CDEF2 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		C8498160B5D29EF2745E4D41F2D971B5 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AlamofireImage.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8498160B5D29EF2745E4D41F2D971B5 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86419937FA66116BA8CF836F017BDFF /* AALabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AALabel.swift; path = AAInfographics/AAOptionsModel/AALabel.swift; sourceTree = "<group>"; };
 		CB9943A755408F62FDA2E8D721AF26A4 /* AALegend.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AALegend.swift; path = AAInfographics/AAOptionsModel/AALegend.swift; sourceTree = "<group>"; };
 		CBBD8E736E58FBDCF62FDA2CF6E92E36 /* RequestInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestInterceptor.swift; path = Source/RequestInterceptor.swift; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 		D436435CA8278F6FAF0A2351F6A01DA8 /* AuthenticationInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticationInterceptor.swift; path = Source/AuthenticationInterceptor.swift; sourceTree = "<group>"; };
 		D4FD330A3175946F0A453B2B2188A60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D6886A354D29C3C666AD0F23C04B59C7 /* AACredits.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AACredits.swift; path = AAInfographics/AAOptionsModel/AACredits.swift; sourceTree = "<group>"; };
-		D6CCB9D258E15D810E80DB9950E2B5AC /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AAInfographics.framework; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6CCB9D258E15D810E80DB9950E2B5AC /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C68A6FBB5F2FD9605D9D45E348CB21 /* FXPageControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FXPageControl.m; path = Sources/FXPageControl.m; sourceTree = "<group>"; };
 		D95D7D36203A7F79603C428BDA207F6D /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
 		DE15D9F6872879B4FE01D95F241D166F /* TwitterPagerTabStripViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TwitterPagerTabStripViewController.swift; path = Sources/TwitterPagerTabStripViewController.swift; sourceTree = "<group>"; };
@@ -295,7 +295,7 @@
 		EF601F3EEBF6205A91CA6D1379BD7975 /* AAInfographics-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AAInfographics-dummy.m"; sourceTree = "<group>"; };
 		EFF7BABB14A7938111C346A58877D923 /* RequestTaskMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestTaskMap.swift; path = Source/RequestTaskMap.swift; sourceTree = "<group>"; };
 		F028F2AC3F3AD35AF9DA05468DDD2514 /* XLPagerTabStrip-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XLPagerTabStrip-prefix.pch"; sourceTree = "<group>"; };
-		F1DDEA945255A18F0B9913AB1C2AB718 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XLPagerTabStrip.framework; path = XLPagerTabStrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1DDEA945255A18F0B9913AB1C2AB718 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XLPagerTabStrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BA64B930241DA2526EA2486207B8A2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		F6E1203158D91EE29435C04C085B5852 /* AAPlotBandsElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AAPlotBandsElement.swift; path = AAInfographics/AAOptionsModel/AAPlotBandsElement.swift; sourceTree = "<group>"; };
 		F6ED9EEE39C199FCE39AC289DB210989 /* ParameterEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoder.swift; path = Source/ParameterEncoder.swift; sourceTree = "<group>"; };
@@ -433,7 +433,6 @@
 				6F00CC0C3F135D466FAF48A1432A1F4D /* Validation.swift */,
 				8D7317C762CD8FD354CE08C3B2A2DAF7 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -474,7 +473,6 @@
 				E7F13DAAB81977709FCCC5A16E69A7B9 /* Resources */,
 				A9355C50D847D49D8E9EF3F9A3D35458 /* Support Files */,
 			);
-			name = AAInfographics;
 			path = AAInfographics;
 			sourceTree = "<group>";
 		};
@@ -492,7 +490,6 @@
 				C37DA2AD2FBD5747536D34554D84B7FA /* UIImageView+AlamofireImage.swift */,
 				7F0A6640CF4BF933899E6DF278A8E337 /* Support Files */,
 			);
-			name = AlamofireImage;
 			path = AlamofireImage;
 			sourceTree = "<group>";
 		};
@@ -527,7 +524,6 @@
 				B916DA6F66B612A973E24A498257CE30 /* Resources */,
 				B55E43638D3D7FE31FCD340E7D6CB9C5 /* Support Files */,
 			);
-			name = XLPagerTabStrip;
 			path = XLPagerTabStrip;
 			sourceTree = "<group>";
 		};
@@ -814,7 +810,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -1073,7 +1069,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/XLPagerTabStrip";
 				IBSC_MODULE = XLPagerTabStrip;
 				INFOPLIST_FILE = "Target Support Files/XLPagerTabStrip/ResourceBundle-XLPagerTabStrip-XLPagerTabStrip-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = XLPagerTabStrip;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1098,7 +1094,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1132,7 +1128,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/XLPagerTabStrip/XLPagerTabStrip-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/XLPagerTabStrip/XLPagerTabStrip-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1167,7 +1163,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/AlamofireImage/AlamofireImage-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/AlamofireImage/AlamofireImage-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1264,7 +1260,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/XLPagerTabStrip/XLPagerTabStrip-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/XLPagerTabStrip/XLPagerTabStrip-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1365,7 +1361,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/AAInfographics/AAInfographics-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/AAInfographics/AAInfographics-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1391,7 +1387,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/XLPagerTabStrip";
 				IBSC_MODULE = XLPagerTabStrip;
 				INFOPLIST_FILE = "Target Support Files/XLPagerTabStrip/ResourceBundle-XLPagerTabStrip-XLPagerTabStrip-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = XLPagerTabStrip;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1416,7 +1412,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1489,7 +1485,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/AlamofireImage/AlamofireImage-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/AlamofireImage/AlamofireImage-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1561,7 +1557,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/AAInfographics/AAInfographics-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/AAInfographics/AAInfographics-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

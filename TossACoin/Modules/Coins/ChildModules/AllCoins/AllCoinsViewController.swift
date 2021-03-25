@@ -26,7 +26,7 @@ class AllCoinsViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         let view = UIView()
-        view.backgroundColor = UIColor(named: "backgroundColor")
+        view.backgroundColor = .backgroundColor
         self.view = view
         setupCollectionView()
         initCoinCollection()
@@ -35,7 +35,7 @@ class AllCoinsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 150)
+        coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - view.safeAreaInsets.bottom)
     }
     
     // Настройка CollectionView.

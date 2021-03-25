@@ -138,8 +138,12 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     
     // Все дочерние экраны.
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let mainViewController =  viewModel.getChartViewController()
+        let chartViewController =  viewModel.getChartViewController()
+        // Вот это нужно из-за исправленной шапки.
+        chartViewController.view.frame = CGRect(x: chartViewController.view.frame.minX, y: chartViewController.view.frame.minY, width: chartViewController.view.frame.width, height: view.frame.height - 150)
         let newsViewController = viewModel.getNewsViewController()
-        return [mainViewController, newsViewController]
+        // И это тоже.
+        newsViewController.view.frame = CGRect(x: chartViewController.view.frame.minX, y: chartViewController.view.frame.minY, width: chartViewController.view.frame.width, height: view.frame.height - 150)
+        return [chartViewController, newsViewController]
     }
 }

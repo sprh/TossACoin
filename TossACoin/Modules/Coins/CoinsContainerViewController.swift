@@ -27,7 +27,7 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "backgroundColor")
+        view.backgroundColor = .backgroundColor
         setSettings()
     }
     
@@ -35,7 +35,7 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
     private func setSettings() {
         // MARK: - Настройки для buttonBarView.
         containerView?.isScrollEnabled = true
-        settings.style.buttonBarBackgroundColor = UIColor(named: "backgroundColor")
+        settings.style.buttonBarBackgroundColor = .backgroundColor
         settings.style.buttonBarItemBackgroundColor = .clear
         settings.style.selectedBarBackgroundColor = .orangeColor
         settings.style.selectedBarHeight = 3.0
@@ -55,7 +55,7 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
         
         // MARK: - Настройки для navigationBar.
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.backgroundColor = .backgroundColor
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.prefersLargeTitles = false

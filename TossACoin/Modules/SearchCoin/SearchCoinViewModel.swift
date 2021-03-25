@@ -55,4 +55,8 @@ class SearchCoinViewModel {
             print(enviroment.searchingRequests)
         }
     }
+    
+    func getOldRequests() -> [String] {
+        return enviroment.searchingRequests
+    }
 }

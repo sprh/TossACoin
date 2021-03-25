@@ -15,7 +15,7 @@ class SearchCoinViewController: UIViewController {
     fileprivate var suggestionsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
     fileprivate var scrollView = UIScrollView()
     fileprivate let popularRequestsScrollView = UIScrollView()
-    fileprivate let popularRequestsStackView = UIStackView()
+    fileprivate let oldRequestsScrollView = UIScrollView()
     
     init(viewModel: SearchCoinViewModel) {
         self.viewModel = viewModel
@@ -24,20 +24,8 @@ class SearchCoinViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        var firstLineSizeOfContent: CGFloat = 0;
-        var secondLineSizeOfContent: CGFloat = 0;
-        for i in 0...popularRequestsScrollView.subviews.count - 1 {
-            let subview = popularRequestsScrollView.subviews[i]
-            if (subview is RoundedButtonForDate) {
-                if (i < (popularRequestsScrollView.subviews.count - 1) / 2) {
-                    firstLineSizeOfContent += subview.frame.size.width + 20
-                }
-                else {
-                    secondLineSizeOfContent += subview.frame.size.width + 20
-                }
-            }
-        }
-        popularRequestsScrollView.contentSize.width = max(firstLineSizeOfContent, secondLineSizeOfContent) + 20
+        setRequestsContentViewWidth(scrollView: popularRequestsScrollView)
+        setRequestsContentViewWidth(scrollView: oldRequestsScrollView)
     }
     
     required init?(coder: NSCoder) {
@@ -53,6 +41,7 @@ class SearchCoinViewController: UIViewController {
         setupSearchController()
         setupCollectionView()
         setupPopularRequestsButtons()
+        setupOldRequestsButtons()
     }
     
     func setupSearchController() {
@@ -111,6 +100,7 @@ extension SearchCoinViewController: UICollectionViewDelegate, UICollectionViewDa
     // Нажатие на одну из ячеек CollectionView.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.addNewSearchingRequest(text: searchController.searchBar.text ?? "")
+        setupButtons(scrollView: oldRequestsScrollView, buttonsTextArray: viewModel.getOldRequests())
         let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
         getCoinViewController.hidesBottomBarWhenPushed = true
         present(getCoinViewController, animated: true)
@@ -123,8 +113,42 @@ extension SearchCoinViewController {
         searchController.searchBar.text = text.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
+    func setupOldRequestsButtons() {
+//        let requestsButtonsHeight = CGFloat(100)
+        let oldRequestsLabel = UILabel()
+        scrollView.addSubview(oldRequestsLabel)
+        oldRequestsLabel.translatesAutoresizingMaskIntoConstraints = false
+        oldRequestsLabel.font = .systemFont(ofSize: 24)
+        oldRequestsLabel.text = "You’ve searched for this"
+        [
+            oldRequestsLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+            oldRequestsLabel.topAnchor.constraint(equalTo: popularRequestsScrollView.bottomAnchor, constant: 20)
+        ].forEach({$0.isActive = true})
+        oldRequestsLabel.textColor = .black
+        
+        let oldRequestsView = UIView()
+        oldRequestsView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(oldRequestsView)
+        [
+            oldRequestsView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor),
+            oldRequestsView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor),
+            oldRequestsView.topAnchor.constraint(equalTo: oldRequestsLabel.bottomAnchor, constant: 20),
+            oldRequestsView.bottomAnchor.constraint(equalTo: oldRequestsLabel.bottomAnchor, constant: 120)
+        ].forEach({$0.isActive = true})
+        
+        oldRequestsScrollView.alwaysBounceHorizontal = true
+        oldRequestsScrollView.translatesAutoresizingMaskIntoConstraints = false
+        oldRequestsView.addSubview(oldRequestsScrollView)
+        [
+            oldRequestsScrollView.leadingAnchor.constraint(equalTo: oldRequestsView.leadingAnchor),
+            oldRequestsScrollView.trailingAnchor.constraint(equalTo: oldRequestsView.trailingAnchor),
+            oldRequestsScrollView.bottomAnchor.constraint(equalTo: oldRequestsView.bottomAnchor),
+            oldRequestsScrollView.topAnchor.constraint(equalTo: oldRequestsView.topAnchor)
+        ].forEach({$0.isActive = true})
+        setupButtons(scrollView: oldRequestsScrollView, buttonsTextArray: viewModel.getOldRequests())
+    }
+    
     func setupPopularRequestsButtons() {
-        let requestsButtonsHeight = CGFloat(100)
         view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.alwaysBounceVertical = true
@@ -153,7 +177,7 @@ extension SearchCoinViewController {
             popularRequestsView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor),
             popularRequestsView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor),
             popularRequestsView.topAnchor.constraint(equalTo: popularRequestsLabel.bottomAnchor, constant: 20),
-            popularRequestsView.bottomAnchor.constraint(equalTo: popularRequestsLabel.bottomAnchor, constant: requestsButtonsHeight + 20)
+            popularRequestsView.bottomAnchor.constraint(equalTo: popularRequestsLabel.bottomAnchor, constant: 120)
         ].forEach({$0.isActive = true})
         
         popularRequestsScrollView.alwaysBounceHorizontal = true
@@ -165,32 +189,54 @@ extension SearchCoinViewController {
             popularRequestsScrollView.bottomAnchor.constraint(equalTo: popularRequestsView.bottomAnchor),
             popularRequestsScrollView.topAnchor.constraint(equalTo: popularRequestsView.topAnchor)
         ].forEach({$0.isActive = true})
+        setupButtons(scrollView: popularRequestsScrollView, buttonsTextArray: ["Apple", "Yandex", "Google", "Tesla", "First Solar", "Alibaba", "Facebook", "Bitcoin", "Litecoin", "Zoom", "Microsoft", "Netflix", "Altria", "Visa"])
+    }
+    
+    func setupButtons(scrollView: UIScrollView, buttonsTextArray: [String]) {
+        if(buttonsTextArray.count == 0) { return }
         
-        let popularRequestsArray = ["Apple", "Yandex", "Google", "Tesla", "First Solar", "Alibaba", "Facebook", "Bitcoin", "Litecoin",
-        "Zoom", "Microsoft", "Netflix", "Altria", "Visa"]
-        var previous: RoundedButtonForDate? = nil
         
-        for i in 0...popularRequestsArray.count - 1 {
+        let requestsButtonsHeight = CGFloat(100)
+        var previous = RoundedButtonForDate()
+        scrollView.subviews.forEach({if $0 is RoundedButtonForDate {$0.removeFromSuperview()}})
+        for i in 0...buttonsTextArray.count - 1 {
             let button = RoundedButtonForDate()
-            button.setTitle("  \(popularRequestsArray[i])  ", for: .normal)
-            popularRequestsScrollView.addSubview(button)
+            button.setTitle("  \(buttonsTextArray[i])  ", for: .normal)
+            scrollView.addSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.bounds.size.height = 40
             button.addTarget(self, action: #selector(buttonRequestTap(selector:)), for: .touchUpInside)
-            if (i < popularRequestsArray.count / 2) {
+            if (i < buttonsTextArray.count / 2) {
                 [
-                    button.leadingAnchor.constraint(equalTo: (i == 0 ? popularRequestsScrollView.leadingAnchor : previous!.trailingAnchor), constant: 20),
-                    button.centerYAnchor.constraint(equalTo: popularRequestsScrollView.centerYAnchor, constant: -requestsButtonsHeight / 4)
+                    button.leadingAnchor.constraint(equalTo: (i == 0 ? scrollView.leadingAnchor : previous.trailingAnchor), constant: 20),
+                    button.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: -requestsButtonsHeight / 4)
                 ].forEach({$0.isActive = true})
             }
             else {
                 [
-                    button.leadingAnchor.constraint(equalTo: (i == popularRequestsArray.count / 2 ? popularRequestsScrollView.leadingAnchor : previous!.trailingAnchor), constant: 20),
-                    button.centerYAnchor.constraint(equalTo: popularRequestsScrollView.centerYAnchor, constant: requestsButtonsHeight / 4)
+                    button.leadingAnchor.constraint(equalTo: (i == buttonsTextArray.count / 2 ? scrollView.leadingAnchor : previous.trailingAnchor), constant: 20),
+                    button.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: requestsButtonsHeight / 4)
                     
                 ].forEach({$0.isActive = true})
             }
             previous = button
         }
+    }
+    
+    func setRequestsContentViewWidth(scrollView: UIScrollView) {
+        var firstLineSizeOfContent: CGFloat = 0;
+        var secondLineSizeOfContent: CGFloat = 0;
+        for i in 0...scrollView.subviews.count - 1 {
+            let subview = scrollView.subviews[i]
+            if (subview is RoundedButtonForDate) {
+                if (i < (scrollView.subviews.count - 1) / 2) {
+                    firstLineSizeOfContent += subview.frame.size.width + 20
+                }
+                else {
+                    secondLineSizeOfContent += subview.frame.size.width + 20
+                }
+            }
+        }
+        scrollView.contentSize.width = max(firstLineSizeOfContent, secondLineSizeOfContent) + 20
     }
 }

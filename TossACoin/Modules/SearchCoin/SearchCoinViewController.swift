@@ -108,6 +108,7 @@ class SearchCoinViewController: UIViewController {
             popularRequestsScrollView.addSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.bounds.size.height = 40
+            button.addTarget(self, action: #selector(buttonRequestTap(selector:)), for: .touchUpInside)
             if (i < popularRequestsArray.count / 2) {
                 [
                     button.leadingAnchor.constraint(equalTo: (i == 0 ? popularRequestsScrollView.leadingAnchor : previous!.trailingAnchor), constant: 20),
@@ -154,9 +155,11 @@ extension SearchCoinViewController: UISearchBarDelegate, UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController) {
         if (searchController.searchBar.text == nil || searchController.searchBar.text == "") {
             suggestionsCollectionView.isHidden = true
+            scrollView.isHidden = false
             return
         }
         suggestionsCollectionView.isHidden = false
+        scrollView.isHidden = true
         viewModel.getSuggestions(symbol: searchController.searchBar.text!) {
             self.suggestionsCollectionView.reloadData()
         }
@@ -180,5 +183,12 @@ extension SearchCoinViewController: UICollectionViewDelegate, UICollectionViewDa
         let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
         getCoinViewController.hidesBottomBarWhenPushed = true
         present(getCoinViewController, animated: true)
+    }
+}
+
+extension SearchCoinViewController {
+    @objc func buttonRequestTap(selector: RoundedButtonForDate) {
+        guard let text = selector.titleLabel?.text else { return }
+        searchController.searchBar.text = text.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }

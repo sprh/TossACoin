@@ -14,7 +14,7 @@ class SearchCoinViewController: UIViewController {
     fileprivate var searchController: UISearchController = UISearchController(searchResultsController: nil)
     fileprivate var suggestionsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
     fileprivate var scrollView = UIScrollView()
-    fileprivate let popularRequestsScrollView = UIScrollView()
+    fileprivate var popularRequestsScrollView = UIScrollView()
     fileprivate let oldRequestsScrollView = UIScrollView()
     
     init(viewModel: SearchCoinViewModel) {
@@ -23,9 +23,26 @@ class SearchCoinViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        setRequestsContentViewWidth(scrollView: popularRequestsScrollView)
+//        setRequestsContentViewWidth(scrollView: oldRequestsScrollView)
         super.viewDidLayoutSubviews()
-        setRequestsContentViewWidth(scrollView: popularRequestsScrollView)
-        setRequestsContentViewWidth(scrollView: oldRequestsScrollView)
+         var firstLineSizeOfContent: CGFloat = 0;
+         var secondLineSizeOfContent: CGFloat = 0;
+         for i in 0...popularRequestsScrollView.subviews.count - 1 {
+             let subview = popularRequestsScrollView.subviews[i]
+             if (subview is UIButton) {
+                 if (i < (popularRequestsScrollView.subviews.count - 1) / 2) {
+                    print("i = \(i), \(subview.frame.size.width) \(subview.bounds.size.width)")
+                     firstLineSizeOfContent += subview.frame.size.width + 20
+                 }
+                 else {
+                     secondLineSizeOfContent += subview.frame.size.width + 20
+                 }
+             }
+         }
+        print(max(firstLineSizeOfContent, secondLineSizeOfContent) + 20)
+        popularRequestsScrollView.contentSize.width = max(firstLineSizeOfContent, secondLineSizeOfContent) + 20
     }
     
     required init?(coder: NSCoder) {
@@ -56,8 +73,12 @@ class SearchCoinViewController: UIViewController {
         searchController.searchBar.searchTextField.attributedPlaceholder =  NSAttributedString.init(string: "Find ticker", attributes: nil)
         searchController.searchBar.tintColor = .orange
         navigationItem.searchController = searchController
-//        searchController.searchBar.backgroundColor = .backgroundColor
-//        navigationController?.navigationBar.backgroundColor = .backgroundColor
+        scrollView.keyboardDismissMode = .interactive
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.backgroundColor = .backgroundColor
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barTintColor = .backgroundColor
     }
     
     func setupCollectionView() {
@@ -88,6 +109,10 @@ extension SearchCoinViewController: UISearchBarDelegate, UISearchResultsUpdating
 
 extension SearchCoinViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (viewModel.getSuggestionsCount() == 0) {
+            suggestionsCollectionView.isHidden = true
+            scrollView.isHidden = false
+        }
         return viewModel.getSuggestionsCount()
     }
     
@@ -114,7 +139,6 @@ extension SearchCoinViewController {
     }
     
     func setupOldRequestsButtons() {
-//        let requestsButtonsHeight = CGFloat(100)
         let oldRequestsLabel = UILabel()
         scrollView.addSubview(oldRequestsLabel)
         oldRequestsLabel.translatesAutoresizingMaskIntoConstraints = false

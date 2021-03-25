@@ -40,7 +40,11 @@ class FavouriteCoinsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 150)
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        let height: CGFloat = (navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.tabBarController?.tabBar.frame.height ?? 0) + (window?.safeAreaInsets.top ?? statusBarHeight)
+        coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - height)
+        self.view.layoutSubviews()
     }
     
     // Настройка CollectionView.

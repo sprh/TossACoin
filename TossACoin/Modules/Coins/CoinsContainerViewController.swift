@@ -56,10 +56,8 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
         // MARK: - Настройки для navigationBar.
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.backgroundColor = .backgroundColor
+        navigationController?.navigationBar.barTintColor = .backgroundColor
         navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.sizeToFit()
         navigationController?.navigationBar.addSubview(buttonBarView!)
         super.viewDidLoad()
     }

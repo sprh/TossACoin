@@ -35,16 +35,19 @@ class AllCoinsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - view.safeAreaInsets.bottom)
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        let height: CGFloat = (navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.tabBarController?.tabBar.frame.height ?? 0) + (window?.safeAreaInsets.top ?? statusBarHeight)
+        coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - height)
     }
-    
+
     // Настройка CollectionView.
     private func setupCollectionView() {
         self.view.addSubview(coinsCollectionView)
         coinsCollectionView.delegate = self
         coinsCollectionView.dataSource = self
         coinsCollectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
-        coinsCollectionView.backgroundColor = UIColor(named: "backgroundColor")
+        coinsCollectionView.backgroundColor = .backgroundColor
     }
     
     private func setupRefreshControl() {
@@ -103,6 +106,6 @@ extension AllCoinsViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension AllCoinsViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "All stocks")
+        return IndicatorInfo(title: "All coins")
     }
 }

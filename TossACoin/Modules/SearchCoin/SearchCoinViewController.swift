@@ -52,10 +52,78 @@ class SearchCoinViewController: UIViewController {
         self.view = view
         setupSearchController()
         setupCollectionView()
-        setupSubviews()
+        setupPopularRequestsButtons()
     }
     
-    func setupSubviews() {
+    func setupSearchController() {
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.definesPresentationContext = true
+        searchController.resignFirstResponder()
+        searchController.becomeFirstResponder()
+        searchController.isActive = true
+        searchController.searchBar.searchTextField.attributedPlaceholder =  NSAttributedString.init(string: "Find ticker", attributes: nil)
+        searchController.searchBar.tintColor = .orange
+        navigationItem.searchController = searchController
+//        searchController.searchBar.backgroundColor = .backgroundColor
+//        navigationController?.navigationBar.backgroundColor = .backgroundColor
+    }
+    
+    func setupCollectionView() {
+        view.addSubview(suggestionsCollectionView)
+        suggestionsCollectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
+        suggestionsCollectionView.backgroundColor = UIColor(named: "backgroundColor")
+        suggestionsCollectionView.delegate = self
+        suggestionsCollectionView.dataSource = self
+        suggestionsCollectionView.alwaysBounceVertical = true
+        suggestionsCollectionView.isHidden = true
+    }
+}
+
+extension SearchCoinViewController: UISearchBarDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if (searchController.searchBar.text == nil || searchController.searchBar.text == "") {
+            suggestionsCollectionView.isHidden = true
+            scrollView.isHidden = false
+            return
+        }
+        suggestionsCollectionView.isHidden = false
+        scrollView.isHidden = true
+        viewModel.getSuggestions(symbol: searchController.searchBar.text!) {
+            self.suggestionsCollectionView.reloadData()
+        }
+    }
+}
+
+extension SearchCoinViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.getSuggestionsCount()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = suggestionsCollectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
+        viewModel.createCell(cell: cell, at: indexPath.item)
+        return cell
+    }
+    
+    // Нажатие на одну из ячеек CollectionView.
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.addNewSearchingRequest(text: searchController.searchBar.text ?? "")
+        let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
+        getCoinViewController.hidesBottomBarWhenPushed = true
+        present(getCoinViewController, animated: true)
+    }
+}
+
+extension SearchCoinViewController {
+    @objc func buttonRequestTap(selector: RoundedButtonForDate) {
+        guard let text = selector.titleLabel?.text else { return }
+        searchController.searchBar.text = text.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    func setupPopularRequestsButtons() {
         let requestsButtonsHeight = CGFloat(100)
         view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -124,71 +192,5 @@ class SearchCoinViewController: UIViewController {
             }
             previous = button
         }
-    }
-    
-    func setupSearchController() {
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
-        searchController.definesPresentationContext = true
-        searchController.resignFirstResponder()
-        searchController.becomeFirstResponder()
-        searchController.isActive = true
-        searchController.searchBar.searchTextField.attributedPlaceholder =  NSAttributedString.init(string: "Find ticker", attributes: nil)
-        searchController.searchBar.tintColor = .orange
-        navigationItem.searchController = searchController
-    }
-    
-    func setupCollectionView() {
-        view.addSubview(suggestionsCollectionView)
-        suggestionsCollectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
-        suggestionsCollectionView.backgroundColor = UIColor(named: "backgroundColor")
-        suggestionsCollectionView.delegate = self
-        suggestionsCollectionView.dataSource = self
-        suggestionsCollectionView.alwaysBounceVertical = true
-        suggestionsCollectionView.isHidden = true
-    }
-}
-
-extension SearchCoinViewController: UISearchBarDelegate, UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        if (searchController.searchBar.text == nil || searchController.searchBar.text == "") {
-            suggestionsCollectionView.isHidden = true
-            scrollView.isHidden = false
-            return
-        }
-        suggestionsCollectionView.isHidden = false
-        scrollView.isHidden = true
-        viewModel.getSuggestions(symbol: searchController.searchBar.text!) {
-            self.suggestionsCollectionView.reloadData()
-        }
-    }
-}
-
-extension SearchCoinViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getSuggestionsCount()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = suggestionsCollectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
-        // Запрос к модели.
-        viewModel.createCell(cell: cell, at: indexPath.item)
-        return cell
-    }
-    
-    // Нажатие на одну из ячеек CollectionView.
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
-        getCoinViewController.hidesBottomBarWhenPushed = true
-        present(getCoinViewController, animated: true)
-    }
-}
-
-extension SearchCoinViewController {
-    @objc func buttonRequestTap(selector: RoundedButtonForDate) {
-        guard let text = selector.titleLabel?.text else { return }
-        searchController.searchBar.text = text.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }

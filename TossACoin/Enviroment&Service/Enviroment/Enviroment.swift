@@ -34,4 +34,23 @@ class Enviroment: EnviromentProtocol {
         }
     }
     
+    var searchingRequests: [String] {
+        get {
+            if let objects = UserDefaults.standard.value(forKey: "searchingRequests") as? Data {
+                let decoder = JSONDecoder()
+                if let objectsDecoded = try? decoder.decode(Array.self, from: objects) as [String] {
+                    return objectsDecoded
+                }
+            }
+            return []
+        }
+        
+        set (newValue){
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(newValue){
+               UserDefaults.standard.set(encoded, forKey: "searchingRequests")
+            }
+        }
+    }
+    
 }

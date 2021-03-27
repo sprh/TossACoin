@@ -79,6 +79,7 @@ extension AllCoinsViewController: UICollectionViewDelegate, UICollectionViewData
     
     // Нажатие на одну из ячеек CollectionView.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard indexPath.item >= 0 && indexPath.item < viewModel.getCoinsCount() else { return }
         let getCoinViewController = viewModel.getCoinInfoViewController(cellIndex: indexPath.item)
         getCoinViewController.hidesBottomBarWhenPushed = true
         present(getCoinViewController, animated: true)

@@ -34,7 +34,7 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
     // Настройка экрана.
     private func setSettings() {
         // MARK: - Настройки для buttonBarView.
-        containerView?.isScrollEnabled = true
+        containerView?.isScrollEnabled = false
         settings.style.buttonBarBackgroundColor = .backgroundColor
         settings.style.buttonBarItemBackgroundColor = .clear
         settings.style.selectedBarBackgroundColor = .orangeColor

@@ -23,26 +23,9 @@ class SearchCoinViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        setRequestsContentViewWidth(scrollView: popularRequestsScrollView)
-//        setRequestsContentViewWidth(scrollView: oldRequestsScrollView)
         super.viewDidLayoutSubviews()
-         var firstLineSizeOfContent: CGFloat = 0;
-         var secondLineSizeOfContent: CGFloat = 0;
-         for i in 0...popularRequestsScrollView.subviews.count - 1 {
-             let subview = popularRequestsScrollView.subviews[i]
-             if (subview is UIButton) {
-                 if (i < (popularRequestsScrollView.subviews.count - 1) / 2) {
-                    print("i = \(i), \(subview.frame.size.width) \(subview.bounds.size.width)")
-                     firstLineSizeOfContent += subview.frame.size.width + 20
-                 }
-                 else {
-                     secondLineSizeOfContent += subview.frame.size.width + 20
-                 }
-             }
-         }
-        print(max(firstLineSizeOfContent, secondLineSizeOfContent) + 20)
-        popularRequestsScrollView.contentSize.width = max(firstLineSizeOfContent, secondLineSizeOfContent) + 20
+        setRequestsContentViewWidth(scrollView: popularRequestsScrollView)
+        setRequestsContentViewWidth(scrollView: oldRequestsScrollView)
     }
     
     required init?(coder: NSCoder) {
@@ -73,7 +56,7 @@ class SearchCoinViewController: UIViewController {
         searchController.searchBar.searchTextField.attributedPlaceholder =  NSAttributedString.init(string: "Find ticker", attributes: nil)
         searchController.searchBar.tintColor = .orange
         navigationItem.searchController = searchController
-        scrollView.keyboardDismissMode = .interactive
+        scrollView.keyboardDismissMode = .onDrag
         
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.backgroundColor = .backgroundColor
@@ -213,6 +196,7 @@ extension SearchCoinViewController {
             popularRequestsScrollView.bottomAnchor.constraint(equalTo: popularRequestsView.bottomAnchor),
             popularRequestsScrollView.topAnchor.constraint(equalTo: popularRequestsView.topAnchor)
         ].forEach({$0.isActive = true})
+        // Не стала обращаться лишний раз по апи.
         setupButtons(scrollView: popularRequestsScrollView, buttonsTextArray: ["Apple", "Yandex", "Google", "Tesla", "First Solar", "Alibaba", "Facebook", "Bitcoin", "Litecoin", "Zoom", "Microsoft", "Netflix", "Altria", "Visa"])
     }
     

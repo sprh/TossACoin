@@ -33,11 +33,10 @@ class AllCoinsViewController: UIViewController {
         setupRefreshControl()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        let height: CGFloat = (navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.tabBarController?.tabBar.frame.height ?? 0) + (window?.safeAreaInsets.top ?? statusBarHeight)
+        let height: CGFloat = (navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.tabBarController?.tabBar.frame.height ?? 0) + (window?.safeAreaInsets.top ?? 0)
         coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - height)
     }
 

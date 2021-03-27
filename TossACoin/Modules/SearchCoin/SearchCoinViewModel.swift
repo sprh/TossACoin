@@ -46,7 +46,7 @@ class SearchCoinViewModel {
         let coin = suggestions[indexPath]
         let coinCellModel = CoinCellModel(coin: coin.coin, priceDisplay: coin.price)
         cell.loadData(model: coinCellModel)
-        cell.backgroundColor = indexPath % 2 == 0 ? #colorLiteral(red: 0.989908874, green: 1, blue: 0.9611904025, alpha: 1) : #colorLiteral(red: 0.9994921088, green: 0.9913042188, blue: 0.7818924785, alpha: 1)
+        cell.backgroundColor = indexPath % 2 == 0 ? UIColor(named: "evenCellColorColor") : UIColor(named: "backgroundColor")
     }
     
     func addNewSearchingRequest(text: String) {

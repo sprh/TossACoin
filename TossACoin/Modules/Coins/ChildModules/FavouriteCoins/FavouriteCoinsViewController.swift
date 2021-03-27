@@ -10,7 +10,7 @@ import UIKit
 import XLPagerTabStrip
 
 class FavouriteCoinsViewController: UIViewController {
-    fileprivate let coinsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
+    fileprivate let coinsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: CoinsCollectionViewFlowLayout())
     fileprivate let viewModel: FavouriteCoinsViewModel!
     fileprivate let refreshControl = UIRefreshControl()
     
@@ -33,25 +33,30 @@ class FavouriteCoinsViewController: UIViewController {
         setupRefreshControl()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let height: CGFloat = (navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.tabBarController?.tabBar.frame.height ?? 0)
+        coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - height)
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        let height: CGFloat = (navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.tabBarController?.tabBar.frame.height ?? 0) + (window?.safeAreaInsets.top ?? 0)
-        coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - height)
         initCoinCollection()
     }
     
     // Настройка CollectionView.
     private func setupCollectionView() {
+        self.view.addSubview(coinsCollectionView)
         coinsCollectionView.delegate = self
         coinsCollectionView.dataSource = self
         coinsCollectionView.register(CoinCollectionViewCell.self, forCellWithReuseIdentifier: "CoinCollectionViewCell")
-        coinsCollectionView.backgroundColor = UIColor(named: "backgroundColor")
+        coinsCollectionView.backgroundColor = .backgroundColor
         coinsCollectionView.refreshControl = refreshControl
         coinsCollectionView.refreshControl?.addTarget(self, action:
                                                     #selector(refreshCoins),
                                                     for: .valueChanged)
-        self.view.addSubview(coinsCollectionView)
+        coinsCollectionView.automaticallyAdjustsScrollIndicatorInsets = true
     }
     
     private func setupRefreshControl() {

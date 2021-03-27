@@ -33,10 +33,9 @@ class AllCoinsViewController: UIViewController {
         setupRefreshControl()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        let height: CGFloat = (navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.tabBarController?.tabBar.frame.height ?? 0) + (window?.safeAreaInsets.top ?? 0)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let height: CGFloat = (navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.tabBarController?.tabBar.frame.height ?? 0)
         coinsCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - height)
     }
 
@@ -88,7 +87,7 @@ extension AllCoinsViewController: UICollectionViewDelegate, UICollectionViewData
     // Догрузка коллекции
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if (indexPath.item >= viewModel.getCoinsCount() - 2){
-            initCoinCollection()
+             initCoinCollection()
         }
     }
     

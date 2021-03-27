@@ -21,12 +21,13 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    // Вот это чинит проблему скролла на дочерних экранах.
+    override public var scrollPercentage: CGFloat {
+        containerView.contentOffset.y = -(navigationController?.navigationBar.frame.height ?? 0)
+        return super.scrollPercentage
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         setSettings()
     }
@@ -34,7 +35,6 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
     // Настройка экрана.
     private func setSettings() {
         // MARK: - Настройки для buttonBarView.
-        containerView?.isScrollEnabled = false
         settings.style.buttonBarBackgroundColor = .backgroundColor
         settings.style.buttonBarItemBackgroundColor = .clear
         settings.style.selectedBarBackgroundColor = .orangeColor
@@ -44,7 +44,7 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
-
+        
         changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             newCell?.label.textColor = .orangeColor
@@ -53,13 +53,15 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
             newCell?.label.font = .boldSystemFont(ofSize: 27)
         }
         
+        super.viewDidLoad()
+        containerView?.isScrollEnabled = false
+        
         // MARK: - Настройки для navigationBar.
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.backgroundColor = .backgroundColor
         navigationController?.navigationBar.barTintColor = .backgroundColor
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.addSubview(buttonBarView!)
-        super.viewDidLoad()
     }
     
     // MARK: - Все дочерние экраны.
@@ -67,5 +69,11 @@ class CoinsContainerViewController: ButtonBarPagerTabStripViewController {
         let allCoinsViewController =  viewModel.getAllCoinsViewController()
         let favouriteCoinsViewController =  viewModel.getFavouriteCoinsViewController()
         return [allCoinsViewController, favouriteCoinsViewController]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.layoutSubviews()
+        navigationController?.navigationBar.setNeedsDisplay()
     }
 }

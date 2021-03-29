@@ -5,11 +5,9 @@
 //  Created by Софья Тимохина on 12.03.2021.
 //
 
-//{"nodeName":"BTCMoon (BTCM)","pageTitle":"BTCMoon (BTCM) - Live streaming prices and market cap","fullPath":"/coins/btcm/","firstInGroup":"1","__NodeTypeAlias":"webpagecoinp","group":"Coins"}
 import Foundation
 
 // Предложения.
-// {"Id":"4581","Symbol":"NYAN","Name":"NyanCoin (NYAN)","ImageUrl":"/media/19842/nyan.png","BaseUrl":"/coins/nyan/"}
 struct  Suggestion: Codable {
     let id: String
     let symbol: String

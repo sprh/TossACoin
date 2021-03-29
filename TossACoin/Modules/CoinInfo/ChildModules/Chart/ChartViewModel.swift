@@ -68,7 +68,6 @@ class ChartViewModel {
         }
     }
     
-    // TODO: Нормальный адрес.
     public func openBuyCoin() {
         guard let url = URL(string: APIClient.getBuyCoin(symbol: mintedCoin.coin.name)) else {
             return

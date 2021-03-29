@@ -10,7 +10,7 @@ import UIKit
 import XLPagerTabStrip
 
 class FavouriteCoinsViewController: UIViewController {
-    fileprivate let coinsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: CoinsCollectionViewFlowLayout())
+    fileprivate let coinsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CoinsCollectionViewFlowLayout())
     fileprivate let viewModel: FavouriteCoinsViewModel!
     fileprivate let refreshControl = UIRefreshControl()
     

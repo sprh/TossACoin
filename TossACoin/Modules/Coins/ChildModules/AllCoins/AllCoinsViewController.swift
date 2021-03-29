@@ -37,7 +37,7 @@ class AllCoinsViewController: UIViewController {
         super.viewDidLayoutSubviews()
         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         let height: CGFloat = (navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.tabBarController?.tabBar.frame.height ?? 0) + (window?.safeAreaInsets.top ?? 0)
-        coinsCollectionView.frame.size.height -= height
+        coinsCollectionView.frame.size.height = UIScreen.main.bounds.height - height
     }
 
     // Настройка CollectionView.

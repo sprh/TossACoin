@@ -203,6 +203,7 @@ extension SearchCoinViewController {
     func setupButtons(scrollView: UIScrollView, buttonsTextArray: [String]) {
         if(buttonsTextArray.count == 0) { return }
         
+        scrollView.showsHorizontalScrollIndicator = false
         
         let requestsButtonsHeight = CGFloat(100)
         var previous = RoundedButtonForDate()
@@ -232,8 +233,10 @@ extension SearchCoinViewController {
     }
     
     func setRequestsContentViewWidth(scrollView: UIScrollView) {
-        var firstLineSizeOfContent: CGFloat = 0;
-        var secondLineSizeOfContent: CGFloat = 0;
+        guard scrollView.subviews.count >= 0 else {return}
+        
+        var firstLineSizeOfContent: CGFloat = 0
+        var secondLineSizeOfContent: CGFloat = 0
         for i in 0...scrollView.subviews.count - 1 {
             let subview = scrollView.subviews[i]
             if (subview is RoundedButtonForDate) {

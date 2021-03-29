@@ -96,9 +96,8 @@ class CoinCollectionViewCell: UICollectionViewCell {
     // Добавление стиля.
     func setupStyle() {
         layer.cornerRadius = 15
-        layer.shadowRadius = 5
+        layer.shadowRadius = 4
         layer.shadowOpacity = 0.3
-//        layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 2)
     }
     

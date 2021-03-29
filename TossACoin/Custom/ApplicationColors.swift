@@ -15,4 +15,5 @@ extension UIColor {
     static let redPercent: UIColor = UIColor(named: "redPercent")!
     static let backgroundColor: UIColor = UIColor(named: "backgroundColor")!
     static let navigationAndTopColor: UIColor = UIColor(named: "navigationAndTopColor")!
+    static let evenCellColor: UIColor = UIColor(named: "evenCellColorColor")!
 }

@@ -93,13 +93,13 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
         companyName.textColor = .gray
         
         // MARK: - Кнопка добавления в избранное.
-        let starButton = StarButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let starButton = StarButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         headerView.addSubview(starButton)
         [
-            starButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
+            starButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -20),
             starButton.topAnchor.constraint(equalTo: headerView.centerYAnchor, constant: -15)
         ].forEach({$0.isActive = true})
-        starButton.imageEdgeInsets = UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 40)
+        starButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
         starButton.addTarget(self, action: #selector(addToFavoutite), for: .touchDown)
         
         // Проверка, есть ли уже в избранном.
@@ -107,7 +107,6 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
              starButton.setStatus(status: true)
         }
     }
-    
     
     // Добавление в избранное.
     @objc func addToFavoutite() {
@@ -117,7 +116,7 @@ class CoinInfoViewController: ButtonBarPagerTabStripViewController {
     // Настройка ButtonBarView.
     private func setSettings() {
         containerView?.isScrollEnabled = true
-        settings.style.buttonBarBackgroundColor = UIColor(named: "backgroundColor")
+        settings.style.buttonBarBackgroundColor = .backgroundColor
         settings.style.buttonBarItemBackgroundColor = .clear
         settings.style.selectedBarBackgroundColor = .orangeColor
         settings.style.selectedBarHeight = 4.0

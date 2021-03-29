@@ -17,19 +17,15 @@ class ChartViewController: UIViewController {
     fileprivate let dailyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     fileprivate let hourlyButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     fileprivate let minuteButton = RoundedButtonForDate(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-    
     fileprivate var times: [String] = []
-    // Стэк для кнопок.
+    
     fileprivate var stackForButtons: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    
     fileprivate let scrollView = UIScrollView()
     
-    // Кнопка, которая на самом деле просто открывает браузер.
     fileprivate var buyButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 10

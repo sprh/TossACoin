@@ -46,6 +46,16 @@ final class StarButton: UIButton {
         self.status = status
     }
     
+//    func setupConstraints() {
+//        imageView?.translatesAutoresizingMaskIntoConstraints = false
+//        [
+//            imageView?.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            imageView?.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            imageView?.topAnchor.constraint(equalTo: topAnchor),
+//            imageView?.bottomAnchor.constraint(equalTo: bottomAnchor)
+//        ].forEach({$0?.isActive = true})
+//    }
+    
     // Обратная связь.
     func sendHapticFeedback() {
         let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)

@@ -45,7 +45,7 @@ class AllCoinsViewModel {
         let coin = coins[indexPath]
         let coinCellModel = CoinCellModel(coin: coin.coin, priceDisplay: coin.price)
         cell.loadData(model: coinCellModel)
-        cell.backgroundColor = indexPath % 2 == 0 ? UIColor(named: "evenCellColorColor") : UIColor(named: "backgroundColor")
+        cell.backgroundColor = indexPath % 2 == 0 ? .evenCellColor : .backgroundColor
     }
     
     // Количество подгруженных акций.
